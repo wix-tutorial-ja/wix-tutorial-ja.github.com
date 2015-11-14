@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="WiX チュートリアル 日本語訳">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <title>{{ page.title }}</title>
+    <link rel="Shortcut Icon" type="img/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <h1 id="project_title">WiX チュートリアル 日本語訳</h1>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <img src="images/wix3.gif" width="600" height="480"/>
+        <nav id="page_link" class="inner">
+            <a href="001-toc.html">目次</a>
+            &nbsp;|&nbsp;
+            <a href="{{ page.next }}.html">&raquo; {{ page.next-title }}</a>
+        </nav>
+        {{ content }}
+        <nav id="page_link" class="inner">
+            <a href="001-toc.html">目次</a>
+            &nbsp;|&nbsp;
+            <a href="{{ page.next }}.html">&raquo; {{ page.next-title }}</a>
+        </nav>
+        <section id="main_content" class="inner">
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        <p class="copyright">WiX チュートリアル 日本語訳 maintained by <a href="https://github.com/softark">softark</a></p>
+        <a id="forkme_banner" href="https://github.com/softark/wix-j">View on GitHub</a>
+
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    </footer>
+</div>
+
+</body>
+</html>
