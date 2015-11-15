@@ -10,8 +10,8 @@ next-title: 前書き
 MSI や MSM のセットアップ・パッケージをビルドすることも出来ます。
 
 WiX はオープン・ソースのプロジェクトで、元来は Microsoft が開発したものですが、現在は **Rob Mensching** によってメンテナンスされています。
-SourceForge から[最新のバイナリとソース・コードのリリースをダウンロードする](http://sourceforge.net/projects/wix/)ことが出来ます。
-このチュートリアルは、最近リリースされた安定バージョンである 3.0 をカバーしています。
+wixtoolset.org から[最新のバイナリとソース・コードのリリースをダウンロードする](http://wixtoolset.org/releases/)ことが出来ます。
+このチュートリアルは、安定バージョンである 3.x をカバーしています。
 
 > 訳註：本文書は、Gábor DEÁK JAHN による [WiX tutorial](https://www.firegiant.com/wix/tutorial/) を日本語に翻訳したものです。
 > 読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。
