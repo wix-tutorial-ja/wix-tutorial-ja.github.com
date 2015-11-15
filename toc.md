@@ -1,23 +1,23 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 - 目次
-prev: 000-preface
+prev: preface
 prev-title: 前書き
-next: 010-lesson1
+next: ch01/index
 next-title: Lesson 1 - 始めよう
 ---
 ## 目次
 
-### Lesson 1 - [始めよう](010-lesson1.html)
+### Lesson 1 - [始めよう](ch01/index.html)
 
-+ [ソフトウェア・パッケージ](011-package.html)
-+ [中に入れるファイル](012-files.html)
-+ [使ってみる](013-try.html)
-+ [便利な追加機能](014-useful.html)
-+ [どこにインストールするか？](015-where.html)
-+ [条件付きインストール](016-conditonal.html)
-+ [ファイル以外](017-others.html)
-+ [削除時の孤児化](018-delete.html)
+1. [ソフトウェア・パッケージ](ch01/01-software-package.html)
+2. [中に入れるファイル](012-files.html)
+3. [使ってみる](013-try.html)
+4. [便利な追加機能](014-useful.html)
+5. [どこにインストールするか？](015-where.html)
+6. [条件付きインストール](016-conditonal.html)
+7. [ファイル以外](017-others.html)
+8. [削除時の孤児化](018-delete.html)
 
 ### Lesson 2 - [ユーザー・インタフェイス]()
 

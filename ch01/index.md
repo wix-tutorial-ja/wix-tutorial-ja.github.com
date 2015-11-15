@@ -1,9 +1,9 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう
-prev: 001-toc
+prev: /toc
 prev-title: 目次
-next: 011-package
+next: 01-software-package
 next-title: ソフトウェア・パッケージ
 ---
 ## Lesson 1 始めよう

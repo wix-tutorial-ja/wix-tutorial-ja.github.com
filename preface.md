@@ -3,7 +3,7 @@ layout: default
 title: WiX チュートリアル 日本語訳 - 前書き
 prev: index
 prev-title: HOME
-next: 001-toc
+next: toc
 next-title: 目次
 ---
 ## 前書き

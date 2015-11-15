@@ -1,7 +1,7 @@
 ---
 layout: top
 title: WiX チュートリアル 日本語訳
-next: 000-preface
+next: preface
 next-title: 前書き
 ---
 [Windows Installer XML (WiX)](http://wixtoolset.org/) は、XML ソース・コードから Windows のインストーラ・パッケージをビルドするツールセットです。
