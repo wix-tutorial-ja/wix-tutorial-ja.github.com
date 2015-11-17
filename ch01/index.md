@@ -25,7 +25,9 @@ Windows Installer はそういう処理をサポートしていません。)
 ここで Sample.wxs というソース・ファイルを用意したと仮定しましょう。
 最初に、
 
-    candle.exe Sample.wxs
+```
+candle.exe Sample.wxs
+```
 
 というコマンドで、コンパイルの第一段階を実行して、Sample.wixobj という半分消化されたファイルを作成します。
 このファイルはまだ XML ですが、その内部構造は人間が読むことを想定したものではありません。
