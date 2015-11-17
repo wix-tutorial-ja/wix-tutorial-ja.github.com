@@ -64,25 +64,27 @@ nav {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
-  font-weight: 700;
-  color:#222222;
-  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+  color:#000000;
   letter-spacing: -1px;
+  font-weight: 700;
 }
 
 h1 {
+  font-family: "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
   font-size: 36px;
-  font-weight: 700;
 }
 
 h2 {
   padding-bottom: 10px;
+  font-family: "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
   font-size: 32px;
-  background: url('../images/bg_hr.png') repeat-x bottom;
+  border-bottom: #999999 1px solid;
+  margin-bottom: 25px;
 }
 
 h3 {
   font-size: 24px;
+  margin: 20px 0px;
 }
 
 h4 {
@@ -145,7 +147,6 @@ strong {
 
 img {
   position: relative;
-  margin: 0 auto;
   max-width: 739px;
   padding: 5px;
   margin: 10px 0 10px 0;
@@ -208,7 +209,8 @@ blockquote {
 
 
 ul, ol, dl {
-  margin-bottom: 15px
+  margin-bottom: 15px;
+  margin-left: 30px;
 }
 
 ul {
@@ -307,14 +309,12 @@ Full-Width Styles
 }
 
 #header_wrap .inner {
-  padding: 50px 10px 30px 10px;
+  padding: 40px 10px 40px 10px;
 }
 
 #project_title {
   margin: 0;
   color: #fff;
-  font-size: 42px;
-  font-weight: 700;
   text-shadow: #111 0px 0px 10px;
 }
 
@@ -372,7 +372,7 @@ Full-Width Styles
 }
 
 #main_content {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 #footer_wrap {
@@ -399,12 +399,8 @@ Small Device Styles
     max-width: 480px;
   }
 
-  #project_title {
-  font-size: 32px;
-  }
-
   h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   h2 {

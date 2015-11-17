@@ -23,26 +23,30 @@
 <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
         <nav id="page_link" class="inner">
-            <a href="/index.html">HOME</a>
+            <a href="/index.html" title="HOME">HOME</a>
             &nbsp;|&nbsp;
-            <a href="/toc.html">目次</a>
+            <a href="/toc.html" title="目次">目次</a>
+            {% if page.prev != "none" %}
             &nbsp;|&nbsp;
-            <a href="{{ page.prev }}.html">&laquo; {{ page.prev-title }}</a>
-            &nbsp;|&nbsp;
+            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+            {% endif %}
             {% if page.next != "none" %}
-            <a href="{{ page.next }}.html">&raquo; {{ page.next-title }}</a>
+            &nbsp;|&nbsp;
+            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
             {% endif %}
         </nav>
         {{ content }}
         <nav id="page_link" class="inner">
-            <a href="/index.html">HOME</a>
+            <a href="/index.html" title="HOME">HOME</a>
             &nbsp;|&nbsp;
-            <a href="/toc.html">目次</a>
+            <a href="/toc.html" title="目次">目次</a>
+            {% if page.prev != "none" %}
             &nbsp;|&nbsp;
-            <a href="{{ page.prev }}.html">&laquo; {{ page.prev-title }}</a>
-            &nbsp;|&nbsp;
+            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+            {% endif %}
             {% if page.next != "none" %}
-            <a href="{{ page.next }}.html">&raquo; {{ page.next-title }}</a>
+            &nbsp;|&nbsp;
+            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
             {% endif %}
         </nav>
     </section>
