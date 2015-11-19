@@ -9,7 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <style>
-        img#wix { max-width: 90%; height: auto}
+        #wix3 {
+            max-width: 95%;
+            height: auto;
+            padding-bottom: 1em;
+        }
     </style>
     <title>{{ page.title }}</title>
     <link rel="Shortcut Icon" type="img/x-icon" href="favicon.ico">
@@ -17,31 +21,52 @@
 
 <body>
 
-<!-- HEADER -->
 <div class="container">
+
+    <!-- HEADER -->
     <header class="row">
-        <h1 id="project_title">WiX チュートリアル 日本語訳</h1>
+        <div class="col">
+            <h1>WiX チュートリアル 日本語訳</h1>
+        </div>
     </header>
 
-<!-- MAIN CONTENT -->
-    <section class="row">
-        <div class="row">
-        <img id="wix" src="images/wix3.gif" width="800" height="560"/>
+    <!-- MAIN IMAGE -->
+    <div class="row">
+        <div class="col center">
+            <img id="wix3" src="images/wix3.gif" width="800" height="560"/>
         </div>
-        {{ content }}
-        <nav id="page_link" class="row">
-            <a href="/toc.html" title="目次">目次</a>
-            &nbsp;|&nbsp;
-            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-        </nav>
-    </section>
+    </div>
 
-<!-- FOOTER  -->
+    <!-- MAIN CONTENT -->
+    <div class="row">
+        <div class="col main">
+            <div class="row">
+                <div class="col">
+                    {{ content }}
+                </div>
+                <nav class="col page-link">
+                    <p>
+                        <a href="/toc.html" title="目次">目次</a>
+                        &nbsp;|&nbsp;
+                        <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+                    </p>
+                </nav>
+            </div>
+        </div>
+        <div class="col sub">
+            TEST TEST TEST
+        </div>
+    </div>
+
+    <!-- FOOTER  -->
     <footer class="row">
-        <p class="copyright">WiX チュートリアル 日本語訳</p>
-        <a id="forkme_banner" href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">View on GitHub</a>
-
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+        <div class="col">
+            <p>このサイトは、ソースを
+                <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">GitHub</a>
+                でホストされ、
+                <a href="https://pages.github.com">GitHub Pages</a>
+                で公開されています。</p>
+        </div>
     </footer>
 </div>
 

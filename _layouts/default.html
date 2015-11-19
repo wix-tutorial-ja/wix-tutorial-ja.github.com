@@ -5,60 +5,76 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="WiX チュートリアル 日本語訳">
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/stylesheet.css">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>{{ page.title }}</title>
     <link rel="Shortcut Icon" type="img/x-icon" href="favicon.ico">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div id="header_wrap" class="outer">
-    <header class="inner">
-        <h1 id="project_title">WiX チュートリアル 日本語訳</h1>
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="row">
+        <div class="col">
+            <h1>WiX チュートリアル 日本語訳</h1>
+        </div>
     </header>
-</div>
+    <!-- MAIN CONTENT -->
+    <div class="row">
+        <div class="col main">
+            <div class="row">
+                <nav class="col page-link">
+                    <p>
+                        <a href="/index.html" title="HOME">HOME</a>
+                        &nbsp;|&nbsp;
+                        <a href="/toc.html" title="目次">目次</a>
+                        {% if page.prev != "none" %}
+                        &nbsp;|&nbsp;
+                        <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+                        {% endif %}
+                        {% if page.next != "none" %}
+                        &nbsp;|&nbsp;
+                        <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+                        {% endif %}
+                    </p>
+                </nav>
+                <div class="col">
+                    {{ content }}
+                </div>
+                <nav class="col page-link">
+                    <p>
+                        <a href="/index.html" title="HOME">HOME</a>
+                        &nbsp;|&nbsp;
+                        <a href="/toc.html" title="目次">目次</a>
+                        {% if page.prev != "none" %}
+                        &nbsp;|&nbsp;
+                        <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+                        {% endif %}
+                        {% if page.next != "none" %}
+                        &nbsp;|&nbsp;
+                        <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+                        {% endif %}
+                    </p>
+                </nav>
+            </div>
+        </div>
+        <div class="col sub">
+            TEST TEST TEST
+        </div>
+    </div>
 
-<!-- MAIN CONTENT -->
-<div id="main_content_wrap" class="outer">
-    <section id="main_content" class="inner">
-        <nav id="page_link" class="inner">
-            <a href="/index.html" title="HOME">HOME</a>
-            &nbsp;|&nbsp;
-            <a href="/toc.html" title="目次">目次</a>
-            {% if page.prev != "none" %}
-            &nbsp;|&nbsp;
-            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-            {% endif %}
-            {% if page.next != "none" %}
-            &nbsp;|&nbsp;
-            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-            {% endif %}
-        </nav>
-        {{ content }}
-        <nav id="page_link" class="inner">
-            <a href="/index.html" title="HOME">HOME</a>
-            &nbsp;|&nbsp;
-            <a href="/toc.html" title="目次">目次</a>
-            {% if page.prev != "none" %}
-            &nbsp;|&nbsp;
-            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-            {% endif %}
-            {% if page.next != "none" %}
-            &nbsp;|&nbsp;
-            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-            {% endif %}
-        </nav>
-    </section>
-</div>
-
-<!-- FOOTER  -->
-<div id="footer_wrap" class="outer">
-    <footer class="inner">
-        <p class="copyright">WiX チュートリアル 日本語訳</p>
-        <a id="forkme_banner" href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">View on GitHub</a>
-
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+    <!-- FOOTER  -->
+    <footer class="row">
+        <div class="col">
+            <p>このサイトは、ソースを
+                <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">GitHub</a>
+                でホストされ、
+                <a href="https://pages.github.com">GitHub Pages</a>
+                で公開されています。</p>
+        </div>
     </footer>
 </div>
 

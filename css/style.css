@@ -7,15 +7,28 @@ body {
 }
 
 a {
-    color: #06f;
+    text-decoration: none;
+    color: #0033cc;
+}
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0;
+    letter-spacing: -1px;
+    font-weight: 700;
 }
 
 h1 {
-    font-size: 2.2em;
+    font-size: 1.25em;
+    margin: 1em 0;
+    letter-spacing: -1px;
+    font-weight: 700;
 }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 h2, h3, h4 {
@@ -37,94 +50,66 @@ code {
     color: #777;
 }
 
+em {
+    font-style: normal;
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.center {
+    text-align: center;
+}
+
+nav {
+    text-align: right;
+}
+
 .container {
     margin: 0 auto;
     max-width: 60em;
-    padding: 1em 0;
 }
 
-.footer {
-    padding-top: 1.5em;
+blockquote {
+    color: #404040;
+    font-size: 90%;
+    margin-bottom: 1em;
+    padding-left: 0.5em;
+    border-left: 3px solid #bbb;
 }
 
-.desc {
-    color: #888;
-}
-
-.intro {
-    border-bottom: 1px dotted #bbb;
-    padding-bottom: 1.5em;
-}
-
-.social {
-    border-top: 1px dotted #bbb;
-    padding-top: 1.5em;
-}
-
-/* minor responsive adjustments */
-
-.footer {
-    border-top: 1px dotted #aaa;
-}
-
-.content {
-    border-bottom: 1px dotted #aaa;
-    margin-bottom: 1.5em;
+footer {
+    padding-top: 1em;
+    border-top: #888 1px solid;
+    color: #404040;
+    font-size: 90%;
 }
 
 @media only screen and (min-width: 34em) {
     p, ul {
         font-size: 0.875em;
     }
-
-    .feature:first-child,
-    .info:first-child {
-        border-right: 1px dotted #aaa;
-    }
-
-    .container {
-        padding: 1em;
-    }
-
-    h1 {
-        font-size: 2.6em;
-    }
-
-    h2 {
-        font-size: 1.6em;
-    }
+    h1 {font-size: 2.2em;}
+    h2 {font-size: 1.6em;}
 }
 
 @media only screen and (min-width: 54em) {
-    .content {
-        border: none;
-        border-right: 1px dotted #aaa;
-        margin-bottom: 0;
+    .main {
+        float: right;
+        width: 75%;
+        margin-left: 25%;
     }
-
-    .info:first-child {
-        border: none;
+    .sub {
+        width: 25%; border-left: 1px solid #CCC;
     }
-
-    h1 {
-        font-size: 3em;
-    }
-
-    h2 {
-        font-size: 1.7em;
-    }
+    h1 {font-size: 2.4em;}
+    h2 {font-size: 1.7em;}
 }
 
 @media only screen and (min-width: 76em) {
-    .info:first-child {
-        border-right: 1px dotted #aaa;
-    }
-
-    h1 {
-        font-size: 3.2em;
-    }
-
-    h2 {
-        font-size: 1.8em;
-    }
+    h1 {font-size: 2.8em;}
+    h2 {font-size: 1.8em;}
 }
