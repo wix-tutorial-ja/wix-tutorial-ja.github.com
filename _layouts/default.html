@@ -17,18 +17,22 @@
 <!-- HEADER -->
 <header>
     <div class="container">
-        <nav>
-            <a href="/index.html" title="HOME">WiX Tutorial Ja</a>
-            &nbsp;&nbsp;
-            <a href="/toc.html" title="目次">目次</a>
-            {% if page.prev != "none" %}
-            &nbsp;&nbsp;
-            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-            {% endif %}
-            {% if page.next != "none" %}
-            &nbsp;&nbsp;
-            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-            {% endif %}
+        <nav class="row">
+            <div class="col header-left">
+                    <a href="/index.html" title="HOME">WiX Tutorial Ja</a>
+            </div>
+            <div class="col header-right">
+                <a href="/toc.html" title="目次">目次</a>
+                {% if page.prev != "none" %}
+                &nbsp;
+                <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+                {% endif %}
+                {% if page.next != "none" %}
+                &nbsp;
+                <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+                {% endif %}
+
+            </div>
         </nav>
     </div>
 </header>
