@@ -6,12 +6,52 @@ body {
     margin: 0;
 }
 
+header {
+    background-color: #333333;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+nav {
+    padding: 0.5em 0 0.5em 1em;
+}
+
+article {
+    margin: 3.5em 0 1em;
+}
+
+#sub {
+    display: none;
+}
+
+footer {
+    padding-top: 1em;
+    border-top: #888 1px solid;
+    color: #303030;
+    font-size: 90%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 65em;
+}
+
 a {
     text-decoration: none;
     color: #0033cc;
 }
 a:hover, a:focus {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #0033cc;
+}
+nav a {
+    color : #ffffff;
+}
+nav a:hover, nav a:focus {
+    color : #44aaff;
+    background-color: #333333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -22,13 +62,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 1.25em;
-    margin: 1em 0;
-    letter-spacing: -1px;
-    font-weight: 700;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 h2, h3, h4 {
@@ -39,15 +76,22 @@ h3, h4 {
     margin-bottom: 0.5em;
 }
 
-p, ul {
-    font-size: 0.8125em;
+nav, p, ul, ol, code {
+    font-size: 0.875em;
+}
+p, ul, ol {
     line-height: 1.5;
     margin: 0 0 1.5em;
 }
 
-code {
-    font-size: 1.2727em;
-    color: #777;
+ul {
+    list-style: disc;
+    margin-left: 2em;
+}
+
+ol {
+    list-style: decimal;
+    margin-left: 2em;
 }
 
 em {
@@ -64,13 +108,13 @@ strong {
     text-align: center;
 }
 
-nav {
-    text-align: right;
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 60em;
+pre {
+    background-color: #202040;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+    color: white;
+    font-family: "Courier New", monospace;
+    overflow: auto;
 }
 
 blockquote {
@@ -81,35 +125,64 @@ blockquote {
     border-left: 3px solid #bbb;
 }
 
-footer {
-    padding-top: 1em;
-    border-top: #888 1px solid;
-    color: #404040;
-    font-size: 90%;
+img {
+    max-width: 90%;
+    height: auto;
 }
 
 @media only screen and (min-width: 34em) {
-    p, ul {
-        font-size: 0.875em;
+    nav, p, ul, ol, code {
+        font-size: 1em;
     }
-    h1 {font-size: 2.2em;}
-    h2 {font-size: 1.6em;}
+    h1 {font-size: 2.0em;}
+    h2 {font-size: 1.4em;}
 }
 
 @media only screen and (min-width: 54em) {
-    .main {
+    #main {
         float: right;
         width: 75%;
-        margin-left: 25%;
     }
-    .sub {
-        width: 25%; border-left: 1px solid #CCC;
+    #sub {
+        display: block;
+        width: 22%;
     }
-    h1 {font-size: 2.4em;}
-    h2 {font-size: 1.7em;}
+    #side-navi {
+        margin: 2em 0;
+        padding: 1em;
+        border: 1px solid #969896;
+        border-radius: 10px;
+
+    }
+    #side-navi ul {
+        list-style-position: outside;
+    }
+    li.current a{
+        color: black;
+        font-weight: bold;
+    }
+    li.current a:hover{
+        color: white;
+    }
+    h1 {font-size: 2.2em;}
+    h2 {font-size: 1.5em;}
+    h3, h4 {font-size: 1.1em;}
 }
 
 @media only screen and (min-width: 76em) {
-    h1 {font-size: 2.8em;}
-    h2 {font-size: 1.8em;}
+    h1 {font-size: 2.4em;}
+    h2 {font-size: 1.7em;}
+    h3, h4 {font-size: 1.2em;}
+}
+
+@media print {
+    header {
+        display: none;
+    }
+    article {
+        margin-top: 1em;
+    }
+    #sub {
+        display: none;
+    }
 }

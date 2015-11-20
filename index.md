@@ -1,9 +1,12 @@
 ---
-layout: top
+layout: default
+current: home
 title: WiX チュートリアル 日本語訳
+prev: none
 next: preface
 next-title: 前書き
 ---
+# WiX チュートリアル 日本語訳
 [Windows Installer XML (WiX)](http://wixtoolset.org/) は、XML ソース・コードから Windows のインストーラ・パッケージをビルドするツールセットです。
 このツールセットはコマンド・ライン・ツールを提供しており、古いスタイルの Makefile によるビルド・プロセスに組み込んで使用することが出来るだけでなく、
 新しい MSBuild テクノロジを使って **Microsoft の Visual Studio** や **SharpDevelop** のような統合開発環境の中で

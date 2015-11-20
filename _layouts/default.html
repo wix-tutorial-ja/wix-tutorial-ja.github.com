@@ -14,69 +14,89 @@
 
 <body>
 
-<div class="container">
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="/index.html" title="HOME">WiX Tutorial Ja</a>
+            &nbsp;&nbsp;
+            <a href="/toc.html" title="目次">目次</a>
+            {% if page.prev != "none" %}
+            &nbsp;&nbsp;
+            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+            {% endif %}
+            {% if page.next != "none" %}
+            &nbsp;&nbsp;
+            <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
 
-    <!-- HEADER -->
-    <header class="row">
-        <div class="col">
-            <h1>WiX チュートリアル 日本語訳</h1>
-        </div>
-    </header>
-    <!-- MAIN CONTENT -->
-    <div class="row">
-        <div class="col main">
-            <div class="row">
-                <nav class="col page-link">
-                    <p>
-                        <a href="/index.html" title="HOME">HOME</a>
-                        &nbsp;|&nbsp;
-                        <a href="/toc.html" title="目次">目次</a>
-                        {% if page.prev != "none" %}
-                        &nbsp;|&nbsp;
-                        <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-                        {% endif %}
-                        {% if page.next != "none" %}
-                        &nbsp;|&nbsp;
-                        <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-                        {% endif %}
-                    </p>
-                </nav>
-                <div class="col">
-                    {{ content }}
-                </div>
-                <nav class="col page-link">
-                    <p>
-                        <a href="/index.html" title="HOME">HOME</a>
-                        &nbsp;|&nbsp;
-                        <a href="/toc.html" title="目次">目次</a>
-                        {% if page.prev != "none" %}
-                        &nbsp;|&nbsp;
-                        <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-                        {% endif %}
-                        {% if page.next != "none" %}
-                        &nbsp;|&nbsp;
-                        <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
-                        {% endif %}
-                    </p>
-                </nav>
+<!-- ARTICLE -->
+<article>
+    <div class="container">
+        {% if page.current == "home" %}
+        <!-- MAIN IMAGE -->
+        <div class="row">
+            <div class="col center">
+                <img id="wix3" src="images/wix3.gif" width="800" height="560"/>
             </div>
         </div>
-        <div class="col sub">
-            TEST TEST TEST
+        {% endif %}
+
+        <!-- MAIN CONTENT -->
+        <div class="row">
+            <div class="col" id="main">
+                <div class="row">
+                    <div class="col">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="sub">
+                <div class="row">
+                    <div class="col" id="side-navi">
+                        <h3>Table of Contents</h3>
+                        <ul class="side-navi">
+                            <li{% if page.current == "home" %} class="current"{% endif %}>
+                            <a href="/index.html" title="HOME">WiX チュートリアル 日本語訳</a>
+                            </li>
+                            <li{% if page.current == "preface" %} class="current"{% endif %}>
+                            <a href="/preface.html" title="前書き">前書き</a>
+                            </li>
+                            <li{% if page.current == "toc" %} class="current"{% endif %}>
+                            <a href="/toc.html" title="目次">目次</a>
+                            </li>
+                        </ul>
+                        <h4>Lesson 1</h4>
+                        <ul class="side-navi">
+                            <li{% if page.current == "ch01" %} class="current"{% endif %}>
+                            <a href="/ch01/index.html" title="Lesson 1">始めよう</a></li>
+                            <li{% if page.current == "ch01-01" %} class="current"{% endif %}>
+                            <a href="/ch01/01-software-package" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</article>
 
-    <!-- FOOTER  -->
-    <footer class="row">
-        <div class="col">
-            <p>このサイトは、ソースを
-                <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">GitHub</a>
-                でホストされ、
-                <a href="https://pages.github.com">GitHub Pages</a>
-                で公開されています。</p>
+<!-- FOOTER  -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>このサイトは、ソースを
+                    <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">GitHub</a>
+                    でホストされ、
+                    <a href="https://pages.github.com">GitHub Pages</a>
+                    で公開されています。</p>
+            </div>
         </div>
-    </footer>
-</div>
+    </div>
+</footer>
 
 </body>
 </html>
