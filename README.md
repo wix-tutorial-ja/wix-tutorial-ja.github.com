@@ -39,7 +39,7 @@ BSD 3-clause ライセンス によります。
     - ...
 - samples ... サンプル
     - Sample-1-3-First.zip
-    - Sample-1-5-Registri.zip
+    - Sample-1-5-Registry.zip
     - ...
 - _layouts
     - default.html ... jekyll のレイアウト・ファイル
