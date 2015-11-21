@@ -5,6 +5,7 @@ title: WiX チュートリアル 日本語訳
 prev: none
 next: preface
 next-title: 前書き
+origin: /
 ---
 # WiX チュートリアル 日本語訳
 [Windows Installer XML (WiX)](http://wixtoolset.org/) は、XML ソース・コードから Windows のインストーラ・パッケージをビルドするツールセットです。
@@ -15,9 +16,6 @@ MSI や MSM のセットアップ・パッケージをビルドすることも�
 WiX はオープン・ソースのプロジェクトで、元来は Microsoft が開発したものですが、現在は **Rob Mensching** によってメンテナンスされています。
 wixtoolset.org から[最新のバイナリとソース・コードのリリースをダウンロードする](http://wixtoolset.org/releases/)ことが出来ます。
 このチュートリアルは、安定バージョンである 3.x をカバーしています。
-
-> 訳註：本文書は、Gábor DEÁK JAHN による [WiX tutorial](https://www.firegiant.com/wix/tutorial/) を日本語に翻訳したものです。
-> 読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。
 
 > 訳註：2015年11月現在、WiX の最新安定バージョンは 3.10.1 です。
 > WiX tutorial は、元来、2009年にリリースされた WiX 3.0 のために書かれたものでした。

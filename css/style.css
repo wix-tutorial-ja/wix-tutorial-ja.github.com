@@ -33,7 +33,7 @@ article {
 }
 
 footer {
-    padding-top: 1em;
+    padding: 1em 0;
     border-top: #888 1px solid;
     color: #303030;
     font-size: 90%;
@@ -59,6 +59,10 @@ nav a {
 nav a:hover, nav a:focus {
     color : #44aaff;
     background-color: #333333;
+}
+
+p.origin {
+    text-align: right;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -89,6 +93,10 @@ nav, p, ul, ol, code {
 p, ul, ol {
     line-height: 1.5;
     margin: 0 0 1.5em;
+}
+
+footer p {
+    margin: 0 0 0.5em;
 }
 
 ul {

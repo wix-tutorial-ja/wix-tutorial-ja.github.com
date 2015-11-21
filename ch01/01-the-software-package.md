@@ -4,8 +4,9 @@ title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 1. ソ
 current: ch01-01
 prev: index
 prev-title: Lesson 1 - 始めよう
-next: 02-files-within
-next-title: 中に入れるファイル
+next: 02-the-files-inside
+next-title: 2. 中に入れるファイル
+origin: /getting-started/the-software-package/
 ---
 # Lesson 1 始めよう
 

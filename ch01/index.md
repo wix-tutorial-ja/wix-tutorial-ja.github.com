@@ -4,8 +4,9 @@ title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう
 current: ch01
 prev: /preface
 prev-title: 前書き
-next: 01-software-package
-next-title: ソフトウェア・パッケージ
+next: 01-the-software-package
+next-title: 1. ソフトウェア・パッケージ
+origin: /getting-started/
 ---
 # Lesson 1 始めよう
 

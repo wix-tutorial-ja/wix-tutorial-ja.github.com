@@ -55,6 +55,9 @@
                 <div class="row">
                     <div class="col">
                         {{ content }}
+                        {% if page.origin != "none" %}
+                        <p class="origin"><a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&raquo; 英語の原文</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -78,9 +81,11 @@
                             <li{% if page.current == "ch01" %} class="current"{% endif %}>
                             <a href="/ch01/index.html" title="Lesson 1">始めよう</a></li>
                             <li{% if page.current == "ch01-01" %} class="current"{% endif %}>
-                            <a href="/ch01/01-software-package" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a></li>
+                            <a href="/ch01/01-the-software-package" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a></li>
                             <li{% if page.current == "ch01-02" %} class="current"{% endif %}>
-                            <a href="/ch01/02-files-within" title="中に入れるファイル">中に入れるファイル</a></li>
+                            <a href="/ch01/02-the-files-inside" title="中に入れるファイル">中に入れるファイル</a></li>
+                            <li{% if page.current == "ch01-03" %} class="current"{% endif %}>
+                            <a href="/ch01/03-putting-it-to-use" title="使ってみる">使ってみる</a></li>
                         </ul>
                     </div>
                 </div>
@@ -94,11 +99,14 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p>このサイトは、ソースを
-                    <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">GitHub</a>
-                    でホストされ、
-                    <a href="https://pages.github.com">GitHub Pages</a>
-                    で公開されています。</p>
+                <p>Copyright &copy; 2010-2015, <a href="https://github.com/wix-tutorial-ja/">
+                    WiX Tutorial Ja</a></p>
+                <p>本文書は、Gábor DEÁK JAHN による <a href="https://www.firegiant.com/wix/tutorial/">WiX tutorial</a>
+                    を日本語に翻訳したものです。
+                    読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。
+                    間違いの指摘や修正案の提示を歓迎します。
+                    <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">翻訳プロジェクトのレポジトリ</a>
+                    をご利用ください。</p>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ current: preface
 prev: none
 next: ch01/index
 next-title: Lesson 1 始めよう
+origin: /
 ---
 # 前書き
 

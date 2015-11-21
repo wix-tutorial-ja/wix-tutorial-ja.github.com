@@ -6,15 +6,16 @@ prev: preface
 prev-title: 前書き
 next: ch01/index
 next-title: Lesson 1 - 始めよう
+origin: none
 ---
 # 目次
 
 ## Lesson 1 - [始めよう](ch01/index.html)
 
-1. [ソフトウェア・パッケージ](ch01/01-software-package.html)
-2. [中に入れるファイル](ch01/02-files-within.html)
-3. [使ってみる](ch01/03-trying-it-out.html)
-4. [便利な追加機能](ch01/04-handy-additions.html)
+1. [ソフトウェア・パッケージ](ch01/01-the-software-package.html)
+2. [中に入れるファイル](ch01/02-the-files-inside.html)
+3. [使ってみる](ch01/03-putting-it-to-use.html)
+4. [便利な追加機能](ch01/04-useful-extras.html)
 5. [どこにインストールするか？](ch01/05-where-to-install.html)
 6. [条件付きインストール](ch01/06-conditional-installation.html)
 7. [ファイル以外](ch01/07-others.html)
