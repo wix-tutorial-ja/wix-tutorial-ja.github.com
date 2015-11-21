@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 5. どこにインストールするか?
+title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 5. どこにインストールするか
 current: ch01-05
 prev: 04-useful-extras
 prev-title: 4. 便利な追加機能
@@ -10,7 +10,7 @@ origin: /getting-started/where-to-install/
 ---
 # Lesson 1 始めよう
 
-## 5. どこにインストールするか?
+## 5. どこにインストールするか
 
 単独で動作するアプリケーションは、`Program Files` 以下の自分自身のフォルダにインストールされます — 
 どうやってそれを実現するかは既に見たとおりです。
