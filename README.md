@@ -33,9 +33,13 @@ BSD 3-clause ライセンス によります。
 - ch02 ... Lesson 2
 - ...
 - css
-    - grid.css ... レスポンシブなグリッドを実装
+    - grid.css ... レスポンシブなグリッド
     - style.css ... スタイル
-- images ... 画像ファイル
+- images ... 画像
+    - ...
+- samples ... サンプル
+    - Sample-1-3-First.zip
+    - Sample-1-5-Registri.zip
     - ...
 - _layouts
     - default.html ... jekyll のレイアウト・ファイル
