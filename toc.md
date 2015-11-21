@@ -12,13 +12,13 @@ next-title: Lesson 1 - 始めよう
 ## Lesson 1 - [始めよう](ch01/index.html)
 
 1. [ソフトウェア・パッケージ](ch01/01-software-package.html)
-2. [中に入れるファイル](012-files.html)
-3. [使ってみる](013-try.html)
-4. [便利な追加機能](014-useful.html)
-5. [どこにインストールするか？](015-where.html)
-6. [条件付きインストール](016-conditonal.html)
-7. [ファイル以外](017-others.html)
-8. [削除時の孤児化](018-delete.html)
+2. [中に入れるファイル](ch01/02-files-within.html)
+3. [使ってみる](ch01/03-trying-it-out.html)
+4. [便利な追加機能](ch01/04-handy-additions.html)
+5. [どこにインストールするか？](ch01/05-where-to-install.html)
+6. [条件付きインストール](ch01/06-conditional-installation.html)
+7. [ファイル以外](ch01/07-others.html)
+8. [削除時の孤児化](ch01/08-orphans-on-deletion.html)
 
 ## Lesson 2 - [ユーザー・インタフェイス]()
 

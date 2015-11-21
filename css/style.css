@@ -120,8 +120,16 @@ pre {
     padding: 0.5em 1em;
     margin-bottom: 1em;
     color: white;
-    font-family: "Courier New", monospace;
     overflow: auto;
+}
+
+code {
+    font-family: "Courier New", monospace;
+    background-color: #e0e0e0;
+}
+
+pre code {
+    background-color: inherit;
 }
 
 blockquote {
@@ -191,5 +199,11 @@ img {
     }
     #sub {
         display: none;
+    }
+    pre {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #c0c0c0;
+        overflow: visible;
     }
 }
