@@ -27,7 +27,7 @@ origin: none
 ## Lesson 2 - [ユーザー・インタフェイス](ch02/index.html)
 
 1. [最初のステップ](ch02/01-first-steps.html)
-2. [カスタム設定](ch02/02-custom-settings.html)
+2. [カスタムの設定](ch02/02-custom-settings.html)
 3. [UI の魔法](ch02/03-ui-wizardry)
 4. [アナタハ 英語ヲ 話シマスカ](ch02/04-do-you-speak-english)
 5. [チェーンの新しい環](ch02/05-new-link-in-the-chain)

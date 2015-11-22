@@ -5,7 +5,7 @@ current: ch02-01
 prev: index
 prev-title: Lesson 2 - ユーザー・インタフェイス
 next: 02-custom-settings
-next-title: 2. カスタム設定
+next-title: 2. カスタムの設定
 origin: /user-interface/first-steps/
 ---
 # Lesson 2 ユーザー・インタフェイス

@@ -88,10 +88,10 @@ h3, h4 {
     margin-bottom: 0.5em;
 }
 
-nav, p, ul, ol, code {
+nav, p, ul, ol, dl, code {
     font-size: 0.875em;
 }
-p, ul, ol {
+p, ul, ol, dl {
     line-height: 1.5;
     margin: 0 0 1.5em;
 }
@@ -149,6 +149,13 @@ blockquote {
     border-left: 3px solid #bbb;
 }
 
+dt {
+    font-weight: 700;
+}
+dd {
+    margin: 0 0 0.5em 2.5em;
+}
+
 img {
     max-width: 90%;
     height: auto;
@@ -158,7 +165,7 @@ img {
 .medium {display: none}
 
 @media only screen and (min-width: 34em) {
-    nav, p, ul, ol, code {
+    nav, p, ul, ol, dl, code {
         font-size: 1em;
     }
     h1 {font-size: 2.0em;}
