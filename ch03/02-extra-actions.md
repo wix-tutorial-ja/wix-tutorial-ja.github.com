@@ -6,7 +6,7 @@ prev: 01-queueing-up
 prev-title: 1. 列に並んで
 next: 03-whats-not-in-the-book
 next-title: 3. 本に書かれていないこと
-origin: /user-interface/events-and-actions/extra-actions/
+origin: /events-and-actions/extra-actions/
 ---
 # Lesson 3 - イベントとアクション
 

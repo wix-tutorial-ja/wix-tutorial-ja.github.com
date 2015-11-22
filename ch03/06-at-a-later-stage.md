@@ -6,7 +6,7 @@ prev: 05-how-to-manage
 prev-title: 5. マネージする方法
 next: /ch04/index
 next-title: Lesson 4 アップグレードとモジュラー化
-origin: /user-interface/events-and-actions/at-a-later-stage/
+origin: /events-and-actions/at-a-later-stage/
 ---
 # Lesson 3 - イベントとアクション
 

@@ -6,7 +6,7 @@ prev: 04-control-your-controls
 prev-title: 4. コントロールをコントロールせよ
 next: 06-at-a-later-stage
 next-title: 6. 後の段階で
-origin: /user-interface/events-and-actions/how-to-manage/
+origin: /events-and-actions/how-to-manage/
 ---
 # Lesson 3 - イベントとアクション
 

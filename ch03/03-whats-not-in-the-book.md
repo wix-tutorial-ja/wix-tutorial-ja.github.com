@@ -6,7 +6,7 @@ prev: 02-extra-actions
 prev-title: 2. 追加のアクション
 next: 04-control-your-controls
 next-title: 4. コントロールをコントロールせよ
-origin: /user-interface/events-and-actions/whats-not-in-the-book/
+origin: /events-and-actions/whats-not-in-the-book/
 ---
 # Lesson 3 - イベントとアクション
 

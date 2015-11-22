@@ -6,7 +6,7 @@ prev: index
 prev-title: Lesson 3 - イベントとアクション
 next: 02-extra-actions
 next-title: 2. 追加のアクション
-origin: /user-interface/events-and-actions/queueing-up/
+origin: /events-and-actions/queueing-up/
 ---
 # Lesson 3 - イベントとアクション
 
