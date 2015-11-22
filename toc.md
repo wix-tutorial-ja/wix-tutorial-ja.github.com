@@ -10,6 +10,9 @@ origin: none
 ---
 # 目次
 
+- [WiX チュートリアル 日本語訳](index.html)
+- [前書き](preface.html)
+
 ## Lesson 1 - [始めよう](ch01/index.html)
 
 1. [ソフトウェア・パッケージ](ch01/01-the-software-package.html)
