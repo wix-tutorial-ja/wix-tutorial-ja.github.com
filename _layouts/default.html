@@ -85,51 +85,66 @@
                 <div class="row">
                     <div class="col" id="side-navi">
                         <h3>Table of Contents</h3>
-                        <ul class="side-navi">
-                            <li
-                            {% if page.current == "home" %} class="current"{% endif %}>
-                            <a href="/index.html" title="HOME">HOME</a>
+                        <ul class="side-navi open" id="sn-block-main">
+                            <li id="sn-home">
+                                <a href="/index.html" title="HOME">HOME</a>
                             </li>
-                            <li
-                            {% if page.current == "preface" %} class="current"{% endif %}>
-                            <a href="/preface.html" title="前書き">前書き</a>
+                            <li id="sn-preface">
+                                <a href="/preface.html" title="前書き">前書き</a>
                             </li>
-                            <li
-                            {% if page.current == "toc" %} class="current"{% endif %}>
-                            <a href="/toc.html" title="目次">目次</a>
+                            <li id="sn-toc">
+                                <a href="/toc.html" title="目次">目次</a>
                             </li>
                         </ul>
-                        <h4>Lesson 1</h4>
-                        <ul class="side-navi">
-                            <li{% if page.current == "ch01" %} class="current"{% endif %}>
-                            <a href="/ch01/index.html" title="Lesson 1">始めよう</a></li>
-                            <li{% if page.current == "ch01-01" %} class="current"{% endif %}>
-                            <a href="/ch01/01-the-software-package.html" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a></li>
-                            <li{% if page.current == "ch01-02" %} class="current"{% endif %}>
-                            <a href="/ch01/02-the-files-inside.html" title="中に入るファイル">中に入るファイル</a></li>
-                            <li{% if page.current == "ch01-03" %} class="current"{% endif %}>
-                            <a href="/ch01/03-putting-it-to-use.html" title="使用に供する">使用に供する</a></li>
-                            <li{% if page.current == "ch01-04" %} class="current"{% endif %}>
-                            <a href="/ch01/04-useful-extras.html" title="便利な追加機能">便利な追加機能</a></li>
-                            <li{% if page.current == "ch01-05" %} class="current"{% endif %}>
-                            <a href="/ch01/05-where-to-install.html" title="どこにインストールするか">どこにインストールするか</a></li>
-                            <li{% if page.current == "ch01-06" %} class="current"{% endif %}>
-                            <a href="/ch01/06-conditional-installation.html" title="条件付きインストール">条件付きインストール</a></li>
-                            <li{% if page.current == "ch01-07" %} class="current"{% endif %}>
-                            <a href="/ch01/07-beyond-files.html" title="ファイルだけでなく">ファイルだけでなく</a></li>
-                            <li{% if page.current == "ch01-08" %} class="current"{% endif %}>
-                            <a href="/ch01/08-orphaned-on-removal.html" title="削除時の孤児化">削除時の孤児化</a></li>
+                        <h4>Lesson 1 <a class="snb" id="sn-btn-ch01"  href="#"></a></h4>
+                        <ul class="open">
+                            <li id="sn-ch01">
+                                <a href="/ch01/index.html" title="Lesson 1">始めよう</a>
+                            </li>
                         </ul>
-                        <h4>Lesson 2</h4>
-                        <ul class="side-navi">
-                            <li{% if page.current == "ch02" %} class="current"{% endif %}>
-                            <a href="/ch02/index.html" title="Lesson 2">ユーザー・インタフェイス</a></li>
-                            <li{% if page.current == "ch02-01" %} class="current"{% endif %}>
-                            <a href="/ch02/01-first-steps.html" title="最初のステップ">最初のステップ</a></li>
-                            <li{% if page.current == "ch02-02" %} class="current"{% endif %}>
-                            <a href="/ch02/02-custom-settings.html" title="カスタムの設定">カスタムの設定</a></li>
-                            <li{% if page.current == "ch02-03" %} class="current"{% endif %}>
-                            <a href="/ch02/03-ui-wizardry.html" title="UI の魔法">UI の魔法</a></li>
+                        <ul class="side-navi" id="sn-block-ch01">
+                            <li id="sn-ch01-01">
+                                <a href="/ch01/01-the-software-package.html" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a>
+                            </li>
+                            <li id="sn-ch01-02">
+                                <a href="/ch01/02-the-files-inside.html" title="中に入るファイル">中に入るファイル</a>
+                            </li>
+                            <li id="sn-ch01-03">
+                                <a href="/ch01/03-putting-it-to-use.html" title="使用に供する">使用に供する</a>
+                            </li>
+                            <li id="sn-ch01-04">
+                                <a href="/ch01/04-useful-extras.html" title="便利な追加機能">便利な追加機能</a>
+                            </li>
+                            <li id="sn-ch01-05">
+                                <a href="/ch01/05-where-to-install.html" title="どこにインストールするか">どこにインストールするか</a>
+                            </li>
+                            <li id="sn-ch01-06">
+                                <a href="/ch01/06-conditional-installation.html" title="条件付きインストール">条件付きインストール</a>
+                            </li>
+                            <li id="sn-ch01-07">
+                                <a href="/ch01/07-beyond-files.html" title="ファイルだけでなく">ファイルだけでなく</a>
+                            </li>
+                            <li id="sn-ch01-08">
+                                <a href="/ch01/08-orphaned-on-removal.html" title="削除時の孤児化">削除時の孤児化</a>
+                            </li>
+                                    </li>
+                        </ul>
+                        <h4>Lesson 2 <a class="snb" id="sn-btn-ch02" href="#"></a></h4>
+                        <ul class="open">
+                            <li id="sn-ch02">
+                                <a href="/ch02/index.html" title="Lesson 2">ユーザー・インタフェイス</a>
+                            </li>
+                        </ul>
+                        <ul class="side-navi" id="sn-block-ch02">
+                            <li id="sn-ch02-01">
+                                <a href="/ch02/01-first-steps.html" title="最初のステップ">最初のステップ</a>
+                            </li>
+                            <li id="sn-ch02-02">
+                                <a href="/ch02/02-custom-settings.html" title="カスタムの設定">カスタムの設定</a>
+                            </li>
+                            <li id="sn-ch02-03">
+                                <a href="/ch02/03-ui-wizardry.html" title="UI の魔法">UI の魔法</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -156,6 +171,33 @@
         </div>
     </div>
 </footer>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    jQuery(function ($) {
+        // 外部リンクを新しいウィンドウで開く
+        $('body').on('click', 'a[href^=\"http://\"],a[href^=\"https://\"]', function (event) {
+            if (!this.href.match('http://wix-tutorial-ja.github.io/')) {
+                window.open(this.href, '_blank');
+                event.preventDefault();
+            }
+        });
+        // サイド・ナビ・ブロックの開閉 - 初期状態
+        if ('{{ page.current }}'.substr(0, 2) == 'ch') {
+            var block = '{{ page.current }}'.substr(0, 4);
+            $('#sn-btn-' + block).addClass('open');
+            $('#sn-block-' + block).addClass('open');
+        }
+        // サイド・ナビ・ブロックの開閉
+        $('a.snb').on('click', function(event) {
+            $('#sn-block-' + this.id.substr(7,4)).toggleClass('open');
+            $(this).toggleClass('open');
+            event.preventDefault();
+        });
+        // サイド・ナビのカレント・アイテム
+        $('#sn-{{ page.current }}').addClass('current');
+    });
+    /*]]>*/
+</script>
 </body>
 </html>

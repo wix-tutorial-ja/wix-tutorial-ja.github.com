@@ -192,7 +192,21 @@ img {
 
     }
     #side-navi ul {
+        display: none;
+    }
+    #side-navi ul.open {
+        display: inline-block;
         list-style-position: outside;
+        height: 0;
+    }
+    #side-navi h3, #side-navi h4 {
+        margin: 0.3em 0 0 0;
+    }
+    a.snb:before {
+        content: ' ▼ ';
+    }
+    a.snb.open:before {
+        content: ' △ ';
     }
     li.current a{
         color: black;
