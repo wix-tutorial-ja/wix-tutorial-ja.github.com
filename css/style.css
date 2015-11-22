@@ -203,10 +203,10 @@ img {
         margin: 0.3em 0 0 0;
     }
     a.snb:before {
-        content: ' ▼ ';
+        content: '＋';
     }
     a.snb.open:before {
-        content: ' △ ';
+        content: '－';
     }
     li.current a{
         color: black;

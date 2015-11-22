@@ -4,8 +4,8 @@ title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・イン
 current: ch02-03
 prev: 02-custom-settings
 prev-title: 2. カスタムの設定
-next: 03-do-you-speak-english
-next-title: アナタハ 英語ヲ 話シマスカ
+next: 04-do-you-speak-english
+next-title: 4. アナタハ 英語ヲ 話シマスカ
 origin: /user-interface/ui-wizardry/
 ---
 # Lesson 2 ユーザー・インタフェイス
