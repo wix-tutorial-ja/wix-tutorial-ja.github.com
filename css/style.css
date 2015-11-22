@@ -186,18 +186,25 @@ img {
     }
     #side-navi {
         margin: 2em 0;
-        padding: 1em;
+        padding: 0.75em;
         border: 1px solid #969896;
         border-radius: 10px;
 
     }
-    #side-navi ul {
+    #side-navi ol {
         display: none;
     }
-    #side-navi ul.open {
+    #side-navi ol.open {
         display: inline-block;
         list-style-position: outside;
-        height: 0;
+        margin-left: 3.0em;
+        margin-bottom: 0;
+    }
+    #side-navi ul {
+        display: inline-block;
+        list-style-position: outside;
+        margin-left: 1.7em;
+        margin-bottom: 0;
     }
     #side-navi h3, #side-navi h4 {
         margin: 0.3em 0 0 0;
