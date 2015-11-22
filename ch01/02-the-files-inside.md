@@ -20,12 +20,10 @@ CD と DVD の時代においては、インストール・ファイルを複数
 インストール・メディアのユニットを示すためのいろんなテキスト記述を含むことが出来ます。
 Windows Installer はこの記述をディスクのプロンプトとして使用します)。
 
-        <Media Id='1'
-               Cabinet='Sample.cab'
-               EmbedCab='yes'
-               DiskPrompt='CD-ROM 1枚目' />
+        <Media Id='1' Cabinet='Sample.cab'
+            EmbedCab='yes' DiskPrompt='CD-ROM 1枚目' />
         <Property Id='DiskPrompt'
-                  Value="ぴよソフト's ほげ 1.0 インストーラ [1]" />
+            Value="ぴよソフト's ほげ 1.0 インストーラ [1]" />
 
 *EmbedCab* 属性を使って、インストール・ファイルのキャビネット(アーカイブ)を `.msi` パッケージ・ファイル自体の一部として埋め込むか、
 それとも独立したファイルにするかを決定することが出来ます。

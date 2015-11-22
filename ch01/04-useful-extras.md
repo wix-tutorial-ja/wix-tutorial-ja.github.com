@@ -18,20 +18,20 @@ origin: /getting-started/useful-extras/
 前のサンプルのどこか、機能(Feature)の中ではないところ(例えば、*Package* タグと *Media* タグの間)に、下記の行を追加して下さい。
 そうすると、あなたがマシンの管理者でない場合は、パッケージは起動しなくなります。
 
-    <Condition Message="この製品をインストールするためには、管理者である必要があります。">
+    <Condition Message="インストールするためには、管理者である必要があります。">
       Privileged
     </Condition>
 
 Vista の場合は、こうです。
 
-    <Condition Message="この製品をインストールするためには、管理者である必要があります。">
+    <Condition Message="インストールするためには、管理者である必要があります。">
       AdminUser
     </Condition>
 
 注意すべき事は、開始タグと終了タグの間に書かれた条件が**偽**と評価されるときに、メッセージが表示されて、インストールが中止されるということです。
 言い換えると、エラーになる条件を定義するな、インストールを続行したい条件を定義しろ、ということです。
 
-    <Condition Message="この製品をインストールするためには、管理者ではない必要があります。">
+    <Condition Message="インストールするためには、管理者ではない必要があります。">
       NOT Privileged
     </Condition>
 
@@ -40,7 +40,7 @@ Vista の場合は、こうです。
 *Version9X* は、Windows 95, 98 および ME の場合に真になります。
 *VersionNT* は、NT 4.0 以降で真になります。*VersionNT64* は、64-bit オペレーティング・システムを示します。
 
-    <Condition Message='このアプリケーションは、Windows 95/98/ME でのみ動作します。'>
+    <Condition Message='この製品は、Windows 95/98/ME でのみ動作します。'>
       Version9X
     </Condition>
 
