@@ -28,8 +28,7 @@ origin: /getting-started/where-to-install/
 
     <Property Id="INSTALLDIR">
       <RegistrySearch Id='PiyoHogeRegistry' Type='raw'
-                      Root='HKLM' Key='Software\Piyo\Hoge 1.0'
-                      Name='InstallDir' />
+          Root='HKLM' Key='Software\Piyo\Hoge 1.0' Name='InstallDir' />
     </Property>
 
 レジストリ・サーチが成功した場合(すなわち、指定されたレジストリ・エントリが実際に存在している場合)は、
@@ -56,8 +55,7 @@ origin: /getting-started/where-to-install/
 
     <Property Id="INSTALLDIR">
       <IniFileSearch Id='PiyoHogeIniFile' Type='directory'
-                     Name='SampleRegistry.ini' Section='Sample'
-                     Key='InstallDir' />
+           Name='SampleRegistry.ini' Section='Sample' Key='InstallDir' />
     </Property>
 
 場合によっては、単にフォルダ名を知るだけでは十分でなく、フォルダの中を見て、

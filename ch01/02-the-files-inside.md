@@ -110,7 +110,7 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 新しいバージョンのアプリケーションをインストールすると以前のバージョンが破壊されたり、という障害が生じることになります。
 
                 <Component Id='MainExecutable'
-                           Guid='YOURGUID-83F1-4F22-985B-FDB3C8ABD471'>
+                    Guid='YOURGUID-83F1-4F22-985B-FDB3C8ABD471'>
 
 ファイルはその名前で特定されます。
 実際のファイル名以外に、いくつか別の属性を使って、ファイルの特性を記述することが出来ます。
@@ -128,8 +128,8 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 それに、キー・パスを指定しないとコンパイラが文句を言います ...
 
                   <File Id='HogeEXE'
-                        Name='HogeAppl10.exe' DiskId='1'
-                        Source='HogeAppl10.exe' KeyPath='yes'>
+                      Name='HogeAppl10.exe' DiskId='1'
+                      Source='HogeAppl10.exe' KeyPath='yes'>
 
 ショートカットも名前を持っていますが、その他に、作業フォルダやアイコン指定のような他の重要な項目も持っています。
 **Directory** (スタート・メニューやデスクトップのように、ショートカットが配置される場所)と
@@ -148,36 +148,36 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 Windows Installer が修復インストールをしてファイルを修復することが出来ます。
 
                     <Shortcut Id="startmenuHoge10"
-                              Directory="ProgramMenuDir"
-                              Name="ほげ 1.0"
-                              WorkingDirectory='INSTALLDIR'
-                              Icon="Hoge10.exe" IconIndex="0"
-                              Advertise="yes" />
+                        Directory="ProgramMenuDir"
+                        Name="ほげ 1.0"
+                        WorkingDirectory='INSTALLDIR'
+                        Icon="Hoge10.exe" IconIndex="0"
+                        Advertise="yes" />
                     <Shortcut Id="desktopHoge10"
-                              Directory="DesktopFolder"
-                              Name="ほげ 1.0"
-                              WorkingDirectory='INSTALLDIR'
-                              Icon="Hoge10.exe" IconIndex="0"
-                              Advertise="yes" />
+                        Directory="DesktopFolder"
+                        Name="ほげ 1.0"
+                        WorkingDirectory='INSTALLDIR'
+                        Icon="Hoge10.exe" IconIndex="0"
+                        Advertise="yes" />
                   </File>
                 </Component>
 
 さらに二つ、一意の *Id* と *Guid* を持つ別のコンポーネントを定義します。
 
                 <Component Id='HelperLibrary'
-                           Guid='YOURGUID-6BE3-460D-A14F-75658D16550B'>
+                    Guid='YOURGUID-6BE3-460D-A14F-75658D16550B'>
                   <File Id='HelperDLL' Name='HogeHelper.dll' DiskId='1'
-                        Source='HogeHelper.dll' KeyPath='yes' />
+                      Source='HogeHelper.dll' KeyPath='yes' />
                 </Component>
 
                 <Component Id='Manual'
-                           Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
+                    Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
                   <File Id='Manual' Name='Manual.pdf' DiskId='1'
-                        Source='Manual.pdf' KeyPath='yes'>
+                      Source='Manual.pdf' KeyPath='yes'>
                     <Shortcut Id='startmenuManual'
-                              Directory='ProgramMenuDir'
-                              Name='取扱説明書'
-                              Advertise='yes' />
+                        Directory='ProgramMenuDir'
+                        Name='取扱説明書'
+                        Advertise='yes' />
                   </File>
                 </Component>
 
@@ -222,11 +222,11 @@ WiX プロジェクトはモジュラー化できます(後で詳細に述べま
           <Directory Id="ProgramMenuFolder" Name="Programs">
             <Directory Id="ProgramMenuDir" Name="ほげ 1.0">
               <Component Id="ProgramMenuDir"
-                         Guid="YOURGUID-7E98-44CE-B049-C477CC0A2B00">
+                  Guid="YOURGUID-7E98-44CE-B049-C477CC0A2B00">
                 <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
                 <RegistryValue Root='HKCU'
-                               Key='Software\[Manufacturer]\[ProductName]'
-                               Type='string' Value='' KeyPath='yes' />
+                    Key='Software\[Manufacturer]\[ProductName]'
+                    Type='string' Value='' KeyPath='yes' />
               </Component>
             </Directory>
           </Directory>
@@ -269,8 +269,8 @@ WiX プロジェクトはモジュラー化できます(後で詳細に述べま
 ファイルのサイズが大きすぎて問題になる場合は、アイコンだけを含んだ小さな `.exe` か `.ico` を作成して下さい。
 
         <Shortcut Id="desktopHoge10" Directory="DesktopFolder"
-                  Name="ほげ 1.0" WorkingDirectory='INSTALLDIR'
-                  Icon="Hoge10.ico" IconIndex="0" />
+            Name="ほげ 1.0" WorkingDirectory='INSTALLDIR'
+            Icon="Hoge10.ico" IconIndex="0" />
         ...
         <Icon Id="Hoge10.ico" SourceFile="HogeAppl10.ico" />
 

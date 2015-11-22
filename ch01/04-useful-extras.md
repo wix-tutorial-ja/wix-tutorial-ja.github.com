@@ -79,8 +79,8 @@ Vista の場合は、こうです。
     <Condition Message='Windows XP SPn'>
       VersionNT = 501 AND ServicePackLevel = n
     </Condition>
-    <Condition Message='Windows XP Home SPn'
-      >VersionNT = 501 AND MsiNTSuitePersonal AND ServicePackLevel = n
+    <Condition Message='Windows XP Home SPn'>
+      VersionNT = 501 AND MsiNTSuitePersonal AND ServicePackLevel = n
     </Condition>
     <Condition Message='Windows Server 2003'>
       VersionNT = 502
