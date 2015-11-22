@@ -15,12 +15,13 @@ header {
 
 nav {
     padding: 0.5em 0 0.5em 0;
+    color: #777777;
 }
 .header-left {
-    width: 45%;
+    width: 33%;
 }
 .header-right {
-    width: 55%;
+    width: 67%;
     text-align: right;
 }
 
@@ -61,7 +62,7 @@ nav a:hover, nav a:focus {
     background-color: #333333;
 }
 
-p.origin {
+p.bottom-nav {
     text-align: right;
 }
 
@@ -88,7 +89,7 @@ h3, h4 {
 }
 
 nav, p, ul, ol, code {
-    font-size: 0.84em;
+    font-size: 0.875em;
 }
 p, ul, ol {
     line-height: 1.5;
@@ -123,21 +124,21 @@ strong {
     text-align: center;
 }
 
+pre, code {
+    background-color: #e0e0e0;
+    font-family: "Courier New", monospace;
+}
 pre {
-    background-color: #202040;
     padding: 0.5em 1em;
     margin-bottom: 1em;
-    color: white;
+    border: 1px solid #a0a0a0;
     overflow: auto;
 }
-
 code {
-    font-family: "Courier New", monospace;
-    background-color: #e0e0e0;
+    padding: 1px 3px;
 }
-
 pre code {
-    background-color: inherit;
+    padding: 0;
 }
 
 blockquote {
@@ -153,12 +154,17 @@ img {
     height: auto;
 }
 
+.small {display: inline}
+.medium {display: none}
+
 @media only screen and (min-width: 34em) {
     nav, p, ul, ol, code {
         font-size: 1em;
     }
     h1 {font-size: 2.0em;}
     h2 {font-size: 1.4em;}
+    .medium {display: inline}
+    .small {display: none}
 }
 
 @media only screen and (min-width: 54em) {
@@ -169,6 +175,7 @@ img {
     #sub {
         display: block;
         width: 22%;
+        font-size: 85%;
     }
     #side-navi {
         margin: 2em 0;

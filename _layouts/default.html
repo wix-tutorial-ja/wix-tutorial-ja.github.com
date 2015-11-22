@@ -4,7 +4,10 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="WiX チュートリアル 日本語訳">
+    <meta name="Keywords" content="WiX, Windows Installer XML, MSI, Tutorial, Japanese Translation">
+    <meta name="Keywords" lang="ja" content="WiX, Windows Installer XML, MSI, チュートリアル, 日本語訳">
+    <meta name="Description" content="The Japanese translation of the tutorial on the WiX toolset.">
+    <meta name="Description" lang="ja" content="WiX ツールセットのチュートリアル 日本語訳">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -19,19 +22,22 @@
     <div class="container">
         <nav class="row">
             <div class="col header-left">
-                    <a href="/index.html" title="HOME">WiX Tutorial Ja</a>
+                <a href="/index.html" title="HOME"><span class="medium">WiX Tutorial Ja</span><span class="small">WiX Tu Ja</span></a>
             </div>
             <div class="col header-right">
-                <a href="/toc.html" title="目次">目次</a>
+                <a href="/toc.html" title="目次">&bull; 目次</a>
                 {% if page.prev != "none" %}
-                &nbsp;
+                &nbsp;|&nbsp;
                 <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
                 {% endif %}
                 {% if page.next != "none" %}
-                &nbsp;
-                <a href="{{ page.next }}.html" title="{{ page.next-title }}">&raquo; 次へ</a>
+                &nbsp;|&nbsp;
+                <a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
                 {% endif %}
-
+                {% if page.origin != "none" %}
+                &nbsp;|&nbsp;
+                <a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
+                {% endif %}
             </div>
         </nav>
     </div>
@@ -39,7 +45,7 @@
 
 <!-- ARTICLE -->
 <article>
-    <div class="container">
+    <div class="container" id="page-top">
         {% if page.current == "home" %}
         <!-- MAIN IMAGE -->
         <div class="row">
@@ -55,9 +61,23 @@
                 <div class="row">
                     <div class="col">
                         {{ content }}
-                        {% if page.origin != "none" %}
-                        <p class="origin"><a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&raquo; 英語の原文</a></p>
-                        {% endif %}
+                        <p class="bottom-nav">
+                            <a href="#page-top" title="ページの先頭へ">&uarr; 先頭</a>
+                            &nbsp;|&nbsp;
+                            <a href="/toc.html" title="目次">&bull; 目次</a>
+                            {% if page.prev != "none" %}
+                            &nbsp;|&nbsp;
+                            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+                            {% endif %}
+                            {% if page.next != "none" %}
+                            &nbsp;|&nbsp;
+                            <a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
+                            {% endif %}
+                            {% if page.origin != "none" %}
+                            &nbsp;|&nbsp;
+                            <a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -66,31 +86,41 @@
                     <div class="col" id="side-navi">
                         <h3>Table of Contents</h3>
                         <ul class="side-navi">
-                            <li{% if page.current == "home" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "home" %} class="current"{% endif %}>
                             <a href="/index.html" title="HOME">WiX チュートリアル 日本語訳</a>
                             </li>
-                            <li{% if page.current == "preface" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "preface" %} class="current"{% endif %}>
                             <a href="/preface.html" title="前書き">前書き</a>
                             </li>
-                            <li{% if page.current == "toc" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "toc" %} class="current"{% endif %}>
                             <a href="/toc.html" title="目次">目次</a>
                             </li>
                         </ul>
                         <h4>Lesson 1</h4>
                         <ul class="side-navi">
-                            <li{% if page.current == "ch01" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01" %} class="current"{% endif %}>
                             <a href="/ch01/index.html" title="Lesson 1">始めよう</a></li>
-                            <li{% if page.current == "ch01-01" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-01" %} class="current"{% endif %}>
                             <a href="/ch01/01-the-software-package.html" title="ソフトウェア・パッケージ">ソフトウェア・パッケージ</a></li>
-                            <li{% if page.current == "ch01-02" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-02" %} class="current"{% endif %}>
                             <a href="/ch01/02-the-files-inside.html" title="中に入れるファイル">中に入れるファイル</a></li>
-                            <li{% if page.current == "ch01-03" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-03" %} class="current"{% endif %}>
                             <a href="/ch01/03-putting-it-to-use.html" title="使ってみる">使ってみる</a></li>
-                            <li{% if page.current == "ch01-04" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-04" %} class="current"{% endif %}>
                             <a href="/ch01/04-useful-extras.html" title="便利な追加機能">便利な追加機能</a></li>
-                            <li{% if page.current == "ch01-05" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-05" %} class="current"{% endif %}>
                             <a href="/ch01/05-where-to-install.html" title="どこにインストールするか">どこにインストールするか</a></li>
-                            <li{% if page.current == "ch01-06" %} class="current"{% endif %}>
+                            <li
+                            {% if page.current == "ch01-06" %} class="current"{% endif %}>
                             <a href="/ch01/06-conditional-installation.html" title="条件付きインストール">条件付きインストール</a></li>
                         </ul>
                     </div>
@@ -107,6 +137,7 @@
             <div class="col">
                 <p>Copyright &copy; 2010-2015, <a href="https://github.com/wix-tutorial-ja/">
                     WiX Tutorial Ja</a></p>
+
                 <p>本文書は、Gábor DEÁK JAHN による <a href="https://www.firegiant.com/wix/tutorial/">WiX tutorial</a>
                     を日本語に翻訳したものです。
                     読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。
