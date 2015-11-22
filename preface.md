@@ -2,9 +2,10 @@
 layout: default
 title: WiX チュートリアル 日本語訳 - 前書き
 current: preface
-prev: none
-next: ch01/index
-next-title: Lesson 1 始めよう
+prev: index
+prev-title: HOME
+next: toc
+next-title: 目次
 origin: /
 ---
 # 前書き

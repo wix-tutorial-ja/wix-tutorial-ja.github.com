@@ -38,8 +38,8 @@ origin: none
 1. [列に並んで](ch03/01-queueing-up.html)
 2. [追加のアクション](ch03/02-extra-actions.html)
 3. [本に書かれていないこと](ch03/03-whats-not-in-the-book.html)
-4. [コントロールのカスタム・アクション](ch03/04-control-your-controls.html)
-5. [カスタム・アクションをマネージする方法](ch03/05-how-to-manage.html)
+4. [コントロールをコントロールせよ](ch03/04-control-your-controls.html)
+5. [マネージする方法](ch03/05-how-to-manage.html)
 6. [後の段階で](ch03/06-at-a-later-stage.html)
 
 ### Lesson 4 - [アップグレードとモジュラー化]()

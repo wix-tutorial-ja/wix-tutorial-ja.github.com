@@ -2,8 +2,8 @@
 layout: default
 title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・インタフェイス
 current: ch02
-prev: /ch01/index
-prev-title: Lesson 1 始めよう
+prev: /ch01/08-orphaned-on-removal
+prev-title: 8. 削除時の孤児化
 next: 01-first-steps
 next-title: 1. 最初のステップ
 origin: /user-interface/

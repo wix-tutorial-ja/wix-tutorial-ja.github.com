@@ -2,8 +2,8 @@
 layout: default
 title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう
 current: ch01
-prev: /preface
-prev-title: 前書き
+prev: /toc
+prev-title: 目次
 next: 01-the-software-package
 next-title: 1. ソフトウェア・パッケージ
 origin: /getting-started/
