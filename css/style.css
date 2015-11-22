@@ -62,7 +62,7 @@ nav a:hover, nav a:focus {
     background-color: #333333;
 }
 
-p.bottom-nav {
+#bottom-nav {
     text-align: right;
 }
 
@@ -234,14 +234,11 @@ img {
 }
 
 @media print {
-    header {
+    header, #sub, #bottom-nav, .no-print {
         display: none;
     }
     article {
         margin-top: 1em;
-    }
-    #sub {
-        display: none;
     }
     pre {
         background-color: #ffffff;

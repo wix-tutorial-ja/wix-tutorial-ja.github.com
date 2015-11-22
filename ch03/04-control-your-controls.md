@@ -5,7 +5,7 @@ current: ch03-04
 prev: 03-whats-not-in-the-book
 prev-title: 3. 本に書かれていないこと
 next: 05-how-to-manage
-next-title: 3. マネージする方法
+next-title: 5. マネージする方法
 origin: /user-interface/events-and-actions/control-your-controls/
 ---
 # Lesson 3 - イベントとアクション

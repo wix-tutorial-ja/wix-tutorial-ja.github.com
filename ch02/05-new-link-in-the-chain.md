@@ -4,7 +4,7 @@ title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・イン
 current: ch02-05
 prev: 04-do-you-speak-english
 prev-title: 4. アナタハ 英語ヲ 話シマスカ
-next: 05-think-localized
+next: 06-think-localized
 next-title: 4. 地域化を考える
 origin: /user-interface/new-link-in-the-chain/
 ---
