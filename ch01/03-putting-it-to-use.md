@@ -1,16 +1,16 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 3. 使ってみる
+title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 3. 使用に供する
 current: ch01-03
 prev: 02-the-files-inside
-prev-title: 2. 中に入れるファイル
+prev-title: 2. 中に入るファイル
 next: 04-useful-extras
 next-title: 4. 便利な追加機能
 origin: /getting-started/putting-it-to-use/
 ---
 # Lesson 1 始めよう
 
-## 3. 使ってみる
+## 3. 使用に供する
 
 これらの断片をすべてコピーしてまとめたら
 (または、ちょっとした力仕事を省くために、[SampleFirst のアーカイブ](https://www.firegiant.com/system/files/samples/SampleFirst.zip) をダウンロードしたら)、

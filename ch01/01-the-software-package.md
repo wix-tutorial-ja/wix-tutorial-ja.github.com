@@ -5,7 +5,7 @@ current: ch01-01
 prev: index
 prev-title: Lesson 1 - 始めよう
 next: 02-the-files-inside
-next-title: 2. 中に入れるファイル
+next-title: 2. 中に入るファイル
 origin: /getting-started/the-software-package/
 ---
 # Lesson 1 始めよう

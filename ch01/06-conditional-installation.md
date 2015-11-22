@@ -5,7 +5,7 @@ current: ch01-06
 prev: 05-where-to-install
 prev-title: 5. どこにインストールするか?
 next: 07-beyond-files
-next-title: 7. ファイル使ってみる
+next-title: 7. ファイルだけでなく
 origin: /getting-started/conditional-installation/
 ---
 # Lesson 1 始めよう

@@ -13,12 +13,12 @@ origin: none
 ## Lesson 1 - [始めよう](ch01/index.html)
 
 1. [ソフトウェア・パッケージ](ch01/01-the-software-package.html)
-2. [中に入れるファイル](ch01/02-the-files-inside.html)
-3. [使ってみる](ch01/03-putting-it-to-use.html)
+2. [中に入るファイル](ch01/02-the-files-inside.html)
+3. [使用に供する](ch01/03-putting-it-to-use.html)
 4. [便利な追加機能](ch01/04-useful-extras.html)
 5. [どこにインストールするか](ch01/05-where-to-install.html)
 6. [条件付きインストール](ch01/06-conditional-installation.html)
-7. [ファイル以外](ch01/07-beyond-files.html)
+7. [ファイルだけでなく](ch01/07-beyond-files.html)
 8. [削除時の孤児化](ch01/08-orphaned-on-removal.html)
 
 ## Lesson 2 - [ユーザー・インタフェイス](ch02/index.html)
