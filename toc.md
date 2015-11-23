@@ -58,7 +58,7 @@ origin: none
 4. [ウェブ・ディレクトリ](ch05/04-web-directory.html)
 5. [サービスの提供](ch05/05-services-rendered.html)
 
-## Lesson 6 COM、式の構文、その他いろいろ
+## Lesson 6 COM、式の構文、その他
 
 1. [違う色のコンポーネント](ch06/01-components-of-a-different-color.html)
 2. [式の構文](ch06/02-expression-syntax.html)

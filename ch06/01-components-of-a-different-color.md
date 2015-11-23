@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他いろいろ / 1. 違う色のコンポーネント
+title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 1. 違う色のコンポーネント
 current: ch06-01
 prev: /ch05/05-services-rendered
 prev-title: 5. サービスの提供
@@ -8,7 +8,7 @@ next: 02-expression-syntax
 next-title: 2. 式の構文
 origin: /com-expression-syntax-miscellanea/components-of-a-different-color/
 ---
-#  Lesson 6 COM、式の構文、その他いろいろ
+#  Lesson 6 COM、式の構文、その他
 
 ## 1. 違う色のコンポーネント
 
@@ -60,63 +60,63 @@ Heat は、コンポーネント・グループだけでなく、再帰的に訪
     <?xml version="1.0" encoding="utf-8"?>
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
       <Fragment>
-          <ComponentGroup Id="SampleGroup">
-            <Component Id="cmpA8B0842041500B0ACE61F7EFD0FBD893"
-                Directory="dir0F6F75DF46D1BACE2233EC573E6D4AA9"
-                Guid="PUT-GUID-HERE">
-              <File Id="filDDAAB2C11E1E5AE4668D99216C3B5523" KeyPath="yes"
-                  Source="SourceDir\SampleHeat\Interop.Shell32.dll" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                  Name="Class"
-                  Value="Shell32.ShellDispatchInprocClass"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                  Name="Assembly"
-                  Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                  Name="RuntimeVersion"
-                  Value="v2.0.50727"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                  Name="CodeBase"
-                  Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                  Name="Class"
-                  Value="Shell32.ShellDispatchInprocClass"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                  Name="Assembly"
-                  Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                  Name="RuntimeVersion"
-                  Value="v2.0.50727"
-                  Type="string" Action="write" />
-              <RegistryValue Root="HKCR"
-                  Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                  Name="CodeBase"
-                  Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
-                  Type="string" Action="write" />
-              ...
-            </Component>
-          </ComponentGroup>
+        <ComponentGroup Id="SampleGroup">
+          <Component Id="cmpA8B0842041500B0ACE61F7EFD0FBD893"
+              Directory="dir0F6F75DF46D1BACE2233EC573E6D4AA9"
+              Guid="PUT-GUID-HERE">
+            <File Id="filDDAAB2C11E1E5AE4668D99216C3B5523" KeyPath="yes"
+                Source="SourceDir\SampleHeat\Interop.Shell32.dll" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+                Name="Class"
+                Value="Shell32.ShellDispatchInprocClass"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+                Name="Assembly"
+                Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+                Name="RuntimeVersion"
+                Value="v2.0.50727"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+                Name="CodeBase"
+                Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+                Name="Class"
+                Value="Shell32.ShellDispatchInprocClass"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+                Name="Assembly"
+                Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+                Name="RuntimeVersion"
+                Value="v2.0.50727"
+                Type="string" Action="write" />
+            <RegistryValue Root="HKCR"
+                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+                Name="CodeBase"
+                Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
+                Type="string" Action="write" />
+            ...
+          </Component>
+        </ComponentGroup>
       </Fragment>
       <Fragment>
-          <DirectoryRef Id="TARGETDIR">
-              <Directory Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" Name="SampleHeat" />
-          </DirectoryRef>
+        <DirectoryRef Id="TARGETDIR">
+          <Directory Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" Name="SampleHeat" />
+        </DirectoryRef>
       </Fragment>
       <Fragment>
-          <DirectoryRef Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" />
+        <DirectoryRef Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" />
       </Fragment>
     </Wix>
 
