@@ -89,15 +89,11 @@ origin: none
 8. [順番外](ch08/08-out-of-order.html)
 9. [英語はわかりませんか](ch08/09-dontcha-speak-english.html)
 
-## Lesson 9 [トランスフォーム]()
+## Lesson 9 [トランスフォーム](ch09/index.html)
 
-1. [インストーラを変形する]()
+1. [インストーラを変形する](ch09/01-morphing-installers.html)
 
-## Lesson 10 [標準ライブラリ]()
+## Lesson 10 [標準ライブラリ](ch10/index.html)
 
-1. [カスタム・アクションとユーザー・インタフェイス]()
-2. [お静かに願います！]()
-
-## 付録
-
-- [索引]()
+1. [カスタム・アクションとユーザー・インタフェイス](ch10/01-custom-actions-and-user-interface.html)
+2. [お静かに願います](ch10/02-silence-please.html)
