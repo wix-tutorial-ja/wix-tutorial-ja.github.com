@@ -8,7 +8,7 @@ next: 05-is-this-progress
 next-title: 5. これが進捗ですか
 origin: /user-interface-revisited/customizations-galore/
 ---
-# Lesson 2 ユーザー・インタフェイス再び
+# Lesson 8 ユーザー・インタフェイス再び
 
 ## 4. カスタマイズがいっぱい
 

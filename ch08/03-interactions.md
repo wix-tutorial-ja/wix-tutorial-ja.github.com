@@ -5,10 +5,10 @@ current: ch08-03
 prev: 02-tuning-up
 prev-title: 2. チューニング・アップ
 next: 04-customizations-galore
-next-title: 3. 相互作用
+next-title: 4. 相互作用
 origin: /user-interface-revisited/interactions/
 ---
-# Lesson 2 ユーザー・インタフェイス再び
+# Lesson 8 ユーザー・インタフェイス再び
 
 ## 3. 相互作用
 

@@ -8,7 +8,7 @@ next: 02-tuning-up
 next-title: 2. チューニング・アップ
 origin: /user-interface-revisited/a-single-dialog/
 ---
-# Lesson 2 ユーザー・インタフェイス再び
+# Lesson 8 ユーザー・インタフェイス再び
 
 ## 1. 一つだけのダイアログ
 

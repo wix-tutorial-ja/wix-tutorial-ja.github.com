@@ -8,7 +8,7 @@ next: 03-interactions
 next-title: 3. 相互作用
 origin: /user-interface-revisited/tuning-up/
 ---
-# Lesson 2 ユーザー・インタフェイス再び
+# Lesson 8 ユーザー・インタフェイス再び
 
 ## 2. チューニング・アップ
 
