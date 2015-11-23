@@ -12,26 +12,45 @@ origin: /net-and-net/bootstrapping/
 
 ## 2. ブートストラップ
 
-(未翻訳)
+(翻訳中)
 
-We've already seen how to detect external packages like the .NET Framework but users expect more than a mere warning when prerequisites and dependencies are not yet present on their machine. Creating complex installers that not only warn about these situations but install the required dependent packages themselves were not at all easy to author. But now, thanks to Burn built into WiX, it's a breeze.
+.NET フレームワークのような外部パッケージを検出する方法は既に見たとおりですが、
+ユーザーは、彼らのマシンに前提条件や依存するパッケージがまだ存在していない場合に、
+単に警告を受けるだけでは満足しません。
+ユーザーのマシンの状況について警告するだけでなく、
+必要とされる依存パッケージを自分自身でインストールするようなインストーラを作成することは、
+少しも簡単なことではありませんでした。
+しかし、今では、WiX に内蔵されている Burn のおかげて、それがとても楽な仕事になりました。
 
-A Burn project, called a bundle, is just as easy to author. Note that this is a separate WiX project: you author your own MSIs exactly as before. The bundle will assemble the already finished MSIs and other packages we want to install together, and will create a separate bootstrapper installer that consists of an executable the user can start, plus all the separate MSIs and EXEs needed for the various packages (either external or bundled inside the main executable).
+バンドルと呼ばれる Burn のプロジェクトを作成することはとても簡単です。
+バンドルは独立した WiX プロジェクトであることに注意してください。
+MSI は以前と全く同じようにして作成します。
+バンドルは、既に完成している MSI をその他の同時にインストールしたいパッケージと組み合わせて、
+独立したブートストラッパ・インストーラを作成します。
+このブートストラッパ・インストーラには、ユーザーが開始できる実行ファイルが含まれますが、
+それに加えて、さまざまなパッケージに必要とされる独立した MSI や EXE が (外部参照として、または、
+メインの実行ファイルにバンドルされて) 含まれます。
 
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..." Copyright="..." IconSourceFile="..." AboutUrl="...">
-        <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..." 
+          Copyright="..." IconSourceFile="..." AboutUrl="...">
+        <BootstrapperApplicationRef
+            Id="WixStandardBootstrapperApplication.RtfLicense" />
         
         <Chain>
-          <ExePackage Id="Dependency1" SourceFile="Dependency_package_1.exe" />
-          <ExePackage Id="Dependency2" SourceFile="Dependency_package_2.exe" />
+          <ExePackage Id="Dependency1"
+              SourceFile="Dependency_package_1.exe" />
+          <ExePackage Id="Dependency2"
+              SourceFile="Dependency_package_2.exe" />
         
           <RollbackBoundary />
         
-          <MsiPackage Id="MainPackage" SourceFile="Main_package.msi" Vital="yes" />
+          <MsiPackage Id="MainPackage"
+              SourceFile="Main_package.msi" Vital="yes" />
         </Chain>
       </Bundle>
     </Wix>
+
 Building this project is just as easy as any other project we've seen so far, only that it creates an .exe, not an .msi (SampleBurn.exe, to be exact):
 
 candle.exe SampleBurn.wxs
