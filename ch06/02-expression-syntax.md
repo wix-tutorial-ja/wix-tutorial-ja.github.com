@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 1. 式の構文
+title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 2. 式の構文
 current: ch06-02
 prev: 01-components-of-a-different-color
 prev-title: 1. 違う色のコンポーネント
