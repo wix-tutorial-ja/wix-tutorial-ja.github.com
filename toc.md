@@ -13,7 +13,7 @@ origin: none
 - [WiX チュートリアル 日本語訳](index.html)
 - [前書き](preface.html)
 
-## Lesson 1 - [始めよう](ch01/index.html)
+## Lesson 1 [始めよう](ch01/index.html)
 
 1. [ソフトウェア・パッケージ](ch01/01-the-software-package.html)
 2. [中に入るファイル](ch01/02-the-files-inside.html)
@@ -24,7 +24,7 @@ origin: none
 7. [ファイルだけでなく](ch01/07-beyond-files.html)
 8. [削除時の孤児化](ch01/08-orphaned-on-removal.html)
 
-## Lesson 2 - [ユーザー・インタフェイス](ch02/index.html)
+## Lesson 2 [ユーザー・インタフェイス](ch02/index.html)
 
 1. [最初のステップ](ch02/01-first-steps.html)
 2. [カスタムの設定](ch02/02-custom-settings.html)
@@ -33,7 +33,7 @@ origin: none
 5. [チェーンの新しい環](ch02/05-new-link-in-the-chain)
 6. [地域化を考える](ch02/06-think-localized)
 
-## Lesson 3 - [イベントとアクション](ch03/index.html)
+## Lesson 3 [イベントとアクション](ch03/index.html)
 
 1. [列に並んで](ch03/01-queueing-up.html)
 2. [追加のアクション](ch03/02-extra-actions.html)
@@ -42,7 +42,7 @@ origin: none
 5. [マネージする方法](ch03/05-how-to-manage.html)
 6. [後の段階で](ch03/06-at-a-later-stage.html)
 
-## Lesson 4 - [アップグレードとモジュラー化](ch04/index.html)
+## Lesson 4 [アップグレードとモジュラー化](ch04/index.html)
 
 1. [古いのを探す](ch04/01-checking-for-oldies)
 2. [自分自身を置き換える](ch04/02-replacing-ourselves)
@@ -50,14 +50,15 @@ origin: none
 4. [断片](ch04/04-fragments)
 5. [融合するもの](ch04/05-mergers)
 
-## Lesson 5 - [Net と .NET]()
+## Lesson 5 [Net と .NET](ch05/index.html)
 
-1. [.NET の枠組み]()
-2. [インターネットを起動する]()
-3. [ウェブ・ディレクトリ]()
-4. [サービスの提供]()
+1. [.NET の枠組み](ch05/01-framed-by-net.html)
+2. [ブートストラップ](ch05/02-bootstrapping.html)
+3. [インターネットを起動する](ch05/03-launch-the-internet.html)
+4. [ウェブ・ディレクトリ](ch05/04-web-directory.html)
+5. [サービスの提供](ch05/05-services-rendered.html)
 
-## Lesson 6 - [COM、式の構文、その他いろいろ]()
+## Lesson 6 [COM、式の構文、その他いろいろ]()
 
 1. [違う色のコンポーネント]()
 2. [式の構文]()
@@ -72,11 +73,11 @@ origin: none
 11. [COM. アプリケーション]()
 12. [バージョンごとに]()
 
-## Lesson 7 - [SQL]()
+## Lesson 7 [SQL]()
 
 1. [データベースを作成する]()
 
-## Lesson 8 - [ユーザー・インタフェイス再び]()
+## Lesson 8 [ユーザー・インタフェイス再び]()
 
 1. [一つだけのダイアログ]()
 2. [チューニング・アップ]()
@@ -88,11 +89,11 @@ origin: none
 8. [順番外]()
 9. [アナタハ 英語ヲ 話シマスカ？]()
 
-## Lesson 9 - [トランスフォーム]()
+## Lesson 9 [トランスフォーム]()
 
 1. [インストーラを変形する]()
 
-## Lesson 10 - [標準ライブラリ]()
+## Lesson 10 [標準ライブラリ]()
 
 1. [カスタム・アクションとユーザー・インタフェイス]()
 2. [お静かに願います！]()
