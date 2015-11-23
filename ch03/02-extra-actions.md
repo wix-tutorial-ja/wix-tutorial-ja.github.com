@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 3 - イベントとアクション / 2. 追加のアクション
+title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 2. 追加のアクション
 current: ch03-02
 prev: 01-queueing-up
 prev-title: 1. 列に並んで
@@ -8,7 +8,7 @@ next: 03-whats-not-in-the-book
 next-title: 3. 本に書かれていないこと
 origin: /events-and-actions/extra-actions/
 ---
-# Lesson 3 - イベントとアクション
+# Lesson 3 イベントとアクション
 
 ## 2. 追加のアクション
 

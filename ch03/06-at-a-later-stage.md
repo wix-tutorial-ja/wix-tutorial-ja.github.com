@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 3 - イベントとアクション / 6. 後の段階で
+title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 6. 後の段階で
 current: ch03-06
 prev: 05-how-to-manage
 prev-title: 5. マネージする方法
@@ -8,7 +8,7 @@ next: /ch04/index
 next-title: Lesson 4 アップグレードとモジュラー化
 origin: /events-and-actions/at-a-later-stage/
 ---
-# Lesson 3 - イベントとアクション
+# Lesson 3 イベントとアクション
 
 ## 6. 後の段階で
 

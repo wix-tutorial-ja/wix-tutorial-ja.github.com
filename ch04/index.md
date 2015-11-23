@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 4 - アップグレードとモジュラー化
+title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化
 current: ch04
 prev: /ch03/06-at-a-later-stage
 prev-title: 6. 後の段階で
@@ -8,7 +8,7 @@ next: 01-checking-for-oldies
 next-title: 1. 古いのを探す
 origin: /upgrades-and-modularization/
 ---
-#  Lesson 4 - アップグレードとモジュラー化
+#  Lesson 4 アップグレードとモジュラー化
 
 前回のレッスンを終って、インストーラ・パッケージに関する限りでは、考えられる全てのことについて、やり方を学びました。
 そうですよね？ 結局の所、Windows Installer が直接的な解決を提供してくれない場合でも、

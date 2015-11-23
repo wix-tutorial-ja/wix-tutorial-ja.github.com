@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - 前書き
+title: WiX チュートリアル 日本語訳 前書き
 current: preface
 prev: index
 prev-title: HOME

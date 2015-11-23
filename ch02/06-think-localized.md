@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・インタフェイス / 6. 地域化を考える
+title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 6. 地域化を考える
 current: ch02-06
 prev: 05-new-link-in-the-chain
 prev-title: 5. チェーンの新しい環

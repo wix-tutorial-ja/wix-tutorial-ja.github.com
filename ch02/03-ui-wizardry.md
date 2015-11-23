@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・インタフェイス / 3. UI の魔法
+title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 3. UI の魔法
 current: ch02-03
 prev: 02-custom-settings
 prev-title: 2. カスタムの設定

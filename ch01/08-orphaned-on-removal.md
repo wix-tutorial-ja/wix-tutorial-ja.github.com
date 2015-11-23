@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 8. 削除時の孤児化
+title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 8. 削除時の孤児化
 current: ch01-08
 prev: 07-beyond-files
 prev-title: 7. ファイルだけでなく

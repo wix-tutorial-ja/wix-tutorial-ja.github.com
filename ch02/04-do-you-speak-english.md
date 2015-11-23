@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 2 - ユーザー・インタフェイス / 4. アナタハ 英語ヲ 話シマスカ
+title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 4. アナタハ 英語ヲ 話シマスカ
 current: ch02-04
 prev: 03-ui-wizardry
 prev-title: 3. UI の魔法

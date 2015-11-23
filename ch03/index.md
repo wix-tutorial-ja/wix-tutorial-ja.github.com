@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 3 - イベントとアクション
+title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション
 current: ch03
 prev: /ch02/06-think-localized
 prev-title: 6. 地域化を考える
@@ -8,7 +8,7 @@ next: 01-queueing-up
 next-title: 1. 列に並んで
 origin: /events-and-actions/
 ---
-#  Lesson 3 - イベントとアクション
+#  Lesson 3 イベントとアクション
 
 前のレッスンで、私たちは、完全にカスタマイズ可能な本格的インストーラ・パッケージの作成方法を学びました。
 既にそこには、よくある見た目と使い勝手、ビットマップ、アイコン、使用許諾契約など、

@@ -1,14 +1,14 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 3 - イベントとアクション / 1. 列に並んで
+title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 1. 列に並んで
 current: ch03-01
 prev: index
-prev-title: Lesson 3 - イベントとアクション
+prev-title: Lesson 3 イベントとアクション
 next: 02-extra-actions
 next-title: 2. 追加のアクション
 origin: /events-and-actions/queueing-up/
 ---
-# Lesson 3 - イベントとアクション
+# Lesson 3 イベントとアクション
 
 ## 1. 列に並んで
 

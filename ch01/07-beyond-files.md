@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 7. ファイルだけでなく
+title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 7. ファイルだけでなく
 current: ch01-07
 prev: 06-conditional-installation
 prev-title: 条件付きインストール

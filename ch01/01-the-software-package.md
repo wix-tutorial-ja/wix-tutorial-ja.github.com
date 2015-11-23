@@ -1,9 +1,9 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 - Lesson 1 - 始めよう / 1. ソフトウェア・パッケージ
+title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 1. ソフトウェア・パッケージ
 current: ch01-01
 prev: index
-prev-title: Lesson 1 - 始めよう
+prev-title: Lesson 1 始めよう
 next: 02-the-files-inside
 next-title: 2. 中に入るファイル
 origin: /getting-started/the-software-package/
