@@ -58,20 +58,20 @@ origin: none
 4. [ウェブ・ディレクトリ](ch05/04-web-directory.html)
 5. [サービスの提供](ch05/05-services-rendered.html)
 
-## Lesson 6 [COM、式の構文、その他いろいろ]()
+## Lesson 6 COM、式の構文、その他いろいろ
 
-1. [違う色のコンポーネント]()
-2. [式の構文]()
-3. [書式指定文字列]()
-4. [DDE 接続]()
-5. [ディレクトリの作成]()
-6. [複数メディアのインストーラ]()
-7. [プログラムの追加と削除の項目]()
-8. [新顔のユーザー]()
-9. [環境に優しく]()
-10. [XML]()
-11. [COM. アプリケーション]()
-12. [バージョンごとに]()
+1. [違う色のコンポーネント](ch06/01-components-of-a-different-color.html)
+2. [式の構文](ch06/02-expression-syntax.html)
+3. [書式指定文字列](ch06/03-formatted-strings.html)
+4. [DDE 接続](ch06/04-dde-connections.html)
+5. [ディレクトリの作成](ch06/05-creating-directories.html)
+6. [複数メディアのインストーラ](ch06/06-multi-media-installations.html)
+7. [プログラムの追加と削除の項目](ch06/07-add-or-remove-programs-entries.html)
+8. [新顔のユーザー](ch06/08-new-user-on-the-block.html)
+9. [環境に優しく](ch06/09-environmentally-friendly.html)
+10. [XML](ch06/10-xml.html)
+11. [COM+ アプリケーション](ch06/11-complus-applications.html)
+12. [バージョンごとに](ch06/12-version-by-version.html)
 
 ## Lesson 7 [SQL]()
 
