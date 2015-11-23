@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 4. アナタハ 英語ヲ 話シマスカ
+title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 4. 英語はわかりますか
 current: ch02-04
 prev: 03-ui-wizardry
 prev-title: 3. UI の魔法
@@ -10,7 +10,7 @@ origin: /user-interface/do-you-speak-english/
 ---
 # Lesson 2 ユーザー・インタフェイス
 
-## 4. アナタハ 英語ヲ 話シマスカ
+## 4. 英語はわかりますか
 
 現在、下記のカルチャ (言語と国) が WiX によってサポートされています。
 

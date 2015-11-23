@@ -29,7 +29,7 @@ origin: none
 1. [最初のステップ](ch02/01-first-steps.html)
 2. [カスタムの設定](ch02/02-custom-settings.html)
 3. [UI の魔法](ch02/03-ui-wizardry)
-4. [アナタハ 英語ヲ 話シマスカ](ch02/04-do-you-speak-english)
+4. [英語はわかりますか](ch02/04-do-you-speak-english)
 5. [チェーンの新しい環](ch02/05-new-link-in-the-chain)
 6. [地域化を考える](ch02/06-think-localized)
 
@@ -73,21 +73,21 @@ origin: none
 11. [COM+ アプリケーション](ch06/11-complus-applications.html)
 12. [バージョンごとに](ch06/12-version-by-version.html)
 
-## Lesson 7 [SQL]()
+## Lesson 7 SQL
 
-1. [データベースを作成する]()
+1. [データベースを作成する](ch07/01-creating-a-database.html)
 
-## Lesson 8 [ユーザー・インタフェイス再び]()
+## Lesson 8 [ユーザー・インタフェイス再び](ch08/index.html)
 
-1. [一つだけのダイアログ]()
-2. [チューニング・アップ]()
-3. [相互作用]()
-4. [カスタマイズがいっぱい]()
-5. [これが進捗ですか？]()
-6. [よく出来ました]()
-7. [法律用語]()
-8. [順番外]()
-9. [アナタハ 英語ヲ 話シマスカ]()
+1. [一つだけのダイアログ](ch08/01-a-single-dialog.html)
+2. [チューニング・アップ](ch08/02-tuning-up.html)
+3. [相互作用](ch08/03-interactions.html)
+4. [カスタマイズがいっぱい](ch08/04-customizations-galore.html)
+5. [これが進捗ですか](ch08/05-is-this-progress.html)
+6. [よく出来ました](ch08/06-well-done.html)
+7. [法律用語](ch08/07-legalese.html)
+8. [順番外](ch08/08-out-of-order.html)
+9. [英語はわかりませんか](ch08/09-dontcha-speak-english.html)
 
 ## Lesson 9 [トランスフォーム]()
 

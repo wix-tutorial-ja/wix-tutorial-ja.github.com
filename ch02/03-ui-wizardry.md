@@ -5,7 +5,7 @@ current: ch02-03
 prev: 02-custom-settings
 prev-title: 2. カスタムの設定
 next: 04-do-you-speak-english
-next-title: 4. アナタハ 英語ヲ 話シマスカ
+next-title: 4. 英語はわかりますか
 origin: /user-interface/ui-wizardry/
 ---
 # Lesson 2 ユーザー・インタフェイス
