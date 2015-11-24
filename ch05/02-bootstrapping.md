@@ -12,8 +12,6 @@ origin: /net-and-net/bootstrapping/
 
 ## 2. ブートストラップ
 
-(翻訳中)
-
 .NET フレームワークのような外部パッケージを検出する方法は既に見たとおりですが、
 ユーザーは、彼らのマシンに前提条件や依存するパッケージがまだ存在していない場合に、
 単に警告を受けるだけでは満足しません。
@@ -52,7 +50,7 @@ MSI は以前と全く同じようにして作成します。
     </Wix>
 
 このプロジェクトをビルドすることは、今までに見てきた他のプロジェクトのすべてと同じように、とても簡単です。
-違いと言えば、`.msi` ではなく、`.exe` (正確に言えば `SampleBur.exe`) を作成することだけです。
+違いと言えば、`.msi` ではなく `.exe` (正確に言えば `SampleBurn.exe`) を作成することだけです。
 
     candle.exe SampleBurn.wxs
     light.exe -ext WixBalExtension SampleBurn.wixobj
@@ -149,7 +147,7 @@ Bundle は、主たる部分として、インストールされるべき全て�
       </Bundle>
     </Wix>
 
-これは既に単なる例以上のものです。これは .NET フレームワークを知っているインストーラの実物のコピーです。
+これは既に単なる例以上のものです。これは .NET フレームワークの扱い方を知っているインストーラの実物のコピーです。
 これをコンパイルする時も、いくつかの拡張ライブラリを参照する必要があります。
 
     candle.exe -ext WixNetFxExtension -ext WixBalExtension 
@@ -164,17 +162,13 @@ Bundle は、主たる部分として、インストールされるべき全て�
 **ExePackage** は、ともに、提供されているインストーラを使ってフレームワークをインストールすべき場合を決定するための条件を持っています。
 最初のものは、Vista 以降のシステムに対して、まだインストールされていなければ、4.5.1 をインストールします。
 第二のものは、XP のシステムに対して、まだインストールされていなければ、4.0 をインストールします。
-そして、最後に、
-We have two RegistrySearch items from the utility extension to help us determine the current version of the Framework installed.
-Both ExePackage items have conditions that determine when to install the Framework with the provided installer.
-The first installs 4.5.1 on Vista and later systems if not yet present.
-The second installs 4.0 on XP systems if not yet present. 
-Finally, the chain setup installs our own .msi, also specifying that it should run with its original full UI. 
-If we don't specify this, our package will be already installed in silent mode.
+そして、最後に、Chain は私たち自身の `.msi` をインストールします。
+ここでは、同時に、私たちの `.msi` が、オリジナルの完全 UI で走るべきことをも指定しています。
+このように指定しない場合は、私たちのパッケージはサイレント・モードでインストールされることになります。
 
-The two .exe installers and our .msi will all be bundled into the single resulting SampleBurn.exe executable.
+二つの `.exe` インストーラと私たちの `.msi` の全てが、結果として作成される単一の SampleBurn.exe 実行ファイルにまとめられることになります。
 
-セットアップ・プログラムの外観は、次のようにしてカスタマイズすることが出来ます。
+なお、セットアップ・プログラムの外観は、次のようにしてカスタマイズすることが出来ます。
 
     <BootstrapperApplicationRef
         Id="WixStandardBootstrapperApplication.RtfLicense">

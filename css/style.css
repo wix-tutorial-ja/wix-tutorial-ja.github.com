@@ -18,11 +18,10 @@ nav {
     color: #777777;
 }
 .header-left {
-    width: 33%;
+    display: none;
 }
 .header-right {
-    width: 67%;
-    text-align: right;
+    width: 100%;
 }
 
 article {
@@ -164,7 +163,13 @@ img {
     height: auto;
 }
 
-.small {display: inline}
+img.icon {
+    max-width: 100%;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.large {display: none}
 .medium {display: none}
 
 @media only screen and (min-width: 34em) {
@@ -173,8 +178,16 @@ img {
     }
     h1 {font-size: 2.0em;}
     h2 {font-size: 1.4em;}
-    .medium {display: inline}
+    .header-left {
+        display: block;
+        width: 35%;
+    }
+    .header-right {
+        width: 65%;
+        text-align: right;
+    }
     .small {display: none}
+    .medium {display: inline}
 }
 
 @media only screen and (min-width: 54em) {
@@ -229,6 +242,9 @@ img {
     h1 {font-size: 2.2em;}
     h2 {font-size: 1.5em;}
     h3, h4 {font-size: 1.1em;}
+
+    .large {display: inline}
+    .medium {display: none}
 }
 
 @media only screen and (min-width: 76em) {
