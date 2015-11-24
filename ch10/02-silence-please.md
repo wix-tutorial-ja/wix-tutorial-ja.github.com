@@ -4,8 +4,8 @@ title: WiX チュートリアル 日本語訳 Lesson 10 標準ライブラリ / 
 current: ch10-02
 prev: 01-custom-actions-and-user-interface
 prev-title: 1. カスタム・アクションとユーザー・インタフェイス
-next: none
-next-title:
+next: /download
+next-title: ダウンロード
 origin: /standard-libraries/silence-please/
 ---
 # Lesson 10 標準ライブラリ
