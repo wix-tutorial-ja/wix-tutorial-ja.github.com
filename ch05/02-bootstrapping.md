@@ -51,56 +51,133 @@ MSI は以前と全く同じようにして作成します。
       </Bundle>
     </Wix>
 
-Building this project is just as easy as any other project we've seen so far, only that it creates an .exe, not an .msi (SampleBurn.exe, to be exact):
+このプロジェクトをビルドすることは、今までに見てきた他のプロジェクトのすべてと同じように、とても簡単です。
+違いと言えば、`.msi` ではなく、`.exe` (正確に言えば `SampleBur.exe`) を作成することだけです。
 
-candle.exe SampleBurn.wxs
-light.exe -ext WixBalExtension SampleBurn.wixobj
-Unlike a regular project, this has a Bundle at its root, not a Product. This Bundle uses most of the same attributes to describe its name, version, copyright and usual UI details. For the main part, it has a Chain child that lists all the packages that have to be installed, in sequence. A RollbackBoundary tag can be used to mark what should be rolled back and what not if the user decides to roll back our installation.
+    candle.exe SampleBurn.wxs
+    light.exe -ext WixBalExtension SampleBurn.wixobj
 
-Chain typically has two kinds of children: ExePackage and MsiPackage elements. Both can have either SourceFile or DownloadUrl attributes. In the first case, the setup package itself will be bundled and distributed directly with out installer (although, of course, any installer provided can be a web installer, a small executable that downloads the bulk of the material to be deployed from the Net). In the second case, the installer will be fetched from the URL supplied and then executed.
+通常のプロジェクトとは違って、このプロジェクトはルートに **Product** ではなく **Bundle** を持ちます。
+この **Bundle** が、名前、バージョン、著作権、その他よくある UI の詳細を記述するのに、ほとんど同じような属性を使用します。
+Bundle は、主たる部分として、インストールされるべき全てのパッケージを順を追ってリストする **Chain** という子を持ちます。
+**RollbackBoundary** タグを使って、ユーザーがインストールをロールバックすると決めたときに、
+何をロールバックし、何をロールバックすべきでないかを示す境界線を引くことが出来ます。
 
-In the simple example above, both dependency packages are installed unconditionally. In real life scenarios, we usually have to check first whether we already have those packaged installed and skip their installation if they can be found on the target machine. To do so, we use conditions we are already familar with:
+**Chanin** は、通常、二種類の子を持ちます。すなわち、**ExePackage** と **MsiPackage** の要素です。
+これらは、ともに、**SourceFile** か **DownloadUrl** か、どちらかの属性を持つことが出来ます。
+第一の場合は、セットアップ・パッケージそのものが私たちのインストーラと一緒にバンドルされて、直接に配布されることになります
+(とは言っても、もちろん、提供されるインストーラをウェブ・インストーラ、すなわち、
+配備すべき大量の素材をインターネットからダウンロードする小さな実行ファイルとすることは、いつでも可能です)。
+第二の場合は、指定された URL からインストーラが取得され、そして、実行されます。
+
+上記の単純な例では、依存パッケージは両方とも無条件にインストールされます。
+現実のシナリオにおいては、通常は、最初にこれらのパッケージが既にインストールされているかどうかをチェックして、
+ターゲットマシンにそれが見つかった場合はインストールをスキップしなければなりません。
+そのためには、既におなじみになっている条件を使用します。
 
     <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
          xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
          xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..." Copyright="..." IconSourceFile="..." AboutUrl="...">
-        <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..."
+          Copyright="..." IconSourceFile="..." AboutUrl="...">
+        <BootstrapperApplicationRef
+            Id="WixStandardBootstrapperApplication.RtfLicense" />
         
-        <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Net4FullVersion" />
-        <util:RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" Value="Version" Variable="Net4x64FullVersion" Win64="yes" />
+        <util:RegistrySearch Root="HKLM"
+            Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+            Value="Version" Variable="Net4FullVersion" />
+        <util:RegistrySearch Root="HKLM"
+            Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+            Value="Version" Variable="Net4x64FullVersion" Win64="yes" />
         
         <Chain>
-          <ExePackage Id="Net45" Name="Microsoft .NET Framework 4.5.1 Setup" Cache="no" Compressed="yes" PerMachine="yes" Permanent="yes" Vital="yes" InstallCommand="/q"
-            SourceFile="NDP451-KB2859818-Web.exe"
-            DetectCondition="(Net4FullVersion = &quot;4.5.50938&quot;) AND (NOT VersionNT64 OR (Net4x64FullVersion = &quot;4.5.50938&quot;))"
-            InstallCondition="(VersionNT >= v6.0 OR VersionNT64 >= v6.0) AND (NOT (Net4FullVersion = &quot;4.5.50938&quot; OR Net4x64FullVersion = &quot;4.5.50938&quot;))"/>
+          <ExePackage Id="Net45"
+              Name="Microsoft .NET Framework 4.5.1 Setup"
+              Cache="no" Compressed="yes" PerMachine="yes"
+              Permanent="yes" Vital="yes" InstallCommand="/q"
+              SourceFile="NDP451-KB2859818-Web.exe"
+              DetectCondition="
+                  (Net4FullVersion = &quot;4.5.50938&quot;)
+                  AND 
+                  (
+                      NOT VersionNT64
+                      OR
+                      (Net4x64FullVersion = &quot;4.5.50938&quot;)
+                  )"
+              InstallCondition="
+                  (VersionNT >= v6.0 OR VersionNT64 >= v6.0)
+                  AND
+                  (
+                      NOT (
+                          Net4FullVersion = &quot;4.5.50938&quot; 
+                          OR
+                          Net4x64FullVersion = &quot;4.5.50938&quot;
+                      )
+                  )"
+          />
         
-          <ExePackage Id="Net4Full" Name="Microsoft .NET Framework 4.0 Setup" Cache="no" Compressed="yes" PerMachine="yes" Permanent="yes" Vital="yes" InstallCommand="/q"
-            SourceFile="dotNetFx40_Full_setup.exe"
-            DetectCondition="Net4FullVersion AND (NOT VersionNT64 OR Net4x64FullVersion)"
-            InstallCondition="(VersionNT &lt; v6.0 OR VersionNT64 &lt; v6.0) AND (NOT (Net4FullVersion OR Net4x64FullVersion))"/> />
+          <ExePackage Id="Net4Full"
+              Name="Microsoft .NET Framework 4.0 Setup"
+              Cache="no" Compressed="yes" PerMachine="yes"
+              Permanent="yes" Vital="yes" InstallCommand="/q"
+              SourceFile="dotNetFx40_Full_setup.exe"
+              DetectCondition="
+                  Net4FullVersion
+                  AND
+                  (
+                      NOT VersionNT64
+                      OR
+                      Net4x64FullVersion
+                  )"
+              InstallCondition="
+                  (VersionNT &lt; v6.0 OR VersionNT64 &lt; v6.0)
+                  AND
+                  (
+                      NOT (
+                          Net4FullVersion 
+                          OR 
+                          Net4x64FullVersion
+                      )
+                  )"
+          />
         
           <RollbackBoundary />
         
-          <MsiPackage Id="MainPackage" SourceFile="Main_package.msi" DisplayInternalUI="yes" Compressed="yes" Vital="yes" />
+          <MsiPackage Id="MainPackage" SourceFile="Main_package.msi"
+              DisplayInternalUI="yes" Compressed="yes" Vital="yes" />
         </Chain>
       </Bundle>
     </Wix>
 
-And this is already more than an example; this is a fully working copy of a .NET Framework-aware installer. When compiling it, we will also need to reference some extensions:
+これは既に単なる例以上のものです。これは .NET フレームワークを知っているインストーラの実物のコピーです。
+これをコンパイルする時も、いくつかの拡張ライブラリを参照する必要があります。
 
-    candle.exe -ext WixNetFxExtension -ext WixBalExtension -ext WixUtilExtension SampleBurn.wxs
-    light.exe -ext WixNetFxExtension -ext WixBalExtension -ext WixUtilExtension SampleBurn.wixobj
+    candle.exe -ext WixNetFxExtension -ext WixBalExtension 
+        -ext WixUtilExtension SampleBurn.wxs
+    light.exe -ext WixNetFxExtension -ext WixBalExtension
+        -ext WixUtilExtension SampleBurn.wixobj
 
-Let's see how it works and what it does.
+これがどのように動くか、そして、何をするかを見てみましょう。
 
-We have two RegistrySearch items from the utility extension to help us determine the current version of the Framework installed. Both ExePackage items have conditions that determine when to install the Framework with the provided installer. The first installs 4.5.1 on Vista and later systems if not yet present. The second installs 4.0 on XP systems if not yet present. Finally, the chain setup installs our own .msi, also specifying that it should run with its original full UI. If we don't specify this, our package will be already installed in silent mode.
+二つの **RegistrySearch** アイテムは、ユーティリティ拡張ライブラリによるもので、
+インストールされているフレームワークの現在のバージョンを決定することを助けてくれます。
+**ExePackage** は、ともに、提供されているインストーラを使ってフレームワークをインストールすべき場合を決定するための条件を持っています。
+最初のものは、Vista 以降のシステムに対して、まだインストールされていなければ、4.5.1 をインストールします。
+第二のものは、XP のシステムに対して、まだインストールされていなければ、4.0 をインストールします。
+そして、最後に、
+We have two RegistrySearch items from the utility extension to help us determine the current version of the Framework installed.
+Both ExePackage items have conditions that determine when to install the Framework with the provided installer.
+The first installs 4.5.1 on Vista and later systems if not yet present.
+The second installs 4.0 on XP systems if not yet present. 
+Finally, the chain setup installs our own .msi, also specifying that it should run with its original full UI. 
+If we don't specify this, our package will be already installed in silent mode.
 
 The two .exe installers and our .msi will all be bundled into the single resulting SampleBurn.exe executable.
 
-We can customize the appearance of the setup:
+セットアップ・プログラムの外観は、次のようにしてカスタマイズすることが出来ます。
 
-    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
-      <bal:WixStandardBootstrapperApplication LicenseFile="License.rtf" LogoFile="Logo.png" />
+    <BootstrapperApplicationRef
+        Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile="License.rtf"
+          LogoFile="Logo.png" />
     </BootstrapperApplicationRef>
