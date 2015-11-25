@@ -167,6 +167,11 @@ img.icon {
     max-width: 100%;
     margin: 0;
     vertical-align: middle;
+    border: 1px solid #666666;
+}
+
+a:hover img.icon.small {
+    border: 1px solid #44aaff;
 }
 
 .large {display: none}
