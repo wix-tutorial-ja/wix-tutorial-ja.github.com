@@ -9,7 +9,7 @@ origin: /
 ---
 # WiX チュートリアル 日本語訳
 
-![WiX 3](images/wix3.gif)
+![WiX 3](images/wix3.png)
 
 [Windows Installer XML (WiX)](http://wixtoolset.org/) は、XML ソース・コードから Windows のインストーラ・パッケージをビルドするツールセットです。
 このツールセットはコマンド・ライン・ツールを提供しており、古いスタイルの Makefile によるビルド・プロセスに組み込んで使用することが出来るだけでなく、

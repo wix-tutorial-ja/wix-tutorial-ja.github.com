@@ -12,7 +12,7 @@ origin: /user-interface-revisited/dontcha-speak-english/
 
 ## 9. 英語はわかりませんか
 
-![Localized](/images/localized.gif)
+![Localized](/images/localized.png)
 
 インストーラ・パッケージは、ダイアログのテキストや、情報メッセージ、エラー・メッセージなど、
 ユーザーに対して表示する大量のテキストを持っています。
