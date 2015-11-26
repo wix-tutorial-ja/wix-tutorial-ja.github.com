@@ -20,10 +20,12 @@ CD と DVD の時代においては、インストール・ファイルを複数
 インストール・メディアのユニットを示すためのいろんなテキスト記述を含むことが出来ます。
 Windows Installer はこの記述をディスクのプロンプトとして使用します)。
 
-        <Media Id='1' Cabinet='Sample.cab'
-            EmbedCab='yes' DiskPrompt='CD-ROM 1枚目' />
-        <Property Id='DiskPrompt'
-            Value="ぴよソフト's ほげ 1.0 インストーラ [1]" />
+{% highlight xml %}
+    <Media Id='1' Cabinet='Sample.cab'
+        EmbedCab='yes' DiskPrompt='CD-ROM 1枚目' />
+    <Property Id='DiskPrompt'
+        Value="ぴよソフト's ほげ 1.0 インストーラ [1]" />
+{% endhighlight %} 
 
 *EmbedCab* 属性を使って、インストール・ファイルのキャビネット(アーカイブ)を `.msi` パッケージ・ファイル自体の一部として埋め込むか、
 それとも独立したファイルにするかを決定することが出来ます。
@@ -41,7 +43,9 @@ Windows Installer は、一番外側のフォルダ、すなわちインスト�
 ソースのルート・ディレクトリも、**SourceDir** という定義済みの名前を持っています。
 この関係が、**どこから**インストールするか、と、**どこへ**インストールするか、の基本的なリンクを提供します。
 
-        <Directory Id='TARGETDIR' Name='SourceDir'>
+{% highlight xml %}
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+{% endhighlight %} 
 
 このルート・フォルダの内側で、実際の構造について記述を進めます。
 インストールされるファイルは、制定されたガイドラインに従って、あらかじめ定められた場所に入っていきます。
@@ -59,9 +63,11 @@ Windows Installer は、一番外側のフォルダ、すなわちインスト�
 単一の *Directory* タグだけでそれを参照するのに十分なのです。
 しかし、私たち自身の入れ子になったフォルダについては、それぞれのレベルを個別に定義しなければなりません。
 
-          <Directory Id='ProgramFilesFolder' Name='PFiles'>
-            <Directory Id='Piyo' Name='Piyo'>
-              <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
+{% highlight xml %}
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='Piyo' Name='Piyo'>
+          <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
+{% endhighlight %} 
 
 全ての要素に対して *Id* 識別子を提供しなければならないことに注意して下さい
 (この事は WiX を使用するについて全体にわたって当てはまることです)。
@@ -107,8 +113,10 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 既存の製品を再インストールするときに機能の回復に失敗したり、
 新しいバージョンのアプリケーションをインストールすると以前のバージョンが破壊されたり、という障害が生じることになります。
 
-                <Component Id='MainExecutable'
-                    Guid='YOURGUID-83F1-4F22-985B-FDB3C8ABD471'>
+{% highlight xml %}
+            <Component Id='MainExecutable'
+                Guid='YOURGUID-83F1-4F22-985B-FDB3C8ABD471'>
+{% endhighlight %} 
 
 ファイルはその名前で特定されます。
 実際のファイル名以外に、いくつか別の属性を使って、ファイルの特性を記述することが出来ます。
@@ -125,9 +133,11 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 使用する全てのコンポーネントにキー・パスを指定することが重要なことになります。
 それに、キー・パスを指定しないとコンパイラが文句を言います ...
 
-                  <File Id='HogeEXE'
-                      Name='HogeAppl10.exe' DiskId='1'
-                      Source='HogeAppl10.exe' KeyPath='yes'>
+{% highlight xml %}
+              <File Id='HogeEXE'
+                  Name='HogeAppl10.exe' DiskId='1'
+                  Source='HogeAppl10.exe' KeyPath='yes'>
+{% endhighlight %} 
 
 ショートカットも名前を持っていますが、その他に、作業フォルダやアイコン指定のような他の重要な項目も持っています。
 **Directory** (スタート・メニューやデスクトップのように、ショートカットが配置される場所)と
@@ -145,39 +155,43 @@ Id として、たとえば **ProgramFilesFolder** のような、定義済み�
 第二の形式の場合は、ショートカットが指し示すファイルが欠けているときに、
 Windows Installer が修復インストールをしてファイルを修復することが出来ます。
 
-                    <Shortcut Id="startmenuHoge10"
-                        Directory="ProgramMenuDir"
-                        Name="ほげ 1.0"
-                        WorkingDirectory='INSTALLDIR'
-                        Icon="Hoge10.exe" IconIndex="0"
-                        Advertise="yes" />
-                    <Shortcut Id="desktopHoge10"
-                        Directory="DesktopFolder"
-                        Name="ほげ 1.0"
-                        WorkingDirectory='INSTALLDIR'
-                        Icon="Hoge10.exe" IconIndex="0"
-                        Advertise="yes" />
-                  </File>
-                </Component>
+{% highlight xml %}
+                <Shortcut Id="startmenuHoge10"
+                    Directory="ProgramMenuDir"
+                    Name="ほげ 1.0"
+                    WorkingDirectory='INSTALLDIR'
+                    Icon="Hoge10.exe" IconIndex="0"
+                    Advertise="yes" />
+                <Shortcut Id="desktopHoge10"
+                    Directory="DesktopFolder"
+                    Name="ほげ 1.0"
+                    WorkingDirectory='INSTALLDIR'
+                    Icon="Hoge10.exe" IconIndex="0"
+                    Advertise="yes" />
+              </File>
+            </Component>
+{% endhighlight %} 
 
 さらに二つ、一意の *Id* と *Guid* を持つ別のコンポーネントを定義します。
 
-                <Component Id='HelperLibrary'
-                    Guid='YOURGUID-6BE3-460D-A14F-75658D16550B'>
-                  <File Id='HelperDLL' Name='HogeHelper.dll' DiskId='1'
-                      Source='HogeHelper.dll' KeyPath='yes' />
-                </Component>
+{% highlight xml %}
+            <Component Id='HelperLibrary'
+                Guid='YOURGUID-6BE3-460D-A14F-75658D16550B'>
+              <File Id='HelperDLL' Name='HogeHelper.dll' DiskId='1'
+                  Source='HogeHelper.dll' KeyPath='yes' />
+            </Component>
 
-                <Component Id='Manual'
-                    Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
-                  <File Id='Manual' Name='Manual.pdf' DiskId='1'
-                      Source='Manual.pdf' KeyPath='yes'>
-                    <Shortcut Id='startmenuManual'
-                        Directory='ProgramMenuDir'
-                        Name='取扱説明書'
-                        Advertise='yes' />
-                  </File>
-                </Component>
+            <Component Id='Manual'
+                Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
+              <File Id='Manual' Name='Manual.pdf' DiskId='1'
+                  Source='Manual.pdf' KeyPath='yes'>
+                <Shortcut Id='startmenuManual'
+                    Directory='ProgramMenuDir'
+                    Name='取扱説明書'
+                    Advertise='yes' />
+              </File>
+            </Component>
+{% endhighlight %} 
 
 あなたが予想される通り、数百さらには数千のファイルを持つアプリケーションにとっては、
 このようなやり方は、数百または数千のコンポーネントが必要になる、という事を意味します。
@@ -213,24 +227,26 @@ WiX プロジェクトはモジュラー化できます(後で詳細に述べま
 *KeyPath* 属性をコンポーネントかフォルダに設定してもうまく機能するかも知れませんが、リンカが警告を発する結果になります。
 ですから、当面、コンパイラとリンカの警告メッセージを避けるために、一時的に説明抜きで、この解決方法を受け入れておいて下さい。
 
-              </Directory>
-            </Directory>
+{% highlight xml %}
           </Directory>
-
-          <Directory Id="ProgramMenuFolder" Name="Programs">
-            <Directory Id="ProgramMenuDir" Name="ほげ 1.0">
-              <Component Id="ProgramMenuDir"
-                  Guid="YOURGUID-7E98-44CE-B049-C477CC0A2B00">
-                <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
-                <RegistryValue Root='HKCU'
-                    Key='Software\[Manufacturer]\[ProductName]'
-                    Type='string' Value='' KeyPath='yes' />
-              </Component>
-            </Directory>
-          </Directory>
-
-          <Directory Id="DesktopFolder" Name="Desktop" />
         </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="ほげ 1.0">
+          <Component Id="ProgramMenuDir"
+              Guid="YOURGUID-7E98-44CE-B049-C477CC0A2B00">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU'
+                Key='Software\[Manufacturer]\[ProductName]'
+                Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+{% endhighlight %} 
 
 これら二つのフォルダを特定するのに使用した *Id* 識別子(`ProgramMenuDir` と `DesktopFolder`)に注意して下さい。
 これらは、前に、ショートカットの *Directory* 属性として使用した名前であり、ショートカットの場所を実際のフォルダに関連づけたものです。
@@ -250,32 +266,40 @@ WiX プロジェクトはモジュラー化できます(後で詳細に述べま
 これについては次回のレッスンで説明しますが、今のところは、機能は一つにしておきます(というのは、少なくとも一つは機能が必要だからです)。
 この機能としてインストールしたいコンポーネントを *Id* 識別子を使って参照します。
 
-        <Feature Id='Complete' Level='1'>
-          <ComponentRef Id='MainExecutable' />
-          <ComponentRef Id='HelperLibrary' />
-          <ComponentRef Id='Manual' />
-          <ComponentRef Id='ProgramMenuDir' />
-        </Feature>
+{% highlight xml %}
+    <Feature Id='Complete' Level='1'>
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='HelperLibrary' />
+      <ComponentRef Id='Manual' />
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+{% endhighlight %} 
 
 ショートカットに使用したいアイコンも含めなければなりません。
 アイコンの Id 識別子は、対象のファイルと同じ拡張子、この場合は、`.exe` を持たなければならないことに注意して下さい。
 
-        <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
+{% highlight xml %}
+    <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
+{% endhighlight %} 
 
 このようにすると、ソース・ファイルは最終のインストーラ・パッケージの中で、独立して保存されます
 (つまり、メインの実行ファイルを参照している場合、二つのコピーが保存されます)。
 ファイルのサイズが大きすぎて問題になる場合は、アイコンだけを含んだ小さな `.exe` か `.ico` を作成して下さい。
 
-        <Shortcut Id="desktopHoge10" Directory="DesktopFolder"
-            Name="ほげ 1.0" WorkingDirectory='INSTALLDIR'
-            Icon="Hoge10.ico" IconIndex="0" />
-        ...
-        <Icon Id="Hoge10.ico" SourceFile="HogeAppl10.ico" />
+{% highlight xml %}
+    <Shortcut Id="desktopHoge10" Directory="DesktopFolder"
+        Name="ほげ 1.0" WorkingDirectory='INSTALLDIR'
+        Icon="Hoge10.ico" IconIndex="0" />
+    ...
+    <Icon Id="Hoge10.ico" SourceFile="HogeAppl10.ico" />
+{% endhighlight %} 
 
 以上で、残されていることは、まだ開いている二つのタグに、閉じるタグを提供することだけになりました。
 
-      </Product>
-    </Wix>
+{% highlight xml %}
+  </Product>
+</Wix>
+{% endhighlight %} 
 
 行った作業を要約しましょう。
 最初に、人間が読めるテキストと要求される GUID の両方で、私たちのアプリケーションの記述を行いました。
