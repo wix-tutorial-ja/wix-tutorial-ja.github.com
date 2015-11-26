@@ -27,14 +27,19 @@ Windows Installer はそういう処理をサポートしていません。)
 ここで `Sample.wxs` というソース・ファイルを用意したと仮定しましょう。
 最初に、
 
-    candle.exe Sample.wxs
+{% highlight batch %}
+
+candle.exe Sample.wxs
+{% endhighlight %}
 
 というコマンドで、コンパイルの第一段階を実行して、`Sample.wixobj` という半分消化されたファイルを作成します。
 このファイルはまだ XML ですが、その内部構造は人間が読むことを想定したものではありません。
 通常のコンパイラ用語でオブジェクト・ファイルと呼ばれるものだと考えて下さい。
 次に、第二のコマンドとして、
 
-    light.exe Sample.wixobj
+{% highlight batch %}
+light.exe Sample.wixobj
+{% endhighlight %}
 
 を実行し、この中間表現を最終的なパッケージである `Sample.msi` というファイルに変換します。
 コンパイラとリンカにそっくりですね。実際は、それだけに留まりません。

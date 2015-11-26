@@ -54,20 +54,22 @@ GUID は、生成されたままで使用される場合にだけ、一意性が
 その他の全ての GUID は、一意性を保たなければならず、将来にわたって記録されなければなりません。
 これらの GUID と製品に関するその他のテキスト情報が `SampleFirst.wxs` の一番最初の部分に来ます。
 
-    <?xml version='1.0' encoding='windows-1252'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-    
-      <Product Name='Foobar 1.0'
-          Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-          UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-          Language='1033' Codepage='1252'
-          Version='1.0.0' Manufacturer='Acme Ltd.'>
-    
-        <Package Id='*' Keywords='Installer'
-            Description="Acme's Foobar 1.0 Installer"
-            Comments='Foobar is a registered trademark of Acme Ltd.'
-            Manufacturer='Acme Ltd.' InstallerVersion='100'
-            Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+{% highlight xml %}
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Product Name='Foobar 1.0'
+      Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+      UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+      Language='1033' Codepage='1252'
+      Version='1.0.0' Manufacturer='Acme Ltd.'>
+
+    <Package Id='*' Keywords='Installer'
+        Description="Acme's Foobar 1.0 Installer"
+        Comments='Foobar is a registered trademark of Acme Ltd.'
+        Manufacturer='Acme Ltd.' InstallerVersion='100'
+        Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+{% endhighlight %} 
 
 製品の名前と説明は、当然、あなたの意向によって決ります。
 *Version* 属性は、標準的な **major.minor.build** 形式に従って下さい。
@@ -84,19 +86,21 @@ XML を作成するのには、UTF-8 も ANSI も使うことが出来ます。
 [適切な言語とコードページの数値](https://msdn.microsoft.com/en-us/library/Aa369771.aspx)を使って下さい。
 例えば、日本語であれば、次のように変更します。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-    
-      <Product Name='ほげ 1.0'
-          Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-          UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-          Language='1041' Codepage='932'
-          Version='1.0.0' Manufacturer='ぴよソフト'>
-    
-        <Package Id='*' Keywords='インストーラ'
-            Description="ぴよソフト's ほげ 1.0 インストーラ"
-            Comments='ほげはぴよソフトの登録商標です。'
-            Manufacturer='ぴよソフト' InstallerVersion='100'
-            Languages='1041' Compressed='yes' SummaryCodepage='932' />
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Product Name='ほげ 1.0'
+      Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+      UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+      Language='1041' Codepage='932'
+      Version='1.0.0' Manufacturer='ぴよソフト'>
+
+    <Package Id='*' Keywords='インストーラ'
+        Description="ぴよソフト's ほげ 1.0 インストーラ"
+        Comments='ほげはぴよソフトの登録商標です。'
+        Manufacturer='ぴよソフト' InstallerVersion='100'
+        Languages='1041' Compressed='yes' SummaryCodepage='932' />
+{% endhighlight %} 
              
 > 訳註：これ以降、原文のソフト名 "Foobar" と会社名 "Acme Ltd." は、慣例に従って、"ほげ(Hoge)" および "ぴよ(Piyo)ソフト" と訳出します。
