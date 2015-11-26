@@ -16,15 +16,19 @@ origin: /events-and-actions/extra-actions/
 には、この他にも、既定ではスケジュールされない利用可能なアクションが数多くあります。
 例えば、**ScheduleReboot** は、インストールの後でシステムを再起動するようにユーザーに指示します。
 
-    <InstallExecuteSequence>
-      <ScheduleReboot After='InstallFinalize' />
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  <ScheduleReboot After='InstallFinalize' />
+</InstallExecuteSequence>
+{% endhighlight %}
 
 再起動の必要性が何らかの条件(例えば、インストーラが走っているオペレーティング・システム)に依存する場合は、条件文を使います。
 
-    <InstallExecuteSequence>
-      <ScheduleReboot After='InstallFinalize'>Version9X</ScheduleReboot>
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  <ScheduleReboot After='InstallFinalize'>Version9X</ScheduleReboot>
+</InstallExecuteSequence>
+{% endhighlight %}
 
 予定に入れたり予定を変更したり出来るのは、いわゆるスタンダード・アクションだけではありません。
 二～三のカスタム・アクションも同様に出来ます
@@ -37,19 +41,23 @@ origin: /events-and-actions/extra-actions/
 インストールした実行ファイルを起動する場合は、そのファイルを定義している **File** タグの **Id** 識別子を使って実行ファイルを参照します。
 コマンド・ラインも指定しなければなりませんが、必要でなければ空文字列にしておくことも出来ます。
 
-    <CustomAction Id='LaunchFile' FileKey='FoobarEXE'
-        ExeCommand='' Return='asyncNoWait' />
+{% highlight xml %}
+<CustomAction Id='LaunchFile' FileKey='FoobarEXE'
+    ExeCommand='' Return='asyncNoWait' />
+{% endhighlight %}
 
 第二に、通常と同じ方法で、アクションを予定に入れなければなりません。
 アクションとスケジュール項目の間のリンクは、**Id** — **Action** の整合する属性のペアで指定します。
 カスタム・アクションの実行に条件がある場合は、**Custom** タグの中で条件を定義することが出来ます。
 ここでは、インストールを実行する場合にだけ実行ファイルを起動し、製品を削除するときは起動しないように、条件を設定する必要があります。
 
-    <InstallExecuteSequence>
-      ...
-      <Custom Action='LaunchFile' 
-          After='InstallFinalize'>NOT Installed</Custom>
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  ...
+  <Custom Action='LaunchFile' 
+      After='InstallFinalize'>NOT Installed</Custom>
+</InstallExecuteSequence>
+{% endhighlight %}
 
 > 訳註：上記ソース断片の NOT Installed は、間違いではありません。
 > Installed は、製品がインストールされているかどうかを示す定義済みプロパティですが、
@@ -60,14 +68,18 @@ origin: /events-and-actions/extra-actions/
 (例えば、readme ファイルのビュワーや、特別な設定ユーティリティ)を起動したいことがあります。
 その場合は、**File** ではなく、**Binary** タグの識別子を参照するようにします。スケジューリングの方法は同じです。
 
-    <CustomAction Id='LaunchFile' BinaryKey='FoobarEXE'
-        ExeCommand='' Return='asyncNoWait' />
+{% highlight xml %}
+<CustomAction Id='LaunchFile' BinaryKey='FoobarEXE'
+    ExeCommand='' Return='asyncNoWait' />
+{% endhighlight %}
 
 また、ユーザーのマシン上にある他のどんな実行ファイルでも、プロパティで名前を指定すれば、起動することが出来ます。
 
-        <Property Id='NOTEPAD'>Notepad.exe</Property>
-        <CustomAction Id='LaunchFile' Property='NOTEPAD'
-            ExeCommand='[SourceDir]Readme.txt' Return='asyncNoWait' />
+{% highlight xml %}
+    <Property Id='NOTEPAD'>Notepad.exe</Property>
+    <CustomAction Id='LaunchFile' Property='NOTEPAD'
+        ExeCommand='[SourceDir]Readme.txt' Return='asyncNoWait' />
+{% endhighlight %}
 
 カスタム・アクションは、**Return** 属性を使って、アクションの完了をどのように扱うかを指定することも出来ます。
 指定できる値は以下の通りです — *check* は、カスタム・アクションの完了を待って、その戻り値をチェックします。
@@ -81,7 +93,9 @@ origin: /events-and-actions/extra-actions/
 通常の機構では表示できないエラーに遭遇した場合に、エラー・メッセージを表示してインストールを終了することが出来ます。
 **Error** 属性には、実際のメッセージのテキストを入れることも、**Error** タグの **Id** 識別子を入れることも出来ます。
 
-    <CustomAction Id='AbortError' Error='この謎は解けません。諦めます。' />
+{% highlight xml %}
+<CustomAction Id='AbortError' Error='この謎は解けません。諦めます。' />
+{% endhighlight %}
 
 プロパティの値を別のプロパティの値に割り当てる直接的な方法はありません。
 しかし、カスタム・アクションを使うと、この間隙を乗り越えることが出来ます。
@@ -89,10 +103,14 @@ origin: /events-and-actions/extra-actions/
 (パスの参照には、常に末尾のバックスラッシュが自動的に追加されている事に注意して下さい。
 バックスラッシュをもう一つ余計に追加する必要はありません)。
 
-    <CustomAction Id='PropertyAssign' Property='PathProperty'
-        Value='[INSTALLDIR][FilenameProperty].[ExtensionProperty]' />
+{% highlight xml %}
+<CustomAction Id='PropertyAssign' Property='PathProperty'
+    Value='[INSTALLDIR][FilenameProperty].[ExtensionProperty]' />
+{% endhighlight %}
 
 ディレクトリも、同様のパスを示す書式指定文字列として設定することが出来ます。
 
-    <CustomAction Id='PropertyAssign' Directory='INSTALLDIR'
-        Value='[TARGETDIR]\Program Files\Acme\Foobar 1.0\bin' />
+{% highlight xml %}
+<CustomAction Id='PropertyAssign' Directory='INSTALLDIR'
+    Value='[TARGETDIR]\Program Files\Acme\Foobar 1.0\bin' />
+{% endhighlight %}

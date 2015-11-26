@@ -138,6 +138,7 @@ pre {
     padding: 0.5em 1em;
     margin: 0 0 1em 0;
     border-radius: 3px;
+    word-wrap: break-word;
 }
 
 pre code {

@@ -25,33 +25,35 @@ origin: /upgrades-and-modularization/mergers/
 ただし、**Product** ではなく、**Module** タグを定義します。
 また、これまでのパッケージとは違って、一意の GUID は、私たち自身が定義しなければなりません。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-      <Module Id="File1" Language="1041" Codepage="932" Version="1.2.3">
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Module Id="File1" Language="1041" Codepage="932" Version="1.2.3">
 
-        <Package Id="YOURGUID-8DEE-4410-990A-1802896C4209"
-            InstallerVersion="100" Languages="1041"
-            Manufacturer="ぴよソフト" SummaryCodepage="932"
-            AdminImage="no" />
+    <Package Id="YOURGUID-8DEE-4410-990A-1802896C4209"
+        InstallerVersion="100" Languages="1041"
+        Manufacturer="ぴよソフト" SummaryCodepage="932"
+        AdminImage="no" />
 
-          <Directory Id='TARGETDIR' Name='SourceDir'>
-            <Directory Id='ProgramFilesFolder' Name='PFiles'>
-              <Directory Id='Piyo' Name='Piyo'>
-                <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
+      <Directory Id='TARGETDIR' Name='SourceDir'>
+        <Directory Id='ProgramFilesFolder' Name='PFiles'>
+          <Directory Id='Piyo' Name='Piyo'>
+            <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
 
-                  <Component Id="File1"
-                      Guid="YOURGUID-CF0E-40AB-ACC5-0E9A5F112628">
-                    <File Id="File1.txt" Name="File1.txt"
-                        Source="File1.txt" KeyPath='yes' />
-                  </Component>
+              <Component Id="File1"
+                  Guid="YOURGUID-CF0E-40AB-ACC5-0E9A5F112628">
+                <File Id="File1.txt" Name="File1.txt"
+                    Source="File1.txt" KeyPath='yes' />
+              </Component>
 
-                </Directory>
-              </Directory>
             </Directory>
           </Directory>
+        </Directory>
+      </Directory>
 
-      </Module>
-    </Wix>
+  </Module>
+</Wix>
+{% endhighlight %}
 
 サンプルでは、第二のマージ・モジュールも使います。
 ソース・ファイルは前のものとほとんど同じですが、次の点で違っています。
@@ -60,70 +62,78 @@ origin: /upgrades-and-modularization/mergers/
 この依存関係を示すために、**Module ID** 識別子に **Package** GUID を追加したものを使います — 
 Package GUID は、元のハイフンをアンダースコアで置き換えたものにしなければいけません。
 
-      <Module Id="File2" Language="1041" Codepage="932" Version="1.2.3">
-        ...
-        <File Id="File2.txt" Name="File2.txt"
-            Source="File2.txt" KeyPath='yes' />
-        ...
-        <Dependency
-            RequiredId="File1.YOURGUID_8DEE_4410_990A_1802896C4209"
-            RequiredLanguage="1041" RequiredVersion="1.2.3" />
-      </Module>
+{% highlight xml %}
+  <Module Id="File2" Language="1041" Codepage="932" Version="1.2.3">
+    ...
+    <File Id="File2.txt" Name="File2.txt"
+        Source="File2.txt" KeyPath='yes' />
+    ...
+    <Dependency
+        RequiredId="File1.YOURGUID_8DEE_4410_990A_1802896C4209"
+        RequiredLanguage="1041" RequiredVersion="1.2.3" />
+  </Module>
+{% endhighlight %}
 
 結合されたインストーラ・パッケージを作るために、通常のスタンドアロンの WiX ソース・ファイルを書きます。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-      <Product Name='ほげ 1.0'
-               Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-               UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-               Language='1041' Codepage='932'
-               Version='1.0.0' Manufacturer='ぴよソフト'>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Name='ほげ 1.0'
+           Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+           UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+           Language='1041' Codepage='932'
+           Version='1.0.0' Manufacturer='ぴよソフト'>
 
-        <Package Id='*' Keywords='インストーラ'
-                 Description="ぴよソフト's ほげ 1.0 インストーラ"
-                 Comments='ほげはぴよソフトの登録商標です。'
-                 Manufacturer='ぴよソフト' InstallerVersion='100'
-                 Languages='1041' Compressed='yes'
-                 SummaryCodepage='932' />
+    <Package Id='*' Keywords='インストーラ'
+             Description="ぴよソフト's ほげ 1.0 インストーラ"
+             Comments='ほげはぴよソフトの登録商標です。'
+             Manufacturer='ぴよソフト' InstallerVersion='100'
+             Languages='1041' Compressed='yes'
+             SummaryCodepage='932' />
 
-        <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
 
-        <Directory Id='TARGETDIR' Name='SourceDir'>
-          <Directory Id='ProgramFilesFolder' Name='PFiles'>
-            <Directory Id='Piyo' Name='Piyo'>
-              <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='Piyo' Name='Piyo'>
+          <Directory Id='INSTALLDIR' Name='Hoge 1.0'>
+{% endhighlight %}
 
 通常のコンポーネントの代りにマージ・モジュールを参照します。**SourceFile** は `.msm` ファイルを指し示します。
 
-                <Merge Id="file1" Language="1041"
-                       SourceFile="Module1.msm" DiskId="1" />
-                <Merge Id="file2" Language="1041"
-                       SourceFile="Module2.msm" DiskId="1" />
+{% highlight xml %}
+            <Merge Id="file1" Language="1041"
+                   SourceFile="Module1.msm" DiskId="1" />
+            <Merge Id="file2" Language="1041"
+                   SourceFile="Module2.msm" DiskId="1" />
 
-              </Directory>
-            </Directory>
           </Directory>
         </Directory>
+      </Directory>
+    </Directory>
 
-        <Feature Id="Msm" Title="Msm" Level="1">
-          <MergeRef Id="file1" />
-          <MergeRef Id="file2" />
-        </Feature>
+    <Feature Id="Msm" Title="Msm" Level="1">
+      <MergeRef Id="file1" />
+      <MergeRef Id="file2" />
+    </Feature>
 
-      </Product>
-    </Wix>
+  </Product>
+</Wix>
+{% endhighlight %}
 
 完全な [SampleMergeModule](https://www.firegiant.com/system/files/samples/SampleMergeModule.zip)
 をダウンロードすることが出来ます。マージ・モジュールは、個別にビルドする必要があります。
 
 > 訳註：SampleMergeModulet の日本語版は [Sample-4-5-MergeModule.zip](/samples/Sample-4-5-MergeModule.zip) です。
 
-    candle.exe Module1.wxs
-    light.exe Module1.wixobj
+{% highlight bat %}
+candle.exe Module1.wxs
+light.exe Module1.wixobj
 
-    candle.exe Module2.wxs
-    light.exe Module2.wixobj
+candle.exe Module2.wxs
+light.exe Module2.wixobj
 
-    candle.exe SampleMerge.wxs
-    light.exe SampleMerge.wixobj
+candle.exe SampleMerge.wxs
+light.exe SampleMerge.wixobj
+{% endhighlight %}

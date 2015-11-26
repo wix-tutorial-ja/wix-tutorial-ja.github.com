@@ -29,31 +29,35 @@ MSI は以前と全く同じようにして作成します。
 それに加えて、さまざまなパッケージに必要とされる独立した MSI や EXE が (外部参照として、または、
 メインの実行ファイルにバンドルされて) 含まれます。
 
-    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..." 
-          Copyright="..." IconSourceFile="..." AboutUrl="...">
-        <BootstrapperApplicationRef
-            Id="WixStandardBootstrapperApplication.RtfLicense" />
-        
-        <Chain>
-          <ExePackage Id="Dependency1"
-              SourceFile="Dependency_package_1.exe" />
-          <ExePackage Id="Dependency2"
-              SourceFile="Dependency_package_2.exe" />
-        
-          <RollbackBoundary />
-        
-          <MsiPackage Id="MainPackage"
-              SourceFile="Main_package.msi" Vital="yes" />
-        </Chain>
-      </Bundle>
-    </Wix>
+{% highlight xml %}
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..." 
+      Copyright="..." IconSourceFile="..." AboutUrl="...">
+    <BootstrapperApplicationRef
+        Id="WixStandardBootstrapperApplication.RtfLicense" />
+    
+    <Chain>
+      <ExePackage Id="Dependency1"
+          SourceFile="Dependency_package_1.exe" />
+      <ExePackage Id="Dependency2"
+          SourceFile="Dependency_package_2.exe" />
+    
+      <RollbackBoundary />
+    
+      <MsiPackage Id="MainPackage"
+          SourceFile="Main_package.msi" Vital="yes" />
+    </Chain>
+  </Bundle>
+</Wix>
+{% endhighlight %}
 
 このプロジェクトをビルドすることは、今までに見てきた他のプロジェクトのすべてと同じように、とても簡単です。
 違いと言えば、`.msi` ではなく `.exe` (正確に言えば `SampleBurn.exe`) を作成することだけです。
 
-    candle.exe SampleBurn.wxs
-    light.exe -ext WixBalExtension SampleBurn.wixobj
+{% highlight bat %}
+candle.exe SampleBurn.wxs
+light.exe -ext WixBalExtension SampleBurn.wixobj
+{% endhighlight %}
 
 通常のプロジェクトとは違って、このプロジェクトはルートに **Product** ではなく **Bundle** を持ちます。
 この **Bundle** が、名前、バージョン、著作権、その他よくある UI の詳細を記述するのに、ほとんど同じような属性を使用します。
@@ -73,87 +77,59 @@ Bundle は、主たる部分として、インストールされるべき全て�
 ターゲットマシンにそれが見つかった場合はインストールをスキップしなければなりません。
 そのためには、既におなじみになっている条件を使用します。
 
-    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-         xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
-         xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-      <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..."
-          Copyright="..." IconSourceFile="..." AboutUrl="...">
-        <BootstrapperApplicationRef
-            Id="WixStandardBootstrapperApplication.RtfLicense" />
-        
-        <util:RegistrySearch Root="HKLM"
-            Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
-            Value="Version" Variable="Net4FullVersion" />
-        <util:RegistrySearch Root="HKLM"
-            Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
-            Value="Version" Variable="Net4x64FullVersion" Win64="yes" />
-        
-        <Chain>
-          <ExePackage Id="Net45"
-              Name="Microsoft .NET Framework 4.5.1 Setup"
-              Cache="no" Compressed="yes" PerMachine="yes"
-              Permanent="yes" Vital="yes" InstallCommand="/q"
-              SourceFile="NDP451-KB2859818-Web.exe"
-              DetectCondition="
-                  (Net4FullVersion = &quot;4.5.50938&quot;)
-                  AND 
-                  (
-                      NOT VersionNT64
-                      OR
-                      (Net4x64FullVersion = &quot;4.5.50938&quot;)
-                  )"
-              InstallCondition="
-                  (VersionNT >= v6.0 OR VersionNT64 >= v6.0)
-                  AND
-                  (
-                      NOT (
-                          Net4FullVersion = &quot;4.5.50938&quot; 
-                          OR
-                          Net4x64FullVersion = &quot;4.5.50938&quot;
-                      )
-                  )"
-          />
-        
-          <ExePackage Id="Net4Full"
-              Name="Microsoft .NET Framework 4.0 Setup"
-              Cache="no" Compressed="yes" PerMachine="yes"
-              Permanent="yes" Vital="yes" InstallCommand="/q"
-              SourceFile="dotNetFx40_Full_setup.exe"
-              DetectCondition="
-                  Net4FullVersion
-                  AND
-                  (
-                      NOT VersionNT64
-                      OR
-                      Net4x64FullVersion
-                  )"
-              InstallCondition="
-                  (VersionNT &lt; v6.0 OR VersionNT64 &lt; v6.0)
-                  AND
-                  (
-                      NOT (
-                          Net4FullVersion 
-                          OR 
-                          Net4x64FullVersion
-                      )
-                  )"
-          />
-        
-          <RollbackBoundary />
-        
-          <MsiPackage Id="MainPackage" SourceFile="Main_package.msi"
-              DisplayInternalUI="yes" Compressed="yes" Vital="yes" />
-        </Chain>
-      </Bundle>
-    </Wix>
+{% highlight xml %}
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Bundle Name="..." Version="..." Manufacturer="..." UpgradeCode="..."
+      Copyright="..." IconSourceFile="..." AboutUrl="...">
+    <BootstrapperApplicationRef
+        Id="WixStandardBootstrapperApplication.RtfLicense" />
+    
+    <util:RegistrySearch Root="HKLM"
+        Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+        Value="Version" Variable="Net4FullVersion" />
+    <util:RegistrySearch Root="HKLM"
+        Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full"
+        Value="Version" Variable="Net4x64FullVersion" Win64="yes" />
+    
+    <Chain>
+      <ExePackage Id="Net45"
+          Name="Microsoft .NET Framework 4.5.1 Setup"
+          Cache="no" Compressed="yes" PerMachine="yes"
+          Permanent="yes" Vital="yes" InstallCommand="/q"
+          SourceFile="NDP451-KB2859818-Web.exe"
+          DetectCondition="(Net4FullVersion = &quot;4.5.50938&quot;) AND (NOT VersionNT64 OR (Net4x64FullVersion = &quot;4.5.50938&quot;))"
+          InstallCondition="(VersionNT >= v6.0 OR VersionNT64 >= v6.0) AND (NOT (Net4FullVersion = &quot;4.5.50938&quot; OR Net4x64FullVersion = &quot;4.5.50938&quot;))"
+      />
+    
+      <ExePackage Id="Net4Full"
+          Name="Microsoft .NET Framework 4.0 Setup"
+          Cache="no" Compressed="yes" PerMachine="yes"
+          Permanent="yes" Vital="yes" InstallCommand="/q"
+          SourceFile="dotNetFx40_Full_setup.exe"
+          DetectCondition="Net4FullVersion AND (NOT VersionNT64 OR Net4x64FullVersion)"
+          InstallCondition="(VersionNT &lt; v6.0 OR VersionNT64 &lt; v6.0) AND (NOT (Net4FullVersion OR Net4x64FullVersion))"
+      />
+    
+      <RollbackBoundary />
+    
+      <MsiPackage Id="MainPackage" SourceFile="Main_package.msi"
+          DisplayInternalUI="yes" Compressed="yes" Vital="yes" />
+    </Chain>
+  </Bundle>
+</Wix>
+{% endhighlight %}
 
 これは既に単なる例以上のものです。これは .NET フレームワークの扱い方を知っているインストーラの実物のコピーです。
 これをコンパイルする時も、いくつかの拡張ライブラリを参照する必要があります。
 
-    candle.exe -ext WixNetFxExtension -ext WixBalExtension 
-        -ext WixUtilExtension SampleBurn.wxs
-    light.exe -ext WixNetFxExtension -ext WixBalExtension
-        -ext WixUtilExtension SampleBurn.wixobj
+{% highlight bat %}
+candle.exe -ext WixNetFxExtension -ext WixBalExtension 
+    -ext WixUtilExtension SampleBurn.wxs
+light.exe -ext WixNetFxExtension -ext WixBalExtension
+    -ext WixUtilExtension SampleBurn.wixobj
+{% endhighlight %}
 
 これがどのように動くか、そして、何をするかを見てみましょう。
 
@@ -170,8 +146,10 @@ Bundle は、主たる部分として、インストールされるべき全て�
 
 なお、セットアップ・プログラムの外観は、次のようにしてカスタマイズすることが出来ます。
 
-    <BootstrapperApplicationRef
-        Id="WixStandardBootstrapperApplication.RtfLicense">
-      <bal:WixStandardBootstrapperApplication LicenseFile="License.rtf"
-          LogoFile="Logo.png" />
-    </BootstrapperApplicationRef>
+{% highlight xml %}
+<BootstrapperApplicationRef
+    Id="WixStandardBootstrapperApplication.RtfLicense">
+  <bal:WixStandardBootstrapperApplication LicenseFile="License.rtf"
+      LogoFile="Logo.png" />
+</BootstrapperApplicationRef>
+{% endhighlight %}

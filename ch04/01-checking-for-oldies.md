@@ -21,22 +21,24 @@ Windows Installer はそれを確認するために **Product** タグの **Upgr
 製品を同じアップグレード・バージョンでアップグレードしようとする限りは、同一の **UpgradeCode** GUID を保持してください。
 通常の場合、このことは、Version 1.x の全てに一つのコード、Version 2.x にもう一つ別のコード、、、ということを意味します。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-      <Product Name='ほげ 1.0'
-          Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-          UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-          Version='1.0.0' Manufacturer='ぴよソフト'
-          Language='1041' Codepage='932'>
-        <Package Id='*' Keywords='インストーラ'
-            Description="ぴよソフト's ほげ 1.0 インストーラ"
-            Comments='ほげはぴよソフトの登録商標です。'
-            Manufacturer='ぴよソフト' InstallerVersion='100'
-            Languages='1041' Compressed='yes' SummaryCodepage='932' />
-          ...
-        </Package>
-      </Product>
-    </Wix>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product Name='ほげ 1.0'
+      Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+      UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+      Version='1.0.0' Manufacturer='ぴよソフト'
+      Language='1041' Codepage='932'>
+    <Package Id='*' Keywords='インストーラ'
+        Description="ぴよソフト's ほげ 1.0 インストーラ"
+        Comments='ほげはぴよソフトの登録商標です。'
+        Manufacturer='ぴよソフト' InstallerVersion='100'
+        Languages='1041' Compressed='yes' SummaryCodepage='932' />
+      ...
+    </Package>
+  </Product>
+</Wix>
+{% endhighlight %}
 
 今回の [SampleUpgrade](https://www.firegiant.com/system/files/samples/SampleUpgrade.zip)
 は、二つのインストーラ・パッケージから成り立っています。
@@ -48,13 +50,15 @@ SampleUpgrade の第二のバージョンは、配置されたファイルの一
 私たちはこれを*マイナー・アップグレード*だと考えて、**Version** を変えています。
 外見上の変更が、人間が読むことが出来る **Name** と **Description** に対して加えられていることは言うまでもありません。
 
-    <Product Name='ほげ 1.0.1'
-        Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-        UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-        Version='1.0.1' Manufacturer='ぴよソフト'
-        Language='1041' Codepage='932'>
-      <Package Id='*' Keywords='インストーラ'
-          Description="ぴよソフト's ほげ 1.0.1 アップデータ" ... >
+{% highlight xml %}
+<Product Name='ほげ 1.0.1'
+    Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+    UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+    Version='1.0.1' Manufacturer='ぴよソフト'
+    Language='1041' Codepage='932'>
+  <Package Id='*' Keywords='インストーラ'
+      Description="ぴよソフト's ほげ 1.0.1 アップデータ" ... >
+{% endhighlight %}
 
 製品のどのバージョンをこのアップグレードによって置き換える予定なのか、ということについての記述も必要です。
 **Upgrade** タグの **Id** 属性が、元のインストーラ・パッケージ(この例では古い方の SampleUpgrade)の **UpgradeCode** GUID を参照しています。
@@ -71,13 +75,15 @@ SampleUpgrade の第二のバージョンは、配置されたファイルの一
 これらの属性には既定値がありますが、ここでは、既定値には頼らず、常に明示的に記述することにします – 
 明解さと自己完結的な説明性のためには、省略せずに書く方が良いでしょう。
 
-      <Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
-        <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
-            Minimum='1.0.1' IncludeMinimum='yes'
-            Maximum='1.0.1' IncludeMaximum='yes' />
-        <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
-            Minimum='1.0.1' IncludeMinimum='no' />
-      </Upgrade>
+{% highlight xml %}
+  <Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
+    <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+        Minimum='1.0.1' IncludeMinimum='yes'
+        Maximum='1.0.1' IncludeMaximum='yes' />
+    <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+        Minimum='1.0.1' IncludeMinimum='no' />
+  </Upgrade>
+{% endhighlight %}
 
 > 訳註：実際にここで探そうとしているのは、更新する対象のバージョンではありません。
 > そうではなくて、更新する必要のないバージョン、すなわち自分自身(SELFFOUND)、および、
@@ -100,17 +106,19 @@ SampleUpgrade の第二のバージョンは、配置されたファイルの一
 
 私たちは、チェックが走った後で、関連するプロパティの存在および値に基づいて、適切な行動を取ることが出来ます。
 
-      <CustomAction Id='AlreadyUpdated'
-          Error='[ProductName] は既に 1.0.1 に更新されています。' />
-      <CustomAction Id='NoDowngrade'
-          Error='[ProductName] の新しいバージョンが既にインストールされています。' />
+{% highlight xml %}
+  <CustomAction Id='AlreadyUpdated'
+      Error='[ProductName] は既に 1.0.1 に更新されています。' />
+  <CustomAction Id='NoDowngrade'
+      Error='[ProductName] の新しいバージョンが既にインストールされています。' />
 
-      <InstallExecuteSequence>
-        <Custom Action='AlreadyUpdated'
-            After='FindRelatedProducts'>SELFFOUND</Custom>
-        <Custom Action='NoDowngrade' 
-            After='FindRelatedProducts'>NEWERFOUND</Custom>
-      </InstallExecuteSequence>
+  <InstallExecuteSequence>
+    <Custom Action='AlreadyUpdated'
+        After='FindRelatedProducts'>SELFFOUND</Custom>
+    <Custom Action='NoDowngrade' 
+        After='FindRelatedProducts'>NEWERFOUND</Custom>
+  </InstallExecuteSequence>
+{% endhighlight %}
 
 どういう理由かは知りませんが、スモール・アップデートとマイナー・アップグレードは、
 `.msi` ファイルをダブル・クリックするだけでは走らせることが出来ません。
@@ -118,7 +126,9 @@ SampleUpgrade の第二のバージョンは、配置されたファイルの一
 
 知っとるわぃ、ボケ ... とにかく、コマンド・ラインから起動しなくてはならないのです。
 
-    msiexec /i SampleUpgrade.msi REINSTALL=ALL REINSTALLMODE=vomus
+{% highlight bat %}
+msiexec /i SampleUpgrade.msi REINSTALL=ALL REINSTALLMODE=vomus
+{% endhighlight %}
 
 どうやってこんな事を平均的なユーザーにやって貰おうか、などと尋ねるのはやめて下さいね。
 `Autorun.inf` ファイルから起動したり、起動用の `Setup.exe` ラッパー・シェルをひねり出したりする方が良いですよ。
@@ -131,18 +141,20 @@ SampleUpgrade の第二のバージョンは、配置されたファイルの一
 一番初めに出荷するインストーラであっても、このセーフティー・ロックが組み込まれていなくてはなりません
 (その事を現在のサンプルの古い方のバージョンで確認して下さい)。
 
-      <Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
-        <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
-                        Minimum='1.0.0' IncludeMinimum='no' />
-      </Upgrade>
+{% highlight xml %}
+  <Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
+    <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+                    Minimum='1.0.0' IncludeMinimum='no' />
+  </Upgrade>
 
-      <CustomAction Id='NoDowngrade'
-          Error='[ProductName] の新しいバージョンが既にインストールされています。' />
+  <CustomAction Id='NoDowngrade'
+      Error='[ProductName] の新しいバージョンが既にインストールされています。' />
 
-      <InstallExecuteSequence>
-        <Custom Action='NoDowngrade'
-            After='FindRelatedProducts'>NEWERFOUND</Custom>
-      </InstallExecuteSequence>
+  <InstallExecuteSequence>
+    <Custom Action='NoDowngrade'
+        After='FindRelatedProducts'>NEWERFOUND</Custom>
+  </InstallExecuteSequence>
+{% endhighlight %}
 
 > 訳註：この章で説明されている「セーフティー・ロック」機構は、実際には、
 > プロダクト・コードが異なるパッケージ同士の間 (すなわち、メジャー・アップグレード) でなければ、期待している通りの動作はしません。

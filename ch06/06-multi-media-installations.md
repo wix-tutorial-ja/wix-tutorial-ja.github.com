@@ -20,15 +20,19 @@ origin: /com-expression-syntax-miscellanea/multi-media-installations/
 このボリューム・ラベルは、物理メディアの実際のボリューム・ラベルと一致しなければなりません。
 インストーラはボリューム・ラベルを見て、要求されているメディアをユーザーが挿入したかどうかを判断します。
 
-    <Media Id='1' Cabinet='Sample1.cab' EmbedCab='no'
-        DiskPrompt="CD-ROM #1" VolumeLabel="HOGE_DISK1" />
-    
-    <Media Id='2' Cabinet='Sample2.cab' EmbedCab='no'
-        DiskPrompt="CD-ROM #2" VolumeLabel="HOGE_DISK2" />
+{% highlight xml %}
+<Media Id='1' Cabinet='Sample1.cab' EmbedCab='no'
+    DiskPrompt="CD-ROM #1" VolumeLabel="HOGE_DISK1" />
+
+<Media Id='2' Cabinet='Sample2.cab' EmbedCab='no'
+    DiskPrompt="CD-ROM #2" VolumeLabel="HOGE_DISK2" />
+{% endhighlight %}
 
 ユーザーに正しいメディアを挿入するように促す実際のメッセージを作るために、
 Windows Installer は **DiskPrompt** プロパティをも必要とします。
 これには、下記のように、書式指定文字列を使う必要があります。
 **`[1]`** は対応する **Media** タグの **DiskPrompt** 属性の内容で置き換えられます。
 
-    <Property Id='DiskPrompt' Value="ぴよソフトのほげ 1.0 インストーラ [1]" />
+{% highlight xml %}
+<Property Id='DiskPrompt' Value="ぴよソフトのほげ 1.0 インストーラ [1]" />
+{% endhighlight %}

@@ -17,16 +17,20 @@ WiX は、インストールやアンインストールの際にそういう設�
 ここで、アプリケーションと一緒に Settings.xml というファイルをインストールすると仮定しましょう。
 最初は、ファイルの中身は一番外側のタグだけです。
 
-    <settings>
-    </settings>
+{% highlight xml %}
+<settings>
+</settings>
+{% endhighlight %}
 
 インストーラに新しいノードをいくつか追加させることにします。そして、ノードの一つには属性値を持たせます。
 
-    <settings>
-      <add key="a_key" value="a_value">key_item
-        <inside>inside_item</inside>
-      </add>
-    </settings>
+{% highlight xml %}
+<settings>
+  <add key="a_key" value="a_value">key_item
+    <inside>inside_item</inside>
+  </add>
+</settings>
+{% endhighlight %}
 
 これを実現するためには、**XmlFile** タグを使うことが出来ます。
 **Id** や **File** のような通常の属性とは別の、**Action**, **Name** および **Value** 属性が 
@@ -45,34 +49,36 @@ XML ファイルの中で何をするかを決定し、**ElementPath** 属性が
 (自分自身で操作の順序 (**Sequence**) を指定しなければならないことに注意して下さい。
 このことは、アンインストールの時に、正しい逆順で変更が削除されることを保証するために、重要なことです)。
 
-    <Component Id='Settings' Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
-      <File Id='XmlSettings' Name='settings.xml' DiskId='1'
-          Source='settings.xml' Vital='yes' />
-      <util:XmlFile Id='XmlSettings1' File='[INSTALLDIR]settings.xml'
-          Action='createElement' Name='add'
-          ElementPath='//settings'
-          Sequence='1' />
-      <util:XmlFile Id='XmlSettings2' File='[INSTALLDIR]settings.xml'
-          Action='setValue' Name='key' Value='a_key' 
-          ElementPath='//settings/add'
-          Sequence='2' />
-      <util:XmlFile Id='XmlSettings3' File='[INSTALLDIR]settings.xml'
-          Action='setValue' Name='value' Value='a_value' 
-          ElementPath='//settings/add'
-          Sequence='3' />
-      <util:XmlFile Id='XmlSettings4' File='[INSTALLDIR]settings.xml'
-          Action='setValue' Value='key_item' 
-          ElementPath='//settings/add'
-          Sequence='4' />
-      <util:XmlFile Id='XmlSettings5' File='[INSTALLDIR]settings.xml'
-          Action='createElement' Name='inside' 
-          ElementPath='//settings/add'
-          Sequence='5' />
-      <util:XmlFile Id='XmlSettings6' File='[INSTALLDIR]settings.xml'
-          Action='setValue' Value='inside_item' 
-          ElementPath='//settings/add/inside'
-          Sequence='6' />
-    </Component>
+{% highlight xml %}
+<Component Id='Settings' Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
+  <File Id='XmlSettings' Name='settings.xml' DiskId='1'
+      Source='settings.xml' Vital='yes' />
+  <util:XmlFile Id='XmlSettings1' File='[INSTALLDIR]settings.xml'
+      Action='createElement' Name='add'
+      ElementPath='//settings'
+      Sequence='1' />
+  <util:XmlFile Id='XmlSettings2' File='[INSTALLDIR]settings.xml'
+      Action='setValue' Name='key' Value='a_key' 
+      ElementPath='//settings/add'
+      Sequence='2' />
+  <util:XmlFile Id='XmlSettings3' File='[INSTALLDIR]settings.xml'
+      Action='setValue' Name='value' Value='a_value' 
+      ElementPath='//settings/add'
+      Sequence='3' />
+  <util:XmlFile Id='XmlSettings4' File='[INSTALLDIR]settings.xml'
+      Action='setValue' Value='key_item' 
+      ElementPath='//settings/add'
+      Sequence='4' />
+  <util:XmlFile Id='XmlSettings5' File='[INSTALLDIR]settings.xml'
+      Action='createElement' Name='inside' 
+      ElementPath='//settings/add'
+      Sequence='5' />
+  <util:XmlFile Id='XmlSettings6' File='[INSTALLDIR]settings.xml'
+      Action='setValue' Value='inside_item' 
+      ElementPath='//settings/add/inside'
+      Sequence='6' />
+</Component>
+{% endhighlight %}
 
 XML ファイルの中に同じ名前を持った複数のノードが有る場合は、どのノードを参照しているのかを特定するために、
 よくある `'node[@attr="value"]'` という XPath の形式を使うことが出来ます。
@@ -81,4 +87,6 @@ XML ファイルの中に同じ名前を持った複数のノードが有る場�
 
 この機能は標準のユーティリティー・モジュールに入っていますので、それをリンクしなければなりません。
 
-    light.exe -ext WixUtilExtension -out Sample.msi Sample.wixobj
+{% highlight bat %}
+light.exe -ext WixUtilExtension -out Sample.msi Sample.wixobj
+{% endhighlight %}

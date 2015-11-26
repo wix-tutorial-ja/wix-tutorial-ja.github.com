@@ -15,20 +15,22 @@ origin: /com-expression-syntax-miscellanea/creating-directories/
 場合によっては、ファイルをインストールせずに、ディレクトリだけを新しく作らなければならないことがあります。
 以下がその方法です。
 
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder" Name="PFiles">
-        <Directory Id="test" Name="test">
-          <Component Id="test"
-              Guid="YOURGUID-4884-4A01-AA04-84B92D222428"
-              SharedDllRefCount="no" KeyPath="no" NeverOverwrite="no"
-              Permanent="no" Transitive="no" Win64="no"
-              Location="either">
-            <CreateFolder/>
-          </Component>
-        </Directory>
-      </Directory>
+{% highlight xml %}
+<Directory Id="TARGETDIR" Name="SourceDir">
+  <Directory Id="ProgramFilesFolder" Name="PFiles">
+    <Directory Id="test" Name="test">
+      <Component Id="test"
+          Guid="YOURGUID-4884-4A01-AA04-84B92D222428"
+          SharedDllRefCount="no" KeyPath="no" NeverOverwrite="no"
+          Permanent="no" Transitive="no" Win64="no"
+          Location="either">
+        <CreateFolder/>
+      </Component>
     </Directory>
-    
-    <Feature Id="test" Title="testfolder" Level="1">
-      <ComponentRef Id="test"/>
-    </Feature>
+  </Directory>
+</Directory>
+
+<Feature Id="test" Title="testfolder" Level="1">
+  <ComponentRef Id="test"/>
+</Feature>
+{% endhighlight %}

@@ -21,18 +21,22 @@ origin: /standard-libraries/silence-please/
 このカスタム・アクションを使うためには、**QtExecCmdLine** という定義済みのプロパティに実行すべきコマンド・ラインを入れなければなりません。
 コマンドの実行は、即時でも遅延でも構いません。
 
-    <Property Id="QtExecCmdLine" Value="something.exe"/>
-    <CustomAction Id="SilentLaunch" BinaryKey="WixCA"
-        DllEntry="CAQuietExec"
-        Execute="immediate" Return="check" />
-    
-    <InstallExecuteSequence>
-      <Custom Action="SilentLaunch" After="..." />
-    </InstallExecuteSequence>
+{% highlight xml %}
+<Property Id="QtExecCmdLine" Value="something.exe"/>
+<CustomAction Id="SilentLaunch" BinaryKey="WixCA"
+    DllEntry="CAQuietExec"
+    Execute="immediate" Return="check" />
+
+<InstallExecuteSequence>
+  <Custom Action="SilentLaunch" After="..." />
+</InstallExecuteSequence>
+{% endhighlight %}
 
 64-bit の実行ファイルを実行するためには、**CAQuietExec64** および **QtExec64CmdLine** を代りに使って下さい。
 
 ビルドするためには、この標準ライブラリをリンクしなければなりません。
 
-    candle.exe Sample.wxs
-    light.exe -ext WixUtilExtension Sample.wixobj
+{% highlight bat %}
+candle.exe Sample.wxs
+light.exe -ext WixUtilExtension Sample.wixobj
+{% endhighlight %}

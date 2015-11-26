@@ -21,9 +21,11 @@ Windows Installer は、こういう *遅延実行の(deferred)* カスタム・
 
 遅延実行のカスタム・アクションは、下記のように定義します。
 
-    <CustomAction Id="MyAction" Return="check" Execute="deferred"
-        BinaryKey="CustomActionsLibrary" DllEntry="MyAction"
-        HideTarget="yes"/>
+{% highlight xml %}
+<CustomAction Id="MyAction" Return="check" Execute="deferred"
+    BinaryKey="CustomActionsLibrary" DllEntry="MyAction"
+    HideTarget="yes"/>
+{% endhighlight %}
 
 **Execute** 属性が、カスタム・アクションが遅延実行されるものであることを指し示しています。
 呼び出さなければならない DLL 関数を **DllEntry** 属性で参照しなければなりません
@@ -48,37 +50,43 @@ Windows Installer は、こういう *遅延実行の(deferred)* カスタム・
 一番簡単な解法はプロパティ設定のカスタム・アクションです。
 設定されるプロパティの名前が遅延実行のカスタム・アクションの **Id** 属性と同じになるように設定して下さい。
 
-    <Property Id="SOME_PUBLIC_PROPERTY">
-      こんにちは、遅延実行 CA です。
-    </Property>
-    <CustomAction Id="MyAction.SetProperty" Return="check"
-        Property="MyAction" Value="[SOME_PUBLIC_PROPERTY]" />
+{% highlight xml %}
+<Property Id="SOME_PUBLIC_PROPERTY">
+  こんにちは、遅延実行 CA です。
+</Property>
+<CustomAction Id="MyAction.SetProperty" Return="check"
+    Property="MyAction" Value="[SOME_PUBLIC_PROPERTY]" />
+{% endhighlight %}
 
 プロパティの設定を遅延実行のアクションの前にスケジュールすることも重要です。
 
-    <InstallExecuteSequence>
-      <Custom Action="MyAction.SetProperty" After="ValidateProductID" />
-      <Custom Action="MyAction" After="MyAction.SetProperty" />
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  <Custom Action="MyAction.SetProperty" After="ValidateProductID" />
+  <Custom Action="MyAction" After="MyAction.SetProperty" />
+</InstallExecuteSequence>
+{% endhighlight %}
 
 渡そうとしたデータは、**CustomActionData** プロパティの中に出現します。
 複数の情報を渡す必要がある場合は、それらをこの単一のプロパティに組み入れる方法を工夫しなければなりません。
 例えば、セミコロンで区切られた **Name=Value** のペアのリストを使う等です。
 
-    #include <windows.h>
-    #include <msi.h>
-    #include <msiquery.h>
-    #include <tchar.h>
+{% highlight c %}
+#include <windows.h>
+#include <msi.h>
+#include <msiquery.h>
+#include <tchar.h>
 
-    #pragma comment(linker, "/EXPORT:MyAction=_MyAction@4")
+#pragma comment(linker, "/EXPORT:MyAction=_MyAction@4")
 
-    extern "C" UINT __stdcall MyAction (MSIHANDLE hInstall) {
-      TCHAR szActionData[MAX_PATH] = {0};
-      DWORD dActionDataLen = MAX_PATH;
+extern "C" UINT __stdcall MyAction (MSIHANDLE hInstall) {
+  TCHAR szActionData[MAX_PATH] = {0};
+  DWORD dActionDataLen = MAX_PATH;
 
-      MsiGetProperty(hInstall, _T("CustomActionData"), szActionData,
-          &dActionDataLen);
-      MessageBox (NULL, szActionData, _T("遅延実行のカスタムアクション"),
-          MB_OK | MB_ICONINFORMATION);
-      return ERROR_SUCCESS;
-    }
+  MsiGetProperty(hInstall, _T("CustomActionData"), szActionData,
+      &dActionDataLen);
+  MessageBox (NULL, szActionData, _T("遅延実行のカスタムアクション"),
+      MB_OK | MB_ICONINFORMATION);
+  return ERROR_SUCCESS;
+}
+{% endhighlight %}

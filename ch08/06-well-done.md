@@ -20,55 +20,67 @@ origin: /user-interface-revisited/well-done/
 
 新しく追加されたダイアログはこのような外観です。
 
-    <Dialog Id="ExitDlg" Width="370" Height="270"
-        Title="[ProductName] [Setup]" NoMinimize="yes">
+{% highlight xml %}
+<Dialog Id="ExitDlg" Width="370" Height="270"
+    Title="[ProductName] [Setup]" NoMinimize="yes">
+{% endhighlight %}
 
 **Finish** ボタンは二つの仕事を実行します。
 第一に、ダイアログ自身を終了します (そして、それによって、インストーラ・パッケージ自身を終了します)。
 第二に、ユーザーがそうすることを選んだ場合に、アプリケーションを起動します。
 
-      <Control Id="Finish" Type="PushButton"
-          X="236" Y="243" Width="56" Height="17" 
-          Default="yes" Cancel="yes"
-          Text="[ButtonText_Finish]">
-        <Publish Event="EndDialog" Value="Return">1</Publish>
-        <Publish Event='DoAction' Value='LaunchFile'>
-          (NOT Installed) AND (LAUNCHPRODUCT = 1)
-        </Publish>
-      </Control>
-      ...
+{% highlight xml %}
+  <Control Id="Finish" Type="PushButton"
+      X="236" Y="243" Width="56" Height="17" 
+      Default="yes" Cancel="yes"
+      Text="[ButtonText_Finish]">
+    <Publish Event="EndDialog" Value="Return">1</Publish>
+    <Publish Event='DoAction' Value='LaunchFile'>
+      (NOT Installed) AND (LAUNCHPRODUCT = 1)
+    </Publish>
+  </Control>
+  ...
+{% endhighlight %}
 
 ダイアログ・ボックスの中のチェックボックス・コントロールは、初期設定値 (**CheckBoxValue**)
 と、チェックボックスの状態を読むために使われる関連づけられたプロパティ (**LAUNCHPRODUCT**) の両方を持ちます。
 
-      <Control Id="Launch" Type="CheckBox"
-          X="135" Y="120" Width="150" Height="17"
-          Property='LAUNCHPRODUCT' CheckBoxValue='1'>
-        <Text>[ProductName] を起動する</Text>
-      </Control>
-      ...
-    </Dialog>
+{% highlight xml %}
+  <Control Id="Launch" Type="CheckBox"
+      X="135" Y="120" Width="150" Height="17"
+      Property='LAUNCHPRODUCT' CheckBoxValue='1'>
+    <Text>[ProductName] を起動する</Text>
+  </Control>
+  ...
+</Dialog>
+{% endhighlight %}
 
 **Finish** ボタンによって発行されるアクションは既によく知っているカスタム・アクションです。
 アプリケーションが走り続けてもインストーラが閉じることが出来るように、**Return** 属性を忘れないようにして下さい。
 
-    <CustomAction Id='LaunchFile' FileKey='HogeEXE' ExeCommand='' 
-        Return="asyncNoWait" />
+{% highlight xml %}
+<CustomAction Id='LaunchFile' FileKey='HogeEXE' ExeCommand='' 
+    Return="asyncNoWait" />
+{% endhighlight %}
 
 この終了ダイアログは、インストールが成功して完了した場合に表示されるようにスケジュールされます
 (詳細は次のセクションを見て下さい)。
 
-    <InstallUISequence>
-      ...
-      <Show Dialog="ExitDlg" OnExit="success" />
-    </InstallUISequence>
+{% highlight xml %}
+<InstallUISequence>
+  ...
+  <Show Dialog="ExitDlg" OnExit="success" />
+</InstallUISequence>
+{% endhighlight %}
 
 チェックボックスとプロパティがリンクされるのはイベントが発生する時、すなわちユーザーがチェックを入れたり外したりする時だけです。
 初期状態では、ユーザーとの相互作用がまだ無いため、プロパティが **Control**
 タグで設定したデフォルト値を受け取る機縁となるものはありません。
 従って、必ず私たち自身がプロパティを初期化しなければなりません。
 
-    <Property Id="LAUNCHPRODUCT">1</Property>
+{% highlight xml %}
+<Property Id="LAUNCHPRODUCT">1</Property>
+{% endhighlight %}
 
 SampleCustomUI6 をビルドする前に、ダミーの `.exe` ファイルを何か実際に起動するものに必ず置き換えて下さい。
 

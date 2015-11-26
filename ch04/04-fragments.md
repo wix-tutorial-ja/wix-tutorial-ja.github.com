@@ -6,7 +6,7 @@ prev: 03-patchwork
 prev-title: 3. パッチワーク
 next: 05-mergers
 next-title: 5. 融合するもの
-origin: /upgrades-and-modularization/replacing-ourselves/
+origin: /upgrades-and-modularization/fragments/
 ---
 # Lesson 4 アップグレードとモジュラー化
 
@@ -31,14 +31,16 @@ makefile の手法では、最後のコンパイルの後で変化があった `
 
 > 訳註：SampleFragment の日本語版は [Sample-4-4-Fragment.zip](/samples/Sample-4-4-Fragment.zip) です。
 
-      <Feature Id='Complete' Title='ほげ 1.0' Description='完全パッケージ。'
-        ...
-    
-        <Feature Id='Documentation' Title='説明書'
-            Description='取扱説明書。' Level='1'>
-          <ComponentRef Id='Manual' />
-        </Feature>
-      </Feature>
+{% highlight xml %}
+  <Feature Id='Complete' Title='ほげ 1.0' Description='完全パッケージ。'
+      ... >
+
+    <Feature Id='Documentation' Title='説明書'
+        Description='取扱説明書。' Level='1'>
+      <ComponentRef Id='Manual' />
+    </Feature>
+  </Feature>
+{% endhighlight %}
 
 削除したコンポーネントは、それ自身のファイルに入れて、**Fragment** タグで囲みます。
 ここでは、メインのソース・ファイルで既に宣言している **Directory** に対しては、*参照するだけ* にします。
@@ -46,22 +48,24 @@ makefile の手法では、最後のコンパイルの後で変化があった `
 フラグメントの中に代理を置くことが出来るものは、すべて変異形のタグを持っています。
 別の場所で定義された機能を参照するためには **FeatureRef** を使い、プロパティを参照するためには **PropertyRef** を使います。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-      <Fragment Id='FragmentManual'>
-        <DirectoryRef Id='INSTALLDIR'>
-          <Component Id='Manual'
-              Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
-            <File Id='Manual' Name='Manual.pdf' DiskId='1'
-                Source='Manual.pdf' KeyPath='yes'>
-              <Shortcut Id="startmenuManual" Directory="ProgramMenuDir"
-                  Name="取扱説明書" Advertise="yes" />
-            </File>
-          </Component>
-        </DirectoryRef>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Fragment Id='FragmentManual'>
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component Id='Manual'
+          Guid='YOURGUID-574D-4A9A-A266-5B5EC2C022A4'>
+        <File Id='Manual' Name='Manual.pdf' DiskId='1'
+            Source='Manual.pdf' KeyPath='yes'>
+          <Shortcut Id="startmenuManual" Directory="ProgramMenuDir"
+              Name="取扱説明書" Advertise="yes" />
+        </File>
+      </Component>
+    </DirectoryRef>
 
-      </Fragment>
-    </Wix>
+  </Fragment>
+</Wix>
+{% endhighlight %}
 
 私たちは既にこの二つのファイルをコンパイルし、リンクして、一つのインストーラ・パッケージにすることが出来ます。
 この二つのコンパイルの単位を一緒にリンクするためには、ソースには一行も加える必要が無い、ということに注意して下さい。
@@ -73,8 +77,10 @@ makefile の手法では、最後のコンパイルの後で変化があった `
 
 サンプルをビルドするためには、下記のコマンドを使います。
 
-    candle.exe SampleFragment.wxs Manual.wxs
-    light.exe -out SampleFragment.msi SampleFragment.wixobj Manual.wixobj
+{% highlight bat %}
+candle.exe SampleFragment.wxs Manual.wxs
+light.exe -out SampleFragment.msi SampleFragment.wixobj Manual.wixobj
+{% endhighlight %}
 
 フラグメントの用途は多岐にわたっていて、単一のセットアップ・プロジェクトの中で使えるだけでなく、
 異ったプロジェクト間で共通の項目を共有するために使うことも出来ます。

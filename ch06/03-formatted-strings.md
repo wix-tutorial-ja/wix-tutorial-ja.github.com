@@ -43,33 +43,45 @@ origin: /com-expression-syntax-miscellanea/formatted-strings/
 コンパイラ *Candle* は **`$(var.Foo)`** という構文を使います。
 ソース・ファイル自身の中で値を設定するためには、下記のように記述します。
 
-    <?define Foo=bar?>
+{% highlight xml %}
+<?define Foo=bar?>
+{% endhighlight %}
 
 コマンド・ライン・スイッチで設定する場合は、次のようにします。
 
-    candle -dFoo=bar
+{% highlight bat %}
+candle -dFoo=bar
+{% endhighlight %}
 
 *Light*、すなわちリンカも同様な仕組みを持っていますが、構文がほんの少し異なっていて、**`!(wix.Foo)`** となります — 
 コマンド・ラインは同じです。
 
-    light -dFoo=bar
+{% highlight bat %}
+light -dFoo=bar
+{% endhighlight %}
 
 地域化される文字列は、**`!(loc.Foo)`** という表記法を使います。
 リンカは、これらの文字列が `.wxl` 地域化ファイルの中で、下記の構文で定義されているものとします。
 
-    <String Id="Foo" Overridable="yes">bar</String>
+{% highlight xml %}
+<String Id="Foo" Overridable="yes">bar</String>
+{% endhighlight %}
 
 地域化ファイルもコマンド・ラインで指定します。
 
-    light -loc path path
+{% highlight bat %}
+light -loc path path
+{% endhighlight %}
 
 地域化文字列とその他の文字列の主な違いは、地域化文字列はオーバーライド可能な性格を持っていることです。
 ライブラリや拡張モジュールが地域化文字列の既定値を持つことが出来る一方で、それを後のリンクの過程でオーバーライドすることが出来ます。
 
 これらの値を Windows Installer の通常のプロパティに割り当てるためには、どの場合も、**Property** タグを使って下さい。
 
-    <Property Id="Foo1" Value="$(var.Foo)" />
-    <Property Id="Foo2" Value="!(wix.Foo)" />
-    <Property Id="Foo3" Value="$(env.Foo)" />
+{% highlight xml %}
+<Property Id="Foo1" Value="$(var.Foo)" />
+<Property Id="Foo2" Value="!(wix.Foo)" />
+<Property Id="Foo3" Value="$(env.Foo)" />
+{% endhighlight %}
 
 環境変数は、コンパイラでもリンカでも、**`$(env.Foo)`** という構文でアクセスすることが出来ます。

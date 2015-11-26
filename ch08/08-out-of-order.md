@@ -16,9 +16,11 @@ origin: /user-interface-revisited/well-done/
 それらのダイアログは、**OnExit** 属性を使って **Show** タグでスケジュールすることが出来ます。
 **OnExit** 属性の値は、*success*, *cancel*, *error* または *suspend* です。
 
-    <InstallUISequence>
-      <Show Dialog="FatalError" OnExit="error" />
-      <Show Dialog="UserExit" OnExit="cancel" />
-      <Show Dialog="ExitDialog" OnExit="success" />
-      ...
-    </InstallUISequence>
+{% highlight xml %}
+<InstallUISequence>
+  <Show Dialog="FatalError" OnExit="error" />
+  <Show Dialog="UserExit" OnExit="cancel" />
+  <Show Dialog="ExitDialog" OnExit="success" />
+  ...
+</InstallUISequence>
+{% endhighlight %}

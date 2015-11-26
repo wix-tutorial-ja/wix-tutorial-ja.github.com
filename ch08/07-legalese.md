@@ -16,27 +16,31 @@ origin: /user-interface-revisited/legalese/
 
 ![LicenseAgreementDlg](/images/customlicense.png)
 
-        <UI>
-          ...
-          <Dialog Id="LicenseAgreementDlg" Width="370" Height="270"
-              Title="[ProductName] 使用許諾契約書" NoMinimize="yes">
+{% highlight xml %}
+    <UI>
+      ...
+      <Dialog Id="LicenseAgreementDlg" Width="370" Height="270"
+          Title="[ProductName] 使用許諾契約書" NoMinimize="yes">
+{% endhighlight %}
 
 ラジオ・ボタン・グループについては、ソースの後の方で独立した記述をします。
 リンクは **Property** 属性によって確立されます。
 
-            <Control Id="Buttons" Type="RadioButtonGroup"
-                X="20" Y="187" Width="330" Height="40"
-                Property="IAgree" />
-    
-            <Control Id="Back" Type="PushButton"
-                X="180" Y="243" Width="56" Height="17"
-                Text="[ButtonText_Back]">
-              <Publish Event="NewDialog" Value="WelcomeDlg">1</Publish>
-            </Control>
-    
-            <Control Id="Next" Type="PushButton"
-                X="236" Y="243" Width="56" Height="17" Default="yes"
-                Text="[ButtonText_Next]">
+{% highlight xml %}
+        <Control Id="Buttons" Type="RadioButtonGroup"
+            X="20" Y="187" Width="330" Height="40"
+            Property="IAgree" />
+
+        <Control Id="Back" Type="PushButton"
+            X="180" Y="243" Width="56" Height="17"
+            Text="[ButtonText_Back]">
+          <Publish Event="NewDialog" Value="WelcomeDlg">1</Publish>
+        </Control>
+
+        <Control Id="Next" Type="PushButton"
+            X="236" Y="243" Width="56" Height="17" Default="yes"
+            Text="[ButtonText_Next]">
+{% endhighlight %}
 
 今回、次に表示するダイアログの選び方は、ほんの少し手が込んでいます。
 インストールによっては、ユーザー名、会社名、および、登録キーの入力をユーザーに求めたくないことがあります。
@@ -47,13 +51,15 @@ origin: /user-interface-revisited/legalese/
 `0` に設定すれば、ユーザー登録ページはスキップされます。
 このことは、それぞれの場合に対応する二つの **NewDialog** イベントを用意することを意味します。
 
-              <Publish Event="NewDialog" Value="UserRegistrationDlg">
-                <![CDATA[IAgree = "Yes" AND ShowUserRegistrationDlg = 1]]>
-              </Publish>
-    
-              <Publish Event="NewDialog" Value="SetupTypeDlg">
-                <![CDATA[IAgree = "Yes" AND ShowUserRegistrationDlg <> 1]]>
-              </Publish>
+{% highlight xml %}
+          <Publish Event="NewDialog" Value="UserRegistrationDlg">
+            <![CDATA[IAgree = "Yes" AND ShowUserRegistrationDlg = 1]]>
+          </Publish>
+
+          <Publish Event="NewDialog" Value="SetupTypeDlg">
+            <![CDATA[IAgree = "Yes" AND ShowUserRegistrationDlg <> 1]]>
+          </Publish>
+{% endhighlight %}
 
 **SpawnDialog** イベントと **SpawnWaitDialog** イベントは前のページを置き換えずに、新しい子ダイアログ・ボックスを開始します。
 前者はユーザーのアクションによって終了されるのを待ちますが、後者は条件式が偽である間だけ表示されます。
@@ -63,10 +69,12 @@ origin: /user-interface-revisited/legalese/
 それでも、念のために、ダイアログを用意しておきましょう。
 **CostingComplete** は、必要なディスク容量の計算が完了した時に `1` に設定される定義済みのプロパティです。
 
-              <Publish Event="SpawnWaitDialog" 
-                  Value="WaitForCostingDlg">
-                CostingComplete = 1
-              </Publish>
+{% highlight xml %}
+          <Publish Event="SpawnWaitDialog" 
+              Value="WaitForCostingDlg">
+            CostingComplete = 1
+          </Publish>
+{% endhighlight %}
 
 そして、最後に、おなじみの嫌がらせです。
 「次へ」ボタンはユーザーが使用許諾契約への同意を示すまでは無効化された状態に留まります。
@@ -76,14 +84,16 @@ origin: /user-interface-revisited/legalese/
 **Action** 属性を使うと、**Condition** タグの内側の条件が真と評価される場合に、コントロールを *disable*, *enable*, *hide*
 または *show* する (あるいは *default* の状態に戻す) ことが出来ます。
 
-              <Condition Action="disable">
-                <![CDATA[IAgree <> "Yes"]]>
-              </Condition>
-    
-              <Condition Action="enable">
-                IAgree = "Yes"
-              </Condition>
-            </Control>
+{% highlight xml %}
+          <Condition Action="disable">
+            <![CDATA[IAgree <> "Yes"]]>
+          </Condition>
+
+          <Condition Action="enable">
+            IAgree = "Yes"
+          </Condition>
+        </Control>
+{% endhighlight %}
 
 小さな事ですが、注意深い読者は気付いているでしょう。
 条件式のいくつかに対して、私たちは格好悪い `<![CDATA[...]]>` ラッパーを使いました。
@@ -96,15 +106,17 @@ origin: /user-interface-revisited/legalese/
 
 次の部分は既によく知っているところです。
 
-            <Control Id="Cancel" Type="PushButton"
-                X="304" Y="243" Width="56" Height="17" Cancel="yes"
-                Text="[ButtonText_Cancel]">
-              <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
-            </Control>
-    
-            <Control Id="BannerBitmap" Type="Bitmap"
-                X="0" Y="0" Width="370" Height="44" TabSkip="no"
-                Text="[BannerBitmap]" />
+{% highlight xml %}
+        <Control Id="Cancel" Type="PushButton"
+            X="304" Y="243" Width="56" Height="17" Cancel="yes"
+            Text="[ButtonText_Cancel]">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+
+        <Control Id="BannerBitmap" Type="Bitmap"
+            X="0" Y="0" Width="370" Height="44" TabSkip="no"
+            Text="[BannerBitmap]" />
+{% endhighlight %}
 
 次に使用許諾契約書のテキストが来ます。
 スクロール可能なコンテンツを持った凹んだテキストのコントロールを開きます。
@@ -115,42 +127,48 @@ origin: /user-interface-revisited/legalese/
 高機能なものを使うと、RTF ファイルがひどく冗長なものになります。
 高機能なワード・プロセッサを使うとしても、最終版をワードパッドで保存し直すことを考慮して下さい)。
 
-            <Control Id="AgreementText" Type="ScrollableText"
-                  X="20" Y="60" Width="330" Height="120" 
-                  Sunken="yes" TabSkip="no">
-              <Text SourceFile="Binary\License.rtf" />
-            </Control>
+{% highlight xml %}
+        <Control Id="AgreementText" Type="ScrollableText"
+              X="20" Y="60" Width="330" Height="120" 
+              Sunken="yes" TabSkip="no">
+          <Text SourceFile="Binary\License.rtf" />
+        </Control>
+{% endhighlight %}
 
 契約書のテキストは、ソース・ファイルのこの箇所に直接に書き込むことも出来ます。
 しかし、既に述べた方法の方が、はるかに保守が容易であると思われます。
 
-              <Text>{\rtf1\ansi\ansicpg1252\deff0\deftab720
-                {\fonttbl{\f0\froman\fprq2 Times New Roman;}}
-                {\colortbl\red0\green0\blue0;}
-                \deflang1033\horzdoc{\*\fchars }{\*\lchars }
-                \pard\plain\f0\fs20
-                This End User License Agreement is a legal agreement between you
-                (either an individual or a single entity) and ...\par
-                }
+{% highlight xml %}
+          <Text>{\rtf1\ansi\ansicpg1252\deff0\deftab720
+            {\fonttbl{\f0\froman\fprq2 Times New Roman;}}
+            {\colortbl\red0\green0\blue0;}
+            \deflang1033\horzdoc{\*\fchars }{\*\lchars }
+            \pard\plain\f0\fs20
+            This End User License Agreement is a legal agreement
+            between you(either an individual or a single entity)
+            and ...\par}
+{% endhighlight %}
 
 残されている部分は本当に簡単で、詳細な説明には値しません。
 あっちやこっちに、タイトル行と水平線を付けて、ダイアログの残りの部分を作ります。
 
-            <Control Id="Description" Type="Text"
-                X="25" Y="23" Width="280" Height="15" Transparent="yes" 
-                NoPrefix="yes">
-              <Text>以下の使用許諾契約書を注意深く読んで下さい</Text>
-            </Control>
-            <Control Id="BottomLine" Type="Line"
-                X="0" Y="234" Width="370" Height="0" />
-            <Control Id="Title" Type="Text"
-                X="15" Y="6" Width="200" Height="15" Transparent="yes" 
-                NoPrefix="yes">
-              <Text>{\DlgTitleFont}エンド・ユーザー使用許諾契約書</Text>
-            </Control>
-            <Control Id="BannerLine" Type="Line"
-                X="0" Y="44" Width="374" Height="0" />
-          </Dialog>
+{% highlight xml %}
+        <Control Id="Description" Type="Text"
+            X="25" Y="23" Width="280" Height="15" Transparent="yes" 
+            NoPrefix="yes">
+          <Text>以下の使用許諾契約書を注意深く読んで下さい</Text>
+        </Control>
+        <Control Id="BottomLine" Type="Line"
+            X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Title" Type="Text"
+            X="15" Y="6" Width="200" Height="15" Transparent="yes" 
+            NoPrefix="yes">
+          <Text>{\DlgTitleFont}エンド・ユーザー使用許諾契約書</Text>
+        </Control>
+        <Control Id="BannerLine" Type="Line"
+            X="0" Y="44" Width="374" Height="0" />
+      </Dialog>
+{% endhighlight %}
 
 返済すべき借りがまだ有ります。
 ダイアログの最初のコントロールで、ラジオ・ボタン・グループの記述に言及しましたが、それが保留されたまま残っています。
@@ -158,14 +176,16 @@ origin: /user-interface-revisited/legalese/
 **Text** 属性の中のプロパティ置換に注目して下さい。
 このようにすると、テキストのフォント、サイズ、および色を指定する事が出来ます。
 
-          <RadioButtonGroup Property="IAgree">
-            <RadioButton
-                Text="{\DlgFont8}使用許諾契約書の条項に同意します(&A)"
-                Value="Yes" X="5" Y="0" Width="250" Height="15" />
-            <RadioButton
-                Text="{\DlgFont8}使用許諾契約書の条項に同意しません(&D)"
-                Value="No" X="5" Y="20" Width="250" Height="15" />
-          </RadioButtonGroup>
+{% highlight xml %}
+      <RadioButtonGroup Property="IAgree">
+        <RadioButton
+            Text="{\DlgFont8}使用許諾契約書の条項に同意します(&A)"
+            Value="Yes" X="5" Y="0" Width="250" Height="15" />
+        <RadioButton
+            Text="{\DlgFont8}使用許諾契約書の条項に同意しません(&D)"
+            Value="No" X="5" Y="20" Width="250" Height="15" />
+      </RadioButtonGroup>
+{% endhighlight %}
 
 しかしこれらのフォントの定義はどこにあるのか、と質問されますか？ 
 オーケー、次に示します。
@@ -174,12 +194,14 @@ origin: /user-interface-revisited/legalese/
 色については、*Red*, *Green* および *Blue* の属性を使うことが出来ます (それぞれ 0 から 255 の間の値を指定します)。
 追加の装飾として、*Bold*, *Italic*, *Underline* および *Strike* を指定する事が出来ます。
 
-          <TextStyle Id="DlgFont8" FaceName="Tahoma" 
-              Size="8" />
-          <TextStyle Id="DlgTitleFont" FaceName="Tahoma" 
-              Size="8" Bold="yes" />
-          <TextStyle Id="VerdanaBold13" FaceName="Verdana"
-              Size="13" Bold="yes" />
+{% highlight xml %}
+      <TextStyle Id="DlgFont8" FaceName="Tahoma" 
+          Size="8" />
+      <TextStyle Id="DlgTitleFont" FaceName="Tahoma" 
+          Size="8" Bold="yes" />
+      <TextStyle Id="VerdanaBold13" FaceName="Verdana"
+          Size="13" Bold="yes" />
+{% endhighlight %}
 
 ソース・ファイルの最後には、プロパティの定義が来ます — 
 基本的には、私たちが使う変数とその初期値です。
@@ -189,31 +211,35 @@ origin: /user-interface-revisited/legalese/
 値全体を CDATA ラッパーで包むか、または、こういう扱いにくい文字に XML 実体参照を使うかしなければなりません
 (**ButtonText_Next** と **ButtonText_Back** を比較して下さい)。
 
-        <Property Id="ALLUSERS">2</Property>
-        <Property Id="ROOTDRIVE"><![CDATA[C:\]]></Property>
-        <Property Id="Setup">セットアップ</Property>
-        <Property Id="ButtonText_Next">次へ(&amp;N) &gt;</Property>
-        <Property Id="ButtonText_Back"><![CDATA[< 戻る(&B)]]></Property>
+{% highlight xml %}
+    <Property Id="ALLUSERS">2</Property>
+    <Property Id="ROOTDRIVE"><![CDATA[C:\]]></Property>
+    <Property Id="Setup">セットアップ</Property>
+    <Property Id="ButtonText_Next">次へ(&amp;N) &gt;</Property>
+    <Property Id="ButtonText_Back"><![CDATA[< 戻る(&B)]]></Property>
+{% endhighlight %}
 
 インストーラ・パッケージには、製品と一緒にインストールしたくないけれど、ユーザー・インタフェイスには必要になるファイルが付いています。
 つまり、ビットマップとアイコンです。これらについて、ソース・ファイルの末尾で記述します。
 これまで、ビットマップとアイコンは **Id** 識別子を使って参照してきましたが、ここで実際のファイル名を定義します。
 これらのファイルは、独立したキャビネットを要求した場合でも、`.cab` ファイルではなく `.msi` ファイルに格納されます。
 
-        <Binary Id="Up" SourceFile="Binary\Up.ico" />
-        <Binary Id="New" SourceFile="Binary\New.ico" />
-        <Binary Id="custicon" SourceFile="Binary\Custom.ico" />
-        <Binary Id="repairic" SourceFile="Binary\Repair.ico" />
-        <Binary Id="exclamic" SourceFile="Binary\Exclam.ico" />
-        <Binary Id="removico" SourceFile="Binary\Remove.ico" />
-        <Binary Id="completi" SourceFile="Binary\Complete.ico" />
-        <Binary Id="insticon" SourceFile="Binary\Typical.ico" />
-        <Binary Id="info" SourceFile="Binary\Info.ico" />
-        <Binary Id="bannrbmp" SourceFile="Binary\Banner.bmp" />
-        <Binary Id="dlgbmp" SourceFile="Binary\Dialog.bmp" />
-        <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
-      </Product>
-    </Wix>
+{% highlight xml %}
+    <Binary Id="Up" SourceFile="Binary\Up.ico" />
+    <Binary Id="New" SourceFile="Binary\New.ico" />
+    <Binary Id="custicon" SourceFile="Binary\Custom.ico" />
+    <Binary Id="repairic" SourceFile="Binary\Repair.ico" />
+    <Binary Id="exclamic" SourceFile="Binary\Exclam.ico" />
+    <Binary Id="removico" SourceFile="Binary\Remove.ico" />
+    <Binary Id="completi" SourceFile="Binary\Complete.ico" />
+    <Binary Id="insticon" SourceFile="Binary\Typical.ico" />
+    <Binary Id="info" SourceFile="Binary\Info.ico" />
+    <Binary Id="bannrbmp" SourceFile="Binary\Banner.bmp" />
+    <Binary Id="dlgbmp" SourceFile="Binary\Dialog.bmp" />
+    <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
+  </Product>
+</Wix>
+{% endhighlight %}
 
 ビットマップやアイコンを変更したいときは、Binary ディレクトリの中だけで変更して下さい。
 表紙のビットマップ (ここでは **Dialog.bmp** という名前です) は、503 × 314 ピクセルの BMP ファイルで、

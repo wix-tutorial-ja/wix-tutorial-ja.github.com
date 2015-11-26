@@ -27,13 +27,15 @@ SampleCustomUI3 では、第二のダイアログを追加して、ユーザー�
 キャンセルするダイアログをキャンセルするという事は、インストールを続けることに賛成するということです。
 従って、第一の、デフォルトのボタン (**いいえ** というテキストを持ったボタン) を、キャンセル・ボタンと呼びます。
 
-    <Dialog Id="CancelDlg" Width="260" Height="85"
-        Title="[ProductName] [Setup]" NoMinimize="yes">
-      <Control Id="No" Type="PushButton"
-          X="132" Y="57" Width="56" Height="17"
-          Default="yes" Cancel="yes" Text="[ButtonText_No]">
-        <Publish Event="EndDialog" Value="Return">1</Publish>
-      </Control>
+{% highlight xml %}
+<Dialog Id="CancelDlg" Width="260" Height="85"
+    Title="[ProductName] [Setup]" NoMinimize="yes">
+  <Control Id="No" Type="PushButton"
+      X="132" Y="57" Width="56" Height="17"
+      Default="yes" Cancel="yes" Text="[ButtonText_No]">
+    <Publish Event="EndDialog" Value="Return">1</Publish>
+  </Control>
+{% endhighlight %}
 
 ユーザーがこのボタンをクリックすると、**Return** の値を持った **EndDialog** イベントが発生します。
 その名前が示すように、このイベントは単純にダイアログを終了して、元の操作を再開します。
@@ -43,24 +45,28 @@ SampleCustomUI3 では、第二のダイアログを追加して、ユーザー�
 第二の、**はい** というテキストを持ったボタンは、同じ **EndDialog** イベントを発生させますが、**Exit** という別の値を伴います。
 この値は、インストールの操作全体を中止するために使われます。
 
-      <Control Id="Yes" Type="PushButton"
-          X="72" Y="57" Width="56" Height="17" Text="[ButtonText_Yes]">
-        <Publish Event="EndDialog" Value="Exit">1</Publish>
-      </Control>
+{% highlight xml %}
+  <Control Id="Yes" Type="PushButton"
+      X="72" Y="57" Width="56" Height="17" Text="[ButtonText_Yes]">
+    <Publish Event="EndDialog" Value="Exit">1</Publish>
+  </Control>
+{% endhighlight %}
 
 残りは簡単です。テキストとアイコンです。**Binary** タグを追加してパッケージにアイコンを入れることを忘れないで下さい。
 
-      <Control Id="Text" Type="Text"
-          X="48" Y="15" Width="194" Height="30">
-        <Text>[ProductName] のインストールを中止してよろしいですか？</Text>
-      </Control>
-    
-      <Control Id="Icon" Type="Icon"
-          X="15" Y="15" Width="24" Height="24" ToolTip="情報アイコン"
-          FixedSize="yes" IconSize="32" Text="[InfoIcon]" />
-    </Dialog>
-    
-    <Binary Id="info" SourceFile="Binary\Info.ico" />
+{% highlight xml %}
+  <Control Id="Text" Type="Text"
+      X="48" Y="15" Width="194" Height="30">
+    <Text>[ProductName] のインストールを中止してよろしいですか？</Text>
+  </Control>
+
+  <Control Id="Icon" Type="Icon"
+      X="15" Y="15" Width="24" Height="24" ToolTip="情報アイコン"
+      FixedSize="yes" IconSize="32" Text="[InfoIcon]" />
+</Dialog>
+
+<Binary Id="info" SourceFile="Binary\Info.ico" />
+{% endhighlight %}
 
 **InstallDlg** ダイアログにも、いくらか修正が必要です。
 **Install** ボタンを左へ移動して、**Cancel** ボタンを置く場所を作りました。
@@ -68,8 +74,10 @@ SampleCustomUI3 では、第二のダイアログを追加して、ユーザー�
 前のレッスンで既に述べたように、**SpawnDialog** は新しい子ダイアログを開始しますが、
 現在のダイアログは削除せず、ユーザーがその第二のダイアログを終了すると動作を続行します。
 
-      <Control Id="Cancel" Type="PushButton"
-          X="304" Y="243" Width="56" Height="17"
-          Cancel="yes" Text="[ButtonText_Cancel]">
-        <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
-      </Control>
+{% highlight xml %}
+  <Control Id="Cancel" Type="PushButton"
+      X="304" Y="243" Width="56" Height="17"
+      Cancel="yes" Text="[ButtonText_Cancel]">
+    <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+  </Control>
+{% endhighlight %}

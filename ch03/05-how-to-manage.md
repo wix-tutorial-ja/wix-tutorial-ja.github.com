@@ -27,24 +27,26 @@ origin: /events-and-actions/how-to-manage/
 アンインストールの際にも問題が生じる可能性があります)
 が、その制約を受け入れることが出来るのであれば、前のサンプルのカスタム・アクションを C# に移植したものを以下に示します。
 
-    namespace WiXTutorial.Samples
-    {
-      using System;
-      using System.Collections.Generic;
-      using System.IO;
-      using Microsoft.Deployment.WindowsInstaller;
+{% highlight csharp %}
+namespace WiXTutorial.Samples
+{
+  using System;
+  using System.Collections.Generic;
+  using System.IO;
+  using Microsoft.Deployment.WindowsInstaller;
 
-      public class SampleCheckPID
-      {
-        [CustomAction]
-        public static ActionResult CheckPID(Session session)
-        {
-          string Pid = session["PIDKEY"];
-          session["PIDACCEPTED"] = Pid.StartsWith("1") ? "1" : "0";
-          return ActionResult.Success;
-        }
-      }
+  public class SampleCheckPID
+  {
+    [CustomAction]
+    public static ActionResult CheckPID(Session session)
+    {
+      string Pid = session["PIDKEY"];
+      session["PIDACCEPTED"] = Pid.StartsWith("1") ? "1" : "0";
+      return ActionResult.Success;
     }
+  }
+}
+{% endhighlight %}
 
 [SampleAskKeyNET](https://www.firegiant.com/system/files/samples/SampleAskKeyNET.zip) のソース・コードには、ほんの一箇所だけ、修正が必要なところがあります。
 DLL の名前は違うものになります。
@@ -52,17 +54,21 @@ DLL の名前は違うものになります。
 
 > 訳註：SampleAskKeyNET の日本語版は [Sample-3-5-AskKeyNet.zip](/samples/Sample-3-5-AskKeyNet.zip) です。
 
-      <Binary Id="CheckPID" SourceFile="CheckPIDPackage.dll" />
+{% highlight xml %}
+  <Binary Id="CheckPID" SourceFile="CheckPIDPackage.dll" />
+{% endhighlight %}
 
 加えて、**CustomAction.config** という小さなファイルも用意して下さい。
 このファイルは、マネージ・カスタム・アクションが依存するランタイムについて記述するものです。
 
-    <?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-      <startup>
-        <supportedRuntime version="v2.0.50727"/>
-      </startup>
-    </configuration>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <startup>
+    <supportedRuntime version="v2.0.50727"/>
+  </startup>
+</configuration>
+{% endhighlight %}
 
 .NET 言語で仕事をするときの相対的な容易さには代償があります。
 それは、ビルドのプロセスが複雑になるということです。
@@ -74,16 +80,18 @@ WiX ソース・パッケージの DTF 部門の下にサンプル・プロジ�
 下記のコマンドで、*path* として記述している箇所は、省略しない絶対パスを指定しなければいけません。
 そうしないと、MakeSfxCA はエラー・メッセージを出し、作成される DLL は役に立たない物になります。
 
-    csc.exe /target:library
-            /reference:path\Microsoft.Deployment.WindowsInstaller.dll
-            /out:CheckPID.dll CheckPID.cs
-    MakeSfxCA.exe path\CheckPIDPackage.dll
-                  path\sfxca.dll path\CheckPID.dll
-                  path\CustomAction.config
-                  path\Microsoft.Deployment.WindowsInstaller.dll
-    candle.exe SampleAskKeyNET.wxs UserRegistrationDlg.wxs
-    light.exe -ext WixUIExtension -out SampleAskKeyNET.msi
-              SampleAskKeyNET.wixobj UserRegistrationDlg.wixobj
+{% highlight bat %}
+csc.exe /target:library
+        /reference:path\Microsoft.Deployment.WindowsInstaller.dll
+        /out:CheckPID.dll CheckPID.cs
+MakeSfxCA.exe path\CheckPIDPackage.dll
+              path\sfxca.dll path\CheckPID.dll
+              path\CustomAction.config
+              path\Microsoft.Deployment.WindowsInstaller.dll
+candle.exe SampleAskKeyNET.wxs UserRegistrationDlg.wxs
+light.exe -ext WixUIExtension -out SampleAskKeyNET.msi
+          SampleAskKeyNET.wixobj UserRegistrationDlg.wixobj
+{% endhighlight %}
 
 ツールセットの中には DTF 自体のドキュメントがあります。
 従って、このチュートリアルでは、DTF についてこれ以上言及しません。そちらのドキュメントとサンプル・コードを使って下さい。

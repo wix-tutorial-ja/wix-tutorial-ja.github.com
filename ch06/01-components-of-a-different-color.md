@@ -23,7 +23,9 @@ WiX に含まれている *Heat* は、様々なソース (フォルダ、ファ
 
 Heat の第一のモードは、ファイルがいっぱい入った一つまたは複数のフォルダを調べて、必要な WiX ソースを作成するのを支援するものです。
 
-    heat dir folder -cg SampleGroup -out SampleGroup.wxs
+{% highlight bat %}
+heat dir folder -cg SampleGroup -out SampleGroup.wxs
+{% endhighlight %}
 
 上記のコマンドは、指定されたフォルダを再帰的に調べて、`-cg` スイッチで指定された名前の **ComponentGroup** を持つ
 **Fragment** を作成します。
@@ -37,7 +39,9 @@ Heat は、コンポーネント・グループだけでなく、再帰的に訪
 ディレクトリの参照 (**DirectoryRef** タグ) を含んだフラグメントも同時に生成します。
 調べる対象になったルート・ディレクトリは、特に名前を指定しない限り、**TARGETDIR** という識別子を与えられます。
 
-    heat dir path -dr MyDirName -cg SampleGroup -out SampleGroup.wxs
+{% highlight bat %}
+heat dir path -dr MyDirName -cg SampleGroup -out SampleGroup.wxs
+{% endhighlight %}
 
 自動的に生成される識別子がこの名前をシードとして使うことに注意して下さい。
 この名前を変更すると、すべての識別子が変ります。
@@ -47,78 +51,84 @@ Heat は、コンポーネント・グループだけでなく、再帰的に訪
 ルート・フォルダに属するファイルは、その **Directory** を **TARGETDIR** または `-dr` スイッチで指定された名前で参照します。
 そして、ルート・フォルダに対する独立した **DirectoryRef** フラグメントは生成されません。
 
-    heat dir path -srd -dr MyDirName -cg SampleGroup -out SampleGroup.wxs
+{% highlight bat %}
+heat dir path -srd -dr MyDirName -cg SampleGroup -out SampleGroup.wxs
+{% endhighlight %}
 
 このツールの第二のモードは、単一のファイルを扱います。
 そのファイルに関連するレジストリ、あるいは、COM やそれに類する項目がある場合に、それらの全部が Heat によって抽出されるのです
 (ここでの主題は Shell32.dll システム・ライブラリのための相互運用アセンブリです)。
 
-    heat file file -cg SampleGroup -out SampleGroup.wxs
+{% highlight bat %}
+heat file file -cg SampleGroup -out SampleGroup.wxs
+{% endhighlight %}
 
 上記のコマンドの結果、全ての詳細が正しく抽出されて、下記と同様なソース・ファイルが作られます。
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-      <Fragment>
-        <ComponentGroup Id="SampleGroup">
-          <Component Id="cmpA8B0842041500B0ACE61F7EFD0FBD893"
-              Directory="dir0F6F75DF46D1BACE2233EC573E6D4AA9"
-              Guid="PUT-GUID-HERE">
-            <File Id="filDDAAB2C11E1E5AE4668D99216C3B5523" KeyPath="yes"
-                Source="SourceDir\SampleHeat\Interop.Shell32.dll" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                Name="Class"
-                Value="Shell32.ShellDispatchInprocClass"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                Name="Assembly"
-                Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                Name="RuntimeVersion"
-                Value="v2.0.50727"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
-                Name="CodeBase"
-                Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                Name="Class"
-                Value="Shell32.ShellDispatchInprocClass"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                Name="Assembly"
-                Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                Name="RuntimeVersion"
-                Value="v2.0.50727"
-                Type="string" Action="write" />
-            <RegistryValue Root="HKCR"
-                Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
-                Name="CodeBase"
-                Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
-                Type="string" Action="write" />
-            ...
-          </Component>
-        </ComponentGroup>
-      </Fragment>
-      <Fragment>
-        <DirectoryRef Id="TARGETDIR">
-          <Directory Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" Name="SampleHeat" />
-        </DirectoryRef>
-      </Fragment>
-      <Fragment>
-        <DirectoryRef Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" />
-      </Fragment>
-    </Wix>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="SampleGroup">
+      <Component Id="cmpA8B0842041500B0ACE61F7EFD0FBD893"
+          Directory="dir0F6F75DF46D1BACE2233EC573E6D4AA9"
+          Guid="PUT-GUID-HERE">
+        <File Id="filDDAAB2C11E1E5AE4668D99216C3B5523" KeyPath="yes"
+            Source="SourceDir\SampleHeat\Interop.Shell32.dll" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+            Name="Class"
+            Value="Shell32.ShellDispatchInprocClass"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+            Name="Assembly"
+            Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+            Name="RuntimeVersion"
+            Value="v2.0.50727"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32\1.0.0.0"
+            Name="CodeBase"
+            Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+            Name="Class"
+            Value="Shell32.ShellDispatchInprocClass"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+            Name="Assembly"
+            Value="Interop.Shell32, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+            Name="RuntimeVersion"
+            Value="v2.0.50727"
+            Type="string" Action="write" />
+        <RegistryValue Root="HKCR"
+            Key="CLSID\{0A89A860-D7B1-11CE-8350-444553540000}\InprocServer32"
+            Name="CodeBase"
+            Value="file:///[#filDDAAB2C11E1E5AE4668D99216C3B5523]"
+            Type="string" Action="write" />
+        ...
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Directory Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" Name="SampleHeat" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir0F6F75DF46D1BACE2233EC573E6D4AA9" />
+  </Fragment>
+</Wix>
+{% endhighlight %}
 
 ここで、いくらか言葉を追加しなければなりません。
 レジストリなどの変更を全てインストーラ・パッケージに書くべきか、それとも、
@@ -139,20 +149,26 @@ Windows Installer は、製品のバージョンや更新を追跡記録した�
 全て対応するコンポーネントとディレクトリに入れられます。
 その結果を最終的な WiX のソースに取り込むことは、簡単な参照を使うだけで出来ます。
 
-    heat project projectfile -pog:Binaries -cg SampleGroup
-         -out SampleGroup.wxs
+{% highlight bat %}
+heat project projectfile -pog:Binaries -cg SampleGroup
+     -out SampleGroup.wxs
+{% endhighlight %}
 
 これまでの例では、後で完全なセットアップ・パッケージに組み込むための断片を生成するために Heat を使いました。
 しかし、私たちはこのツールに対して、フラグメントではなく モジュール または独立した 製品 を生成するように指示することも出来ます。
 比較的小さなパッケージであれば、実際には Heat が WiX ソース・ファイルの大半を書いてくれて、いくつかの項目
 GUID やテキストによる説明)だけを手作業で追加しなければならない、ということになるかも知れません。
 
-    heat ... -template:module -cg SampleGroup -out SampleGroup.wxs
-    heat ... -template:product -cg SampleGroup -out SampleGroup.wxs
+{% highlight bat %}
+heat ... -template:module -cg SampleGroup -out SampleGroup.wxs
+heat ... -template:product -cg SampleGroup -out SampleGroup.wxs
+{% endhighlight %}
 
 タイプ・ライブラリは WiX で直接にサポートされています。
 タイプ・ライブラリの全ての内部情報を収集するために、Heat やその他のツールを使う必要はありません。
 
-    <File Id="file.dll" Name="file.dll" KeyPath="yes">
-      <TypeLib Id="YOURGUID-0BFE-4B1A-9205-9AB900C7D0DA" Language="0" />
-    </File>
+{% highlight xml %}
+<File Id="file.dll" Name="file.dll" KeyPath="yes">
+  <TypeLib Id="YOURGUID-0BFE-4B1A-9205-9AB900C7D0DA" Language="0" />
+</File>
+{% endhighlight %}

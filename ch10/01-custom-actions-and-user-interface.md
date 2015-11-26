@@ -27,25 +27,27 @@ Windows Installer のログ・ファイルにログを吐く関数なども含�
 カスタム・アクションを定義してスケジュールします。
 リストボックスをパブリックなプロパティにリンクされるように定義します。
 
-    <CustomAction Id="FillingListbox" BinaryKey="FillListbox" 
-        DllEntry="FillListbox" />
-    
-    <UI>
-      <Dialog Id="InstallDlg" Width="370" Height="270"
-          Title="[ProductName] [Setup]" NoMinimize="yes">
-        ...
-        <Control Id="FilledListbox" Type="ListBox" Sorted="yes"
-            Indirect="no" Property="LISTBOXVALUES" 
-            X="10" Y="50" Width="200" Height="130" />
-      </Dialog>
-    
-      <InstallUISequence>
-        <Custom Action="FillingListbox" After="CostFinalize" />
-        <Show Dialog="InstallDlg" After="FillingListbox" />
-      </InstallUISequence>
-    </UI>
-    
-    <Binary Id="FillListbox" SourceFile="FillListbox.dll" />
+{% highlight xml %}
+<CustomAction Id="FillingListbox" BinaryKey="FillListbox" 
+    DllEntry="FillListbox" />
+
+<UI>
+  <Dialog Id="InstallDlg" Width="370" Height="270"
+      Title="[ProductName] [Setup]" NoMinimize="yes">
+    ...
+    <Control Id="FilledListbox" Type="ListBox" Sorted="yes"
+        Indirect="no" Property="LISTBOXVALUES" 
+        X="10" Y="50" Width="200" Height="130" />
+  </Dialog>
+
+  <InstallUISequence>
+    <Custom Action="FillingListbox" After="CostFinalize" />
+    <Show Dialog="InstallDlg" After="FillingListbox" />
+  </InstallUISequence>
+</UI>
+
+<Binary Id="FillListbox" SourceFile="FillListbox.dll" />
+{% endhighlight %}
 
 > 訳註：リストボックスで選択された項目を調べて使用する方法については、日本語のサンプルを参照して下さい。
 
@@ -53,33 +55,35 @@ Windows Installer のログ・ファイルにログを吐く関数なども含�
 パブリックなプロパティに現れる値を挿入したりします。
 そして、このプロパティに接続されているリストボックスにその値が反映されます。
 
-    #include <windows.h>
-    #include <msi.h>
-    #include <msiquery.h>
-    #include "wcautil.h"
-    
-    #pragma comment(linker, "/EXPORT:FillListbox=_FillListbox@4")
-    
-    extern "C" UINT __stdcall FillListbox(MSIHANDLE hInstall) {
-      HRESULT hResult = WcaInitialize(hInstall, "FillListbox");
-      if (FAILED(hResult)) return ERROR_INSTALL_FAILURE;
-    
-      MSIHANDLE hTable = NULL;
-      MSIHANDLE hColumns = NULL;
-    
-      hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox", 
-          NULL, 0, 3, L"LISTBOXVALUES", 1, L"いも", L"Item 1");
-      hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox",
-          NULL, 0, 3, L"LISTBOXVALUES", 2, L"たこ", L"Item 2");
-      hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox", 
-          NULL, 0, 3, L"LISTBOXVALUES", 3, L"なんきん", L"Item 3");
-    
-      if (hTable)
-        MsiCloseHandle(hTable);
-      if (hColumns)
-        MsiCloseHandle(hColumns);
-      return WcaFinalize(hResult);
-    }
+{% highlight c %}
+#include <windows.h>
+#include <msi.h>
+#include <msiquery.h>
+#include "wcautil.h"
+
+#pragma comment(linker, "/EXPORT:FillListbox=_FillListbox@4")
+
+extern "C" UINT __stdcall FillListbox(MSIHANDLE hInstall) {
+  HRESULT hResult = WcaInitialize(hInstall, "FillListbox");
+  if (FAILED(hResult)) return ERROR_INSTALL_FAILURE;
+
+  MSIHANDLE hTable = NULL;
+  MSIHANDLE hColumns = NULL;
+
+  hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox", 
+      NULL, 0, 3, L"LISTBOXVALUES", 1, L"いも", L"Item 1");
+  hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox",
+      NULL, 0, 3, L"LISTBOXVALUES", 2, L"たこ", L"Item 2");
+  hResult = WcaAddTempRecord(&hTable, &hColumns, L"ListBox", 
+      NULL, 0, 3, L"LISTBOXVALUES", 3, L"なんきん", L"Item 3");
+
+  if (hTable)
+    MsiCloseHandle(hTable);
+  if (hColumns)
+    MsiCloseHandle(hColumns);
+  return WcaFinalize(hResult);
+}
+{% endhighlight %}
 
 この DLL をビルドするときには、msi.lib の他に、dutil.lib と wcautil.lib もリンクしなければなりません。
 これらのファイルは WiX ツールセットとともにインストールされています。

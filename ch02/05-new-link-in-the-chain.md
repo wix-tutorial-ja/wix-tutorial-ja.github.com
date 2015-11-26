@@ -155,12 +155,14 @@ WixUI インタフェイス・ライブラリは、通常のセットアップ�
 データを受け取るプロパティに割り当てられる最終的なデータがどのような書式で整形されるか、という事を決定します。
 
 {% highlight xml %}
-    <Property Id="PIDTemplate"><![CDATA[12345<### ###>@@@@@]]></Property>
+    <Property Id="PIDTemplate">
+        <![CDATA[12345<### ###>@@@@@]]>
+    </Property>
 {% endhighlight %}
 
 これで全てです。これで、修正されたインストーラを下記のコマンドによってビルドすることが出来ます。
 
-{% highlight batch %}
+{% highlight bat %}
 candle.exe SampleWixUIAddDlg.wxs UserRegistrationDlg.wxs
 light.exe -ext WixUIExtension -out SampleWixUIAddDlg.msi
       SampleWixUIAddDlg.wixobj UserRegistrationDlg.wixobj

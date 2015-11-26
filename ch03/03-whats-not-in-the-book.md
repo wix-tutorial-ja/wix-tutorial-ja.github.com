@@ -22,20 +22,22 @@ Windows Installer が解決方法を提供してくれない非常に特殊な�
 別のコンパイラでコンパイルする場合でも、必要な修正は、(有るとしても)ほんの少しでしょう。
 ヘッダ・ファイル、**msi.h** と **msiquery.h** は、MSI SDK から取得できます。更に **msi.lib** もリンクする必要があります。
 
-    #include <windows.h>
-    #include <msi.h>
-    #include <msiquery.h>
+{% highlight C %}
+#include <windows.h>
+#include <msi.h>
+#include <msiquery.h>
 
-    #pragma comment(linker, "/EXPORT:CheckPID=_CheckPID@4")
+#pragma comment(linker, "/EXPORT:CheckPID=_CheckPID@4")
 
-    extern "C" UINT __stdcall CheckPID (MSIHANDLE hInstall) {
-      char Pid[MAX_PATH];
-      DWORD PidLen = MAX_PATH;
-    
-      MsiGetProperty(hInstall, "PIDKEY", Pid, &PidLen);
-      MsiSetProperty(hInstall, "PIDACCEPTED", Pid[0] == '1' ? "1" : "0");
-      return ERROR_SUCCESS;
-    }
+extern "C" UINT __stdcall CheckPID (MSIHANDLE hInstall) {
+  char Pid[MAX_PATH];
+  DWORD PidLen = MAX_PATH;
+
+  MsiGetProperty(hInstall, "PIDKEY", Pid, &PidLen);
+  MsiSetProperty(hInstall, "PIDACCEPTED", Pid[0] == '1' ? "1" : "0");
+  return ERROR_SUCCESS;
+}
+{% endhighlight %}
 
 この DLL を使うために、下記の数行を適切な場所に追加します
 (今や、三回目のレッスンの終り近くですから、これぐらいは自分で出来るでしょうが、
@@ -43,23 +45,25 @@ Windows Installer が解決方法を提供してくれない非常に特殊な�
 
 > 訳註：SampleCA の日本語版は [Sample-3-3-CA.zip](/samples/Sample-3-3-CA.zip) です。
 
-    <Condition Message='このインストーラは完全 UI モードでのみ実行出来ます。'>
-      <![CDATA[UILevel = 5]]>
-    </Condition>
+{% highlight xml %}
+<Condition Message='このインストーラは完全 UI モードでのみ実行出来ます。'>
+  <![CDATA[UILevel = 5]]>
+</Condition>
 
-    <CustomAction Id='CheckingPID' BinaryKey='CheckPID'
-        DllEntry='CheckPID' />
-    <CustomAction Id='RefusePID'
-        Error='無効なキーです。インストールを中止します。' />
+<CustomAction Id='CheckingPID' BinaryKey='CheckPID'
+    DllEntry='CheckPID' />
+<CustomAction Id='RefusePID'
+    Error='無効なキーです。インストールを中止します。' />
 
-    <InstallExecuteSequence>
-      <Custom Action='CheckingPID' After='CostFinalize' />
-      <Custom Action='RefusePID' After='CheckingPID'>
-        PIDACCEPTED = "0" AND NOT Installed
-      </Custom>
-    </InstallExecuteSequence>
+<InstallExecuteSequence>
+  <Custom Action='CheckingPID' After='CostFinalize' />
+  <Custom Action='RefusePID' After='CheckingPID'>
+    PIDACCEPTED = "0" AND NOT Installed
+  </Custom>
+</InstallExecuteSequence>
 
-    <Binary Id='CheckPID' SourceFile='CheckPID.dll' />
+<Binary Id='CheckPID' SourceFile='CheckPID.dll' />
+{% endhighlight %}
 
 簡単に説明します。最初に、私たちはこのインストーラが簡易 UI モードや UI 無しのモードで走ることを許可しません。
 なぜなら、それらのモードでは、ユーザーが登録キーを入力することが出来ないからです。
@@ -91,9 +95,13 @@ DLL は、関連するコントロールによって入力されて **PIDKEY** �
 ログは本当に詳細なものになりますから、実際に起っている事を記録している箇所を探すためには、
 テキスト・エディタを使って、プロパティやカスタム・アクションの名前(“PID”でも大丈夫です)を検索するのが良いでしょう。
 
-    msiexec /i SampleCA.msi /l*v SampleCA.log
+{% highlight bat %}
+msiexec /i SampleCA.msi /l*v SampleCA.log
+{% endhighlight %}
 
 呼び出す必要がある DLL が単にパッケージに含まれているのではなくて、インストールされている場合は、次のように記述することが出来ます。
 
-    <CustomAction Id='CheckingPID' FileKey='HelperDLL'
-        DllEntry='CheckPID' />
+{% highlight xml %}
+<CustomAction Id='CheckingPID' FileKey='HelperDLL'
+    DllEntry='CheckPID' />
+{% endhighlight %}

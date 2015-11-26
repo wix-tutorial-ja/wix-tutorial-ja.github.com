@@ -27,7 +27,7 @@ Windows Installer はそういう処理をサポートしていません。)
 ここで `Sample.wxs` というソース・ファイルを用意したと仮定しましょう。
 最初に、
 
-{% highlight batch %}
+{% highlight bat %}
 
 candle.exe Sample.wxs
 {% endhighlight %}
@@ -37,7 +37,7 @@ candle.exe Sample.wxs
 通常のコンパイラ用語でオブジェクト・ファイルと呼ばれるものだと考えて下さい。
 次に、第二のコマンドとして、
 
-{% highlight batch %}
+{% highlight bat %}
 light.exe Sample.wixobj
 {% endhighlight %}
 

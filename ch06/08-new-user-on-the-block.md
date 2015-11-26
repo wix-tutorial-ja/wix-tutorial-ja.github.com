@@ -15,26 +15,32 @@ origin: /com-expression-syntax-miscellanea/new-user-on-the-block/
 WiX ツールセットの追加のライブラリには、新しいユーザー・アカウントを追加する、
 というような追加の仕事をインストーラが出来るようにするものもあります。
 
-    <Component>
-      <user:User Id='NewUser' Name='username' Password='password' />
-    </Component>
+{% highlight xml %}
+<Component>
+  <user:User Id='NewUser' Name='username' Password='password' />
+</Component>
+{% endhighlight %}
 
 インストーラ・パッケージをリンクするときに、適切な WiX 拡張モジュールをリンクしなければなりません。
 
-    light.exe -ext WixUtilExtension -out Sample.msi Sample.wixobj
+{% highlight bat %}
+light.exe -ext WixUtilExtension -out Sample.msi Sample.wixobj
+{% endhighlight %}
 
 このライブラリは、フォルダの共有を作成する手段も提供しています。
 次のコードの断片を **Component** の中に置くだけで、そのコンポーネントがインストールされるフォルダに共有を設定することが出来ます。
 
-    <user:User Id='Everyone' Name='Everyone' CreateUser='no'
-        FailIfExists='no' RemoveOnUninstall='no' />
-    <user:FileShare Id='MainExecutableShare'
-        Description='ほげ 1.0 の共有フォルダ'
-        Name='ほげ共有フォルダ'>
-      <user:Permission GenericRead='yes' ReadPermission='yes'
-          Read='yes' GenericExecute='yes'
-          User='Everyone' />
-    </user:FileShare>
+{% highlight xml %}
+<user:User Id='Everyone' Name='Everyone' CreateUser='no'
+    FailIfExists='no' RemoveOnUninstall='no' />
+<user:FileShare Id='MainExecutableShare'
+    Description='ほげ 1.0 の共有フォルダ'
+    Name='ほげ共有フォルダ'>
+  <user:Permission GenericRead='yes' ReadPermission='yes'
+      Read='yes' GenericExecute='yes'
+      User='Everyone' />
+</user:FileShare>
+{% endhighlight %}
 
 **FileShare** の属性は自ずから明らかでしょう。
 共有に伴うアクセス許可を指定するためには **Permission** 要素を使う必要がありますが、

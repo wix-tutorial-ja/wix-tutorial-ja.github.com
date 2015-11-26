@@ -30,35 +30,41 @@ WiX ツールセットもパッチ・インストーラ・パッケージ (`.msp
 
 > 訳註：SamplePatch の日本語版は [Sample-4-3-Patch.zip](/samples/Sample-4-3-Patch.zip) です。
 
-      <File Id='HogeEXE' Name='HogeAppl10.exe' DiskId='1'
-          Source='Error\HogeAppl10.exe' KeyPath='yes' />
+{% highlight xml %}
+  <File Id='HogeEXE' Name='HogeAppl10.exe' DiskId='1'
+      Source='Error\HogeAppl10.exe' KeyPath='yes' />
+{% endhighlight %}
 
 対するに、
 
-      <File Id='HogeEXE' Name='HogeAppl10.exe' DiskId='1'
-          Source='Fixed\HogeAppl10.exe' KeyPath='yes' />
+{% highlight xml %}
+  <File Id='HogeEXE' Name='HogeAppl10.exe' DiskId='1'
+      Source='Fixed\HogeAppl10.exe' KeyPath='yes' />
+{% endhighlight %}
 
 パッチは第三のソース・ファイルから作成されます。
 これは、前と全く同じように、XML ファイルですが、その内容は今まで書いたファイルとは異なるものです。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-      <Patch AllowRemoval='yes' Manufacturer='ぴよソフト'
-          MoreInfoURL='www.piyosoft.co.jp' DisplayName='ほげ 1.0.0 パッチ'
-          Description='小さな更新パッチ' Classification='Update'
-          Codepage='932'>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Patch AllowRemoval='yes' Manufacturer='ぴよソフト'
+      MoreInfoURL='www.piyosoft.co.jp' DisplayName='ほげ 1.0.0 パッチ'
+      Description='小さな更新パッチ' Classification='Update'
+      Codepage='932'>
 
-        <Media Id='5000' Cabinet='Sample.cab'>
-          <PatchBaseline Id='Sample' />
-        </Media>
+    <Media Id='5000' Cabinet='Sample.cab'>
+      <PatchBaseline Id='Sample' />
+    </Media>
 
-        <PatchFamily Id='SamplePatchFamily' Version='1.0.0.0'
-            Supersede='yes'>
-          <ComponentRef Id='MainExecutable' />
-        </PatchFamily>
+    <PatchFamily Id='SamplePatchFamily' Version='1.0.0.0'
+        Supersede='yes'>
+      <ComponentRef Id='MainExecutable' />
+    </PatchFamily>
 
-      </Patch>
-    </Wix>
+  </Patch>
+</Wix>
+{% endhighlight %}
 
 **Classification** 属性は、*Hotfix*, *Security Rollup*, *Critical Update*, *Update*, *Service Pack* または *Update Rollup* のどれかです。
 **AllowRemoval** は、ユーザーが後でパッチをアンインストールすることが出来るかどうかを決定します。
@@ -68,38 +74,48 @@ WiX ツールセットもパッチ・インストーラ・パッケージ (`.msp
 ビルド作業は以前のプロジェクトよりも少し複雑になります。
 最初に、ベースになる二つのパッケージを通常の方法でビルドします。二つとも、それ自身のフォルダに入れます。
 
-    candle.exe Error.wxs
-    light.exe -out Error\Product.msi Error.wixobj
-    
-    candle.exe Fixed.wxs
-    light.exe -out Fixed\Product.msi Fixed.wixobj
+{% highlight bat %}
+candle.exe Error.wxs
+light.exe -out Error\Product.msi Error.wixobj
+
+candle.exe Fixed.wxs
+light.exe -out Fixed\Product.msi Fixed.wixobj
+{% endhighlight %}
 
 次に、別の WiX ツール、**torch** を使って、二つのインストーラ・パッケージの間のトランスフォームを作成します。
 コマンド・ラインの引数で、プログラムに対して、Windows Installer の形式 (`.msi` と `.mst`) ではなく、
 WiX 自身の形式である `.wixpdb` と `.wixmst` を使うように指示を与えます。
 
-    torch.exe -p -xi Error\Product.wixpdb Fixed\Product.wixpdb
-              -out Patch.wixmst
+{% highlight bat %}
+torch.exe -p -xi Error\Product.wixpdb Fixed\Product.wixpdb
+          -out Patch.wixmst
+{% endhighlight %}
 
 さらに、いつもの WiX のコンパイラとリンカを使ってパッチ・パッケージをビルドしなければなりませんが、
 今回は、出力形式が通常のものとは違う `.wixmsp` になります。
 リンカに対してこのファイル形式で出力するように指示する必要はありません。
 リンカ自身がソース・ファイルの内容に従って出力形式を自動的に決定します。
 
-    candle.exe Patch.wxs
-    light.exe Patch.wixobj
+{% highlight bat %}
+candle.exe Patch.wxs
+light.exe Patch.wixobj
+{% endhighlight %}
 
 そして、最後に、前のステップの出力結果と、少し前に作ったトランスフォームから、
 実際の Windows Installer のパッチ・パッケージをビルドします。
 パッチ作成を担当する WiX ツールである **pyro** に対しては、トランスフォーム・ファイルの名前だけでなく、
 対応する **PatchBaseline/@Id** 属性も、コマンド・ラインで指定してやる必要があります。
 
-    pyro.exe Patch.wixmsp -out Patch.msp -t Sample Patch.wixmst
+{% highlight bat %}
+pyro.exe Patch.wixmsp -out Patch.msp -t Sample Patch.wixmst
+{% endhighlight %}
 
 Patch.msp が実際に配布されるパッチ・インストーラになります。
 これをテストするためには、最初にオリジナルのパッケージ(Error/Product.msi)をインストールし、次にパッチを当てます。
 
-    msiexec /p Patch.msp
+{% highlight bat %}
+msiexec /p Patch.msp
+{% endhighlight %}
 
 ... そしてファイルが本当に新しいバージョンに変っていることを確認して下さい。
 次に、**プログラムの追加と削除** を開いて、**更新プログラムの表示** にチェックを入れ、

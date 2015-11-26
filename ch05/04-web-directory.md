@@ -19,40 +19,48 @@ IIS のウェブ・ディレクトリを作成するような付加的な仕事�
 
 最初に、ウェブ・サイトと、それに所属するファイルを作らなければなりません。
 
-    <Directory Id='TARGETDIR' Name='SourceDir'>
-      <Directory Id='ProgramFilesFolder' Name='PFiles'>
-        <Directory Id='InstallDir' Name='Piyo'>
-          <Component Id='default.phpComponent'
-              Guid='YOURGUID-5314-4689-83CA-9DB5C04D5742'>
-            <File Id='default.htmFile' Name='default.htm'
-                Source='default.htm' DiskId='1' KeyPath='yes' />
-          </Component>
-        </Directory>
-      </Directory>
+{% highlight xml %}
+<Directory Id='TARGETDIR' Name='SourceDir'>
+  <Directory Id='ProgramFilesFolder' Name='PFiles'>
+    <Directory Id='InstallDir' Name='Piyo'>
+      <Component Id='default.phpComponent'
+          Guid='YOURGUID-5314-4689-83CA-9DB5C04D5742'>
+        <File Id='default.htmFile' Name='default.htm'
+            Source='default.htm' DiskId='1' KeyPath='yes' />
+      </Component>
+    </Directory>
+  </Directory>
+{% endhighlight %}
 
 次のステップは、仮想ディレクトリの作成です。
 
-      <Component Id='TestWebVirtualDirComponent'
-          Guid='YOURGUID-6304-410E-A808-E3585379EADB'>
-        <WebVirtualDir Id='TestWebVirtualDir'
-            Alias='Test' Directory='InstallDir'
-            WebSite='DefaultWebSite'>
-          <WebApplication Id='TestWebApplication' Name='Test' />
-        </WebVirtualDir>
-      </Component>
-    
-    </Directory>
+{% highlight xml %}
+  <Component Id='TestWebVirtualDirComponent'
+      Guid='YOURGUID-6304-410E-A808-E3585379EADB'>
+    <WebVirtualDir Id='TestWebVirtualDir'
+        Alias='Test' Directory='InstallDir'
+        WebSite='DefaultWebSite'>
+      <WebApplication Id='TestWebApplication' Name='Test' />
+    </WebVirtualDir>
+  </Component>
+
+</Directory>
+{% endhighlight %}
 
 最後に、ウェブ・サイトを参照するエントリを作成します。
 
-    <WebSite Id='DefaultWebSite' Description='Default Web Site'>
-      <WebAddress Id='AllUnassigned' Port='80' />
-    </WebSite>
+{% highlight xml %}
+<WebSite Id='DefaultWebSite' Description='Default Web Site'>
+  <WebAddress Id='AllUnassigned' Port='80' />
+</WebSite>
+{% endhighlight %}
 
 インストーラ・パッケージをリンクするときは、適切な WiX ライブラリとリンクしなければなりません。
 リンカに複数の WiX オブジェクト・ファイルを渡しますので、出力ファイルの名前も指定しなければなりません。
 
-    light.exe -out SampleWebDir.msi SampleWebDir.wixobj path\sca.wixlib
+{% highlight bat %}
+light.exe -out SampleWebDir.msi SampleWebDir.wixobj path\sca.wixlib
+{% endhighlight %}
 
 完全な [SampleWebDir](https://www.firegiant.com/system/files/samples/SampleWebDir.zip) をダウンロードすることが出来ます。
 

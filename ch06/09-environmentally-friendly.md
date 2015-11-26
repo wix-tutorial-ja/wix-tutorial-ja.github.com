@@ -14,8 +14,10 @@ origin: /com-expression-syntax-miscellanea/environmentally-friendly/
 
 環境変数をインストールするためには、コンポーネントの中で **Environment** タグを使います。
 
-    <Environment Id='UpdatePath' Name='PATH' Action='create' System='yes'
-        Part='last' Value='[INSTALLDIR]' />
+{% highlight xml %}
+<Environment Id='UpdatePath' Name='PATH' Action='create' System='yes'
+    Part='last' Value='[INSTALLDIR]' />
+{% endhighlight %}
 
 **Action** 属性によって、コンポーネントがインストールされる時に何をすべきかを指定します。
 指定できる値は、*create*, *set* および *remove* です。

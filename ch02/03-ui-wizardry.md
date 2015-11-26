@@ -64,7 +64,7 @@ Windows Installer の内部にある組み込みのメッセージを使うよ�
 私たちは、既に述べたようにコマンド・ライン・スイッチを使って、この拡張ライブラリに対してリンクするだけで良いのです。
 統合開発環境の中で作業をしている場合は、同じ効果を得るために、このライブラリに対する参照を追加する必要があります。
 
-{% highlight batch %}
+{% highlight bat %}
 candle.exe SampleWixUI.wxs
 light.exe -ext WixUIExtension SampleWixUI.wixobj
 {% endhighlight %}

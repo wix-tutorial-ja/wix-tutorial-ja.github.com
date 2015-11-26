@@ -27,32 +27,40 @@ WiX に付属している WixNetFx 拡張モジュールを使うことが出来
 
 これらすべてのプロパティの値は、**PropertyRef** タグを使ってプロパティを参照するだけで簡単に読むことが出来ます。
 
-    <PropertyRef Id="NETFRAMEWORK10"/>
-    <Condition Message='このセットアップを実行するためには、.NET Framework 1.0 がインストールされている必要があります。'>
-      <![CDATA[Installed OR NETFRAMEWORK10]]>
-    </Condition>
+{% highlight xml %}
+<PropertyRef Id="NETFRAMEWORK10"/>
+<Condition Message='このセットアップを実行するためには、.NET Framework 1.0 がインストールされている必要があります。'>
+  <![CDATA[Installed OR NETFRAMEWORK10]]>
+</Condition>
+{% endhighlight %}
 
 サービス・パックを確認する必要がある場合、フレームワークのバージョンそのものは確認する必要がありません。
 SP プロパティは、ベースのフレームワークが存在している場合にしか、セットされないからです。
 しかし、まず最初にそもそもプロパティが設定されているかどうかをチェックして、それから、
 実際にどういう値がセットされているかのチェックに進む必要があります。
 
-    <PropertyRef Id="NETFRAMEWORK20_SP_LEVEL"/>
-    <Condition Message='このセットアップを実行するためには、.NET Framework 2.0 と Service Pack 1 がインストールされている必要があります。'>
-      <![CDATA[Installed OR (NETFRAMEWORK20_SP_LEVEL AND NETFRAMEWORK20_SP_LEVEL = "#1")]]>
-    </Condition>
+{% highlight xml %}
+<PropertyRef Id="NETFRAMEWORK20_SP_LEVEL"/>
+<Condition Message='このセットアップを実行するためには、.NET Framework 2.0 と Service Pack 1 がインストールされている必要があります。'>
+  <![CDATA[Installed OR (NETFRAMEWORK20_SP_LEVEL AND NETFRAMEWORK20_SP_LEVEL = "#1")]]>
+</Condition>
+{% endhighlight %}
 
 最近のフレームワークのバージョンでは、利用可能なプロパティが追加されています。
 
-    <PropertyRef Id="NETFRAMEWORK35_CLIENT"/>
-    <Condition Message='このセットアップを実行するためには、.NET Framework 3.5 Client Profile がインストールされている必要があります。'>
-      <![CDATA[Installed OR NETFRAMEWORK35_CLIENT]]>
-    </Condition>
+{% highlight xml %}
+<PropertyRef Id="NETFRAMEWORK35_CLIENT"/>
+<Condition Message='このセットアップを実行するためには、.NET Framework 3.5 Client Profile がインストールされている必要があります。'>
+  <![CDATA[Installed OR NETFRAMEWORK35_CLIENT]]>
+</Condition>
+{% endhighlight %}
 
 インストーラをリンクするときには、*WixNetFxExtension* モジュールをリンクするのを忘れないようにして下さい。
 
-    candle.exe SampleDotNET.wxs
-    light.exe -ext WixNetFxExtension SampleDotNET.wixobj
+{% highlight bat %}
+candle.exe SampleDotNET.wxs
+light.exe -ext WixNetFxExtension SampleDotNET.wixobj
+{% endhighlight %}
 
 完全な [SampleDotNET](https://www.firegiant.com/system/files/samples/SampleDotNET.zip) をダウンロードすることが出来ます。
 

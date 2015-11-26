@@ -16,13 +16,15 @@ origin: /net-and-net/launch-the-internet/
 そうするために、ユーザーのディスク上に URL のリンクを作成することが出来ます。
 URL のリンクは実際には `.ini` ファイルの形式を取りますので、**IniFile** を使ってリンクを作成します。
 
-    <Component>
-      ...
-      <IniFile Id='Launch' Action='addLine' Name='Launch.url'
-          Directory='INSTALLDIR' Section='InternetShortcut'
-          Key='URL' Value='http://www.acmefoobar.com' />
-      ...
-    </Component>
+{% highlight xml %}
+<Component>
+  ...
+  <IniFile Id='Launch' Action='addLine' Name='Launch.url'
+      Directory='INSTALLDIR' Section='InternetShortcut'
+      Key='URL' Value='http://www.acmefoobar.com' />
+  ...
+</Component>
+{% endhighlight %}
 
 既定のブラウザを直接起動するためには、最初に既定のブラウザのパスを調べて、インストールの完了後に、
 そのパスを使って、通常の方法でカスタム・アクションとして起動します
@@ -30,19 +32,22 @@ URL のリンクは実際には `.ini` ファイルの形式を取りますの�
 ユーザーが既定のブラウザとして選んでいるブラウザが必ず起動されるように、必ずこの方法を使ってください。
 *決して特定のブラウザをハード・コーディングしないで下さい*。
 
-    <Property Id="BROWSER">
-      <RegistrySearch Id='DefaultBrowser' Type='raw'
-          Root='HKCR' Key='http\shell\open\command' />
-    </Property>
-    
-    <CustomAction Id='LaunchBrowser' Property='BROWSER'
-          ExeCommand='www.piyosoftware.co.jp' Return='asyncNoWait' />
-    
-    <InstallExecuteSequence>
-      ...
-      <Custom Action='LaunchBrowser'
-          After='InstallFinalize'>NOT Installed</Custom>
-    </InstallExecuteSequence>
+{% highlight xml %}
+<Property Id="BROWSER">
+  <RegistrySearch Id='DefaultBrowser' Type='raw'
+      Root='HKCR' Key='http\shell\open\command' />
+</Property>
+
+<CustomAction Id='LaunchBrowser' Property='BROWSER'
+      ExeCommand='www.piyosoftware.co.jp' Return='asyncNoWait' />
+
+<InstallExecuteSequence>
+  ...
+  <Custom Action='LaunchBrowser' After='InstallFinalize'>
+    NOT Installed
+  </Custom>
+</InstallExecuteSequence>
+{% endhighlight %}
 
 完全な [SampleBrowser](https://www.firegiant.com/system/files/samples/SampleBrowser.zip) をダウンロードすることが出来ます。
 
@@ -53,8 +58,10 @@ URL のリンクは実際には `.ini` ファイルの形式を取りますの�
 注意しなければならないことは、URL にプロパティを使用する、ということだけです。
 ショートカットの **Target** 属性に直接に URL を書くと、コンパイラがそれを配置すべきローカル・ファイルの名前だと見なすために、うまく行きません。
 
-    <Property Id="URL" Value="http://www.something.com" />
-    
-    <Shortcut Id="WebShortcut" Name="ぴよソフトのウェブ"
-        Description="ぴよソフトのウェブサイトにジャンプします。"
-        Target="[URL]" />
+{% highlight xml %}
+<Property Id="URL" Value="http://www.something.com" />
+
+<Shortcut Id="WebShortcut" Name="ぴよソフトのウェブ"
+    Description="ぴよソフトのウェブサイトにジャンプします。"
+    Target="[URL]" />
+{% endhighlight %}

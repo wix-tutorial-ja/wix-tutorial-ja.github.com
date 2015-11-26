@@ -19,7 +19,7 @@ origin: /user-interface/first-steps/
 
 > 訳註：SampleWixUI の日本語版は [Sample-2-1-WixUI.zip](/samples/Sample-2-1-WixUI.zip) です。
 
-{% highlight batch %}
+{% highlight bat %}
 candle.exe SampleWixUI.wxs
 light.exe -ext WixUIExtension SampleWixUI.wixobj
 {% endhighlight %}

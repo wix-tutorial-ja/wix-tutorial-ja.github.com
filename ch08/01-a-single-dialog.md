@@ -23,8 +23,10 @@ origin: /user-interface-revisited/a-single-dialog/
 こうしておくと、新しい製品のインストーラ・パッケージを作成するときに、UI の部分をまるごと編集し直す必要が無くなるので、非常に便利です。
 **ProductName** は、ソース・ファイルの一番最初の **Product** タグで定義した製品名を指し示すように、自動的に定義されます。
 
-    <Dialog Id="InstallDlg" Width="370" Height="270"
-        Title="[ProductName] [Setup]" NoMinimize="yes">
+{% highlight xml %}
+<Dialog Id="InstallDlg" Width="370" Height="270"
+    Title="[ProductName] [Setup]" NoMinimize="yes">
+{% endhighlight %}
 
 ダイアログに追加する全てのものはコントロールになります。
 **Type** 属性がコントロールの種類を示します
@@ -43,27 +45,33 @@ origin: /user-interface-revisited/a-single-dialog/
 **NoPrefix** は、アンパサンド (`&`) が文字通りに表示されるのか、それとも、Windows の GUI の通例に従って、
 ショートカットを指定するものとして使われるのか、ということを制御しているだけです。
 
-      <Control Id="Title" Type="Text"
-          X="15" Y="6" Width="200" Height="15"
-          Transparent="yes" NoPrefix="yes">
-        <Text>{\DlgTitleFont}インストール準備完了</Text>
-      </Control>
+{% highlight xml %}
+  <Control Id="Title" Type="Text"
+      X="15" Y="6" Width="200" Height="15"
+      Transparent="yes" NoPrefix="yes">
+    <Text>{\DlgTitleFont}インストール準備完了</Text>
+  </Control>
+{% endhighlight %}
 
 コントロールのテキストを指定するためには二つの方法があります。
 コントロールの中で **Text** という子のタグを使うか、または **Text** 属性を使うかです。
     
-      <Control Id="Title" Type="Text"
-          X="15" Y="6" Width="200" Height="15"
-          Transparent="yes" NoPrefix="yes"
-          Text="{\DlgTitleFont}インストール準備完了"/>
+{% highlight xml %}
+  <Control Id="Title" Type="Text"
+      X="15" Y="6" Width="200" Height="15"
+      Transparent="yes" NoPrefix="yes"
+      Text="{\DlgTitleFont}インストール準備完了"/>
+{% endhighlight %}
 
 **TextStyle** タグを使ってフォントのスタイルを参照することが出来ます。
 また、インストーラはデフォルトのフォントを決めるために **DefaultUIFont** という標準のプロパティを必要としますので、
 このプロパティをソースに含めてフォントを関連付けなければなりません。
 
-      <Property Id="DefaultUIFont">DlgFont8</Property>
-      <TextStyle Id="DlgFont8" FaceName="Tahoma" Size="8" />
-      <TextStyle Id="DlgTitleFont" FaceName="Tahoma" Size="8" Bold="yes" />
+{% highlight xml %}
+  <Property Id="DefaultUIFont">DlgFont8</Property>
+  <TextStyle Id="DlgFont8" FaceName="Tahoma" Size="8" />
+  <TextStyle Id="DlgTitleFont" FaceName="Tahoma" Size="8" Bold="yes" />
+{% endhighlight %}
 
 唯一のアクティブなコントロールはプッシュ・ボタン (タイプは **PushButton**) になります。
 ここでも、位置とサイズを指定します。
@@ -75,12 +83,14 @@ origin: /user-interface-revisited/a-single-dialog/
 ということで、アクションは **Return** という値を持った **EndDialog** にします。
 これは、ダイアログを通常の方法で終了し、何もエラーを発生させない、という意味です。
 
-      <Control Id="Install" Type="PushButton"
-          X="304" Y="243" Width="56" Height="17"
-          Default="yes" Text="インストール">
-        <Publish Event="EndDialog" Value="Return" />
-      </Control>
-    </Dialog>
+{% highlight xml %}
+  <Control Id="Install" Type="PushButton"
+      X="304" Y="243" Width="56" Height="17"
+      Default="yes" Text="インストール">
+    <Publish Event="EndDialog" Value="Return" />
+  </Control>
+</Dialog>
+{% endhighlight %}
 
 ということで、ダイアログが出来ましたが、これを通常のイベント進行の中にスケジュールしなければなりません。
 **UI** の終了タグの直前の部分に移動して、下記のような変更を加えます。
@@ -114,10 +124,12 @@ origin: /user-interface-revisited/a-single-dialog/
 結果として、私たちの一つだけのダイアログ・ボックスは、準備過程の最後のアクションである **CostFinalize** の後、
 それでも **ExecuteAction** よりは前、という順位にスケジュールしなければならないことになります。
 
-        <InstallUISequence>
-          <Show Dialog="InstallDlg" After="CostFinalize" />
-        </InstallUISequence>
-      </UI>
+{% highlight xml %}
+    <InstallUISequence>
+      <Show Dialog="InstallDlg" After="CostFinalize" />
+    </InstallUISequence>
+  </UI>
+{% endhighlight %}
 
 このサンプル ([SampleCustomeUI](https://www.firegiant.com/system/files/samples/SampleCustomUI.zip)) をビルドして走らせてみて下さい
 (カスタム UI のサンプルは 単一のダウンロード・パッケージにまとめられています)。
@@ -132,5 +144,7 @@ ICE 20 の警告を発することに注目して下さい。
 カスタム UI のレッスンの始めの方のバージョンは、完全な標準的インタフェイスからは程遠いものですから、
 コマンド・ライン・スイッチを使ってそういう警告を抑止しても構わないでしょう。
 
-    candle.exe SampleCustomUI1.wxs
-    light.exe -sice:ICE20 SampleCustomUI1.wixobj
+{% highlight bat %}
+candle.exe SampleCustomUI1.wxs
+light.exe -sice:ICE20 SampleCustomUI1.wixobj
+{% endhighlight %}

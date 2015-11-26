@@ -73,7 +73,9 @@ Windows Installer は、インストールの間に、数多くのステップ�
 単に、そのアクションが、どのアクションの **Before** または **After** に来るかを指定すれば良いのです。
 アクションを実行のチェーンから削除したい場合は、**Suppress = yes** 属性を使って下さい。
 
-    <InstallExecuteSequence>
-      <LaunchConditions After='AppSearch' />
-      <RemoveExistingProducts After='InstallFinalize' />
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  <LaunchConditions After='AppSearch' />
+  <RemoveExistingProducts After='InstallFinalize' />
+</InstallExecuteSequence>
+{% endhighlight %}

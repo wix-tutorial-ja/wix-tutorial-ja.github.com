@@ -18,7 +18,7 @@ origin: /getting-started/putting-it-to-use/
 
 > 訳註：[SampleFirst の日本語版(Sample-1-3-First.zip)](/samples/Sample-1-3-First.zip)を用意しましたので、ご利用下さい。
 
-{% highlight batch %}
+{% highlight bat %}
 candle.exe SampleFirst.wxs
 light.exe SampleFirst.wixobj
 {% endhighlight %} 
@@ -45,13 +45,13 @@ light.exe SampleFirst.wixobj
 
 何か問題があった場合は — 単に面白半分でも構いませんが — ロギングのスイッチを ON にしてインストーラを起動して見て下さい。
 
-{% highlight batch %}
+{% highlight bat %}
 msiexec /i SampleFirst.msi /l* SampleFirst.log
 {% endhighlight %} 
 
 あるいは、さらに、
 
-{% highlight batch %}
+{% highlight bat %}
 msiexec /i SampleFirst.msi /l*v SampleFirst.log
 {% endhighlight %} 
 
@@ -60,6 +60,6 @@ msiexec /i SampleFirst.msi /l*v SampleFirst.log
 テスト中は、マウスを使って**「プログラムの追加と削除」**まで行くことなく、パッケージを削除できる方が便利でしょう。
 代りに、以下のコマンドを入力してください。
 
-{% highlight batch %}
+{% highlight bat %}
 msiexec /x SampleFirst.msi
 {% endhighlight %} 

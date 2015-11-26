@@ -23,11 +23,13 @@ origin: /upgrades-and-modularization/replacing-ourselves/
 しかし、クリーンなシステムで起動された場合は、単に現在のバージョンのアプリケーションをインストールするだけです。
 アップグレードのインストーラとフルセットのインストーラを個別に作る必要はありません。
 
-    <Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
-      <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
-          Minimum='1.0.0' IncludeMinimum='yes'
-          Maximum='3.0.0' IncludeMaximum='no' />
-    </Upgrade>
+{% highlight xml %}
+<Upgrade Id='YOURGUID-7349-453F-94F6-BCB5110BA4FD'>
+  <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
+      Minimum='1.0.0' IncludeMinimum='yes'
+      Maximum='3.0.0' IncludeMaximum='no' />
+</Upgrade>
+{% endhighlight %}
 
 前のバージョンの削除は完全に自動的に行われます。
 どんな理由であれ、前のバージョンが削除される時に何らかの操作をする必要がある場合は、
@@ -35,9 +37,11 @@ origin: /upgrades-and-modularization/replacing-ourselves/
 Windows Installer は、自動的な削除が行われるときにだけ、このプロパティを設定します。
 プログラムの追加と削除によってアプリケーションが手作業で削除される場合には、このプロパティを設定しません。
 
-    <InstallExecuteSequence>
-      <Custom Action=' ... ' After=' ... '>UPGRADINGPRODUCTCODE</Custom>
-    </InstallExecuteSequence>
+{% highlight xml %}
+<InstallExecuteSequence>
+  <Custom Action=' ... ' After=' ... '>UPGRADINGPRODUCTCODE</Custom>
+</InstallExecuteSequence>
+{% endhighlight %}
 
 **Upgrade** と **UpgradeVersion** は、ともに、メジャー・アップグレードでしか働かないことに注意してください。
 

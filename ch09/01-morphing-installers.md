@@ -38,62 +38,74 @@ Windows Installer が最初のページを表示する前にそのパッチを�
 > 訳註：このレッスンについては、日本語版のサンプルは提供していません。
 > ここで説明されている事柄に関しては、WiX のソース自体には、注目すべきところはほとんど有りません。
 
-    <?xml version='1.0' encoding='windows-1252'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-    
-      <Product Name='Hoge 1.0'
-          Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-          UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-          Language='1033' Codepage='$(var.codepage)'
-          Version='1.0.0' Manufacturer='Piyo Software'>
-    
-        <Package Id='*' Keywords='Installer'
-            Description="Piyo Software's Hoge 1.0 Installer"
-            Comments='Hoge is a registered trademark of Piyo Software.'
-            Manufacturer='Piyo Software' InstallerVersion='100'
-            Languages='1033' Compressed='yes' 
-            SummaryCodepage='$(var.codepage)' />
-    
-      ...
-    
-    </Wix>
+{% highlight xml %}
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Product Name='Hoge 1.0'
+      Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+      UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+      Language='1033' Codepage='$(var.codepage)'
+      Version='1.0.0' Manufacturer='Piyo Software'>
+
+    <Package Id='*' Keywords='Installer'
+        Description="Piyo Software's Hoge 1.0 Installer"
+        Comments='Hoge is a registered trademark of Piyo Software.'
+        Manufacturer='Piyo Software' InstallerVersion='100'
+        Languages='1033' Compressed='yes' 
+        SummaryCodepage='$(var.codepage)' />
+
+  ...
+
+</Wix>
+{% endhighlight %}
 
 最初のステップとして、地域化されたインストーラを別々にビルドします。
 以前とほとんど同じですが、それぞれのインストーラにサポートされている言語のテーブルで示されている正しいコードページを指定しなければなりません。
 
-    candle.exe SampleMulti.wxs -dcodepage=1252
-    light.exe -ext WixUIExtension -cultures:en-us -out SampleMulti.msi 
-        SampleMulti.wixobj
-    
-    candle.exe SampleMulti.wxs -dcodepage=1250
-    light.exe -ext WixUIExtension -cultures:hu-hu -out Sample_Hu-hu.msi 
-        SampleMulti.wixobj
-    
-    candle.exe SampleMulti.wxs -dcodepage=1252
-    light.exe -ext WixUIExtension -cultures:fr-fr -out Sample_Fr-fr.msi
-        SampleMulti.wixobj
+{% highlight bat %}
+candle.exe SampleMulti.wxs -dcodepage=1252
+light.exe -ext WixUIExtension -cultures:en-us -out SampleMulti.msi 
+    SampleMulti.wixobj
+
+candle.exe SampleMulti.wxs -dcodepage=1250
+light.exe -ext WixUIExtension -cultures:hu-hu -out Sample_Hu-hu.msi 
+    SampleMulti.wixobj
+
+candle.exe SampleMulti.wxs -dcodepage=1252
+light.exe -ext WixUIExtension -cultures:fr-fr -out Sample_Fr-fr.msi
+    SampleMulti.wixobj
+{% endhighlight %}
 
 次に、WiX のトランスフォーム・ツール *Torch* を使って、順番に、地域化されたインストーラとベースになるインストーラ (SampleMulti.msi)
 を比較して、両者間の差異を含んだ .mst トランスフォーム・ファイルを作成します。
 
-    torch.exe -p -t language SampleMulti.msi Sample_Hu-hu.msi
-        -out hu-hu.mst
-    torch.exe -p -t language SampleMulti.msi Sample_Fr-fr.msi
-        -out fr-fr.mst
+{% highlight bat %}
+torch.exe -p -t language SampleMulti.msi Sample_Hu-hu.msi
+    -out hu-hu.mst
+torch.exe -p -t language SampleMulti.msi Sample_Fr-fr.msi
+    -out fr-fr.mst
+{% endhighlight %}
 
 これで、ブートストラップ・インストーラが、適切な言語パッケージを指定してベースのインストーラ・パッケージを呼び出すことが出来るようになります。
 
-    msiexec /i SampleMulti.msi TRANSFORMS="fr-fr.mst"
+{% highlight bat %}
+msiexec /i SampleMulti.msi TRANSFORMS="fr-fr.mst"
+{% endhighlight %}
 
 この場合、ブートストラッパーが必要になる他に、独立したトランスフォーム・ファイルも配布する必要が生じます。
 より良い方法は、トランスフォームを元のパッケージに埋め込むことです
 (今のところ WiX ではサポートされていませんが、[EmbedTransform](https://www.firegiant.com/system/files/samples/EmbedTransform.zip)
 というツールをダウンロードして使うことが出来ます)。
 
-    EmbedTransform.exe SampleMulti.msi hu-hu.mst
-    EmbedTransform.exe SampleMulti.msi fr-fr.mst
+{% highlight bat %}
+EmbedTransform.exe SampleMulti.msi hu-hu.mst
+EmbedTransform.exe SampleMulti.msi fr-fr.mst
+{% endhighlight %}
 
 使い方で違うところは一点だけ、トランスフォーム・ファイルの名前の前にコロンを付けて、
 Windows Installer にパッケージ内部を探すように指示することだけです。
 
-    msiexec /i SampleMulti.msi TRANSFORMS=":fr-fr.mst"
+{% highlight bat %}
+msiexec /i SampleMulti.msi TRANSFORMS=":fr-fr.mst"
+{% endhighlight %}

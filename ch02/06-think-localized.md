@@ -60,7 +60,7 @@ origin: /user-interface/think-localized/
 からインストーラをビルドするためには、地域化ファイルも参照する必要があります。
 統合環境では、地域化ファイルは、プロジェクトに含めるだけで、自動的に使用されるようになります。
 
-{% highlight batch %}
+{% highlight bat %}
 candle.exe SampleWixUIAddDlgLoc.wxs UserRegistrationDlg.wxs
 light.exe -ext WixUIExtension -cultures:fr-fr
           -loc UserRegistrationDlg.fr-fr.wxl
