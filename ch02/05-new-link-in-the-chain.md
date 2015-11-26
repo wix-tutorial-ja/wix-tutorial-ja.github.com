@@ -29,36 +29,40 @@ WixUI インタフェイス・ライブラリは、通常のセットアップ�
 [後のレッスン](/ch08/index.html) で、ダイアログの作成方法と、WiX のさまざまなインタフェイス要素の使い方を説明しますが、
 ここでは、いくつかの注意点を述べるにとどめます。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+{% endhighlight %}
 
 新しいダイアログは独立した断片(fragment)として記述しなければなりません。
 
-      <Fragment>
-        <UI>
-          <Dialog Id="UserRegistrationDlg"
-              Width="370" Height="270"
-              Title="[ProductName] [Setup]" NoMinimize="yes">
-            <Control Id="NameLabel" Type="Text"
-                X="45" Y="73" Width="100" Height="15"
-                TabSkip="no" Text="ユーザー名(&amp;U):" />
-            <Control Id="NameEdit" Type="Edit"
-                X="45" Y="85" Width="220" Height="18"
-                Property="USERNAME" Text="{80}" />
-            <Control Id="OrganizationLabel" Type="Text"
-                X="45" Y="110" Width="100" Height="15"
-                TabSkip="no" Text="会社名(&amp;O):" />
-            <Control Id="OrganizationEdit" Type="Edit"
-                X="45" Y="122" Width="220" Height="18"
-                Property="COMPANYNAME" Text="{80}" />
-            <Control Id="CDKeyLabel" Type="Text"
-                X="45" Y="147" Width="50" Height="10"
-                TabSkip="no">
-              <Text>CD キー(&amp;K)</Text>
-            </Control>
-            <Control Id="CDKeyEdit" Type="MaskedEdit"
-                X="45" Y="159" Width="250" Height="16"
-                Property="PIDKEY" Text="[PIDTemplate]" />
+{% highlight xml %}
+  <Fragment>
+    <UI>
+      <Dialog Id="UserRegistrationDlg"
+          Width="370" Height="270"
+          Title="[ProductName] [Setup]" NoMinimize="yes">
+        <Control Id="NameLabel" Type="Text"
+            X="45" Y="73" Width="100" Height="15"
+            TabSkip="no" Text="ユーザー名(&amp;U):" />
+        <Control Id="NameEdit" Type="Edit"
+            X="45" Y="85" Width="220" Height="18"
+            Property="USERNAME" Text="{80}" />
+        <Control Id="OrganizationLabel" Type="Text"
+            X="45" Y="110" Width="100" Height="15"
+            TabSkip="no" Text="会社名(&amp;O):" />
+        <Control Id="OrganizationEdit" Type="Edit"
+            X="45" Y="122" Width="220" Height="18"
+            Property="COMPANYNAME" Text="{80}" />
+        <Control Id="CDKeyLabel" Type="Text"
+            X="45" Y="147" Width="50" Height="10"
+            TabSkip="no">
+          <Text>CD キー(&amp;K)</Text>
+        </Control>
+        <Control Id="CDKeyEdit" Type="MaskedEdit"
+            X="45" Y="159" Width="250" Height="16"
+            Property="PIDKEY" Text="[PIDTemplate]" />
+{% endhighlight %}
 
 このダイアログが、元の一連のダイアログの中に挿入されます。
 このダイアログに先行するダイアログと後続するダイアログを指定しなければなりません。
@@ -68,49 +72,51 @@ WixUI インタフェイス・ライブラリは、通常のセットアップ�
 名前は、*LicenseAgreementDlg* と *SetupTypeDlg* です。
 従って、この新しいダイアログから、これら前後のダイアログを参照するように、以下のように記述します。
 
-            <Control Id="Back" Type="PushButton"
-                X="180" Y="243" Width="56" Height="17"
-                Text="戻る(&amp;B)">
-              <Publish Event="NewDialog"
-                  Value="LicenseAgreementDlg">1</Publish>
-            </Control>
-            <Control Id="Next" Type="PushButton"
-                X="236" Y="243" Width="56" Height="17"
-                Default="yes" Text="次へ(&amp;N)">
-              <Publish Event="ValidateProductID"
-                  Value="0">1</Publish>
-              <Publish Event="SpawnWaitDialog"
-                  Value="WaitForCostingDlg">CostingComplete = 1</Publish>
-              <Publish Event="NewDialog"
-                  Value="SetupTypeDlg">ProductID</Publish>
-            </Control>
-            <Control Id="Cancel" Type="PushButton"
-                X="304" Y="243" Width="56" Height="17"
-                Cancel="yes" Text="キャンセル">
-              <Publish Event="SpawnDialog"
-                  Value="CancelDlg">1</Publish>
-            </Control>
-            <Control Id="BannerBitmap" Type="Bitmap"
-                X="0" Y="0" Width="370" Height="44"
-                TabSkip="no" Text="WixUI_Bmp_Banner" />
-            <Control Id="Description" Type="Text"
-                X="25" Y="23" Width="280" Height="15"
-                Transparent="yes" NoPrefix="yes">
-              <Text>あなたのユーザー情報を入力して下さい。</Text>
-            </Control>
-            <Control Id="BottomLine" Type="Line"
-                X="0" Y="234" Width="370" Height="0" />
-            <Control Id="Title" Type="Text"
-                X="15" Y="6" Width="200" Height="15"
-                Transparent="yes" NoPrefix="yes">
-              <Text>{\WixUI_Font_Title}ユーザー情報</Text>
-            </Control>
-            <Control Id="BannerLine" Type="Line"
-                X="0" Y="44" Width="370" Height="0" />
-          </Dialog>
-        </UI>
-      </Fragment>
-    </Wix>
+{% highlight xml %}
+        <Control Id="Back" Type="PushButton"
+            X="180" Y="243" Width="56" Height="17"
+            Text="戻る(&amp;B)">
+          <Publish Event="NewDialog"
+              Value="LicenseAgreementDlg">1</Publish>
+        </Control>
+        <Control Id="Next" Type="PushButton"
+            X="236" Y="243" Width="56" Height="17"
+            Default="yes" Text="次へ(&amp;N)">
+          <Publish Event="ValidateProductID"
+              Value="0">1</Publish>
+          <Publish Event="SpawnWaitDialog"
+              Value="WaitForCostingDlg">CostingComplete = 1</Publish>
+          <Publish Event="NewDialog"
+              Value="SetupTypeDlg">ProductID</Publish>
+        </Control>
+        <Control Id="Cancel" Type="PushButton"
+            X="304" Y="243" Width="56" Height="17"
+            Cancel="yes" Text="キャンセル">
+          <Publish Event="SpawnDialog"
+              Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="BannerBitmap" Type="Bitmap"
+            X="0" Y="0" Width="370" Height="44"
+            TabSkip="no" Text="WixUI_Bmp_Banner" />
+        <Control Id="Description" Type="Text"
+            X="25" Y="23" Width="280" Height="15"
+            Transparent="yes" NoPrefix="yes">
+          <Text>あなたのユーザー情報を入力して下さい。</Text>
+        </Control>
+        <Control Id="BottomLine" Type="Line"
+            X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Title" Type="Text"
+            X="15" Y="6" Width="200" Height="15"
+            Transparent="yes" NoPrefix="yes">
+          <Text>{\WixUI_Font_Title}ユーザー情報</Text>
+        </Control>
+        <Control Id="BannerLine" Type="Line"
+            X="0" Y="44" Width="370" Height="0" />
+      </Dialog>
+    </UI>
+  </Fragment>
+</Wix>
+{% endhighlight %}
 
 新しいダイアログを元のユーザー・インタフェイスに組み込むことはかなり簡単です。
 前にやったように単純に *WixUI_Mondo* を参照する代りに、**UI** タグで私たち自身のインタフェイスを作成します。
@@ -125,31 +131,37 @@ WixUI インタフェイス・ライブラリは、通常のセットアップ�
 簡単な方法は、**WixUI_Mondo.wxs** から関連する **Publish** タグをコピーしてきて、他は何も変えずに、
 **Value** 属性を修正して新しいダイアログを指し示すようにする、という方法です。
 
-        <UI Id="MyWixUI_Mondo">
-          <UIRef Id="WixUI_Mondo" />
-          <UIRef Id="WixUI_ErrorProgressText" />
+{% highlight xml %}
+    <UI Id="MyWixUI_Mondo">
+      <UIRef Id="WixUI_Mondo" />
+      <UIRef Id="WixUI_ErrorProgressText" />
 
-          <DialogRef Id="UserRegistrationDlg" />
+      <DialogRef Id="UserRegistrationDlg" />
 
-          <Publish Dialog="LicenseAgreementDlg" Control="Next"
-              Event="NewDialog" Value="UserRegistrationDlg" Order="3">
-            LicenseAccepted = "1"
-          </Publish>
-          <Publish Dialog="SetupTypeDlg" Control="Back"
-              Event="NewDialog" Value="UserRegistrationDlg">
-            1
-          </Publish>
-        </UI>
+      <Publish Dialog="LicenseAgreementDlg" Control="Next"
+          Event="NewDialog" Value="UserRegistrationDlg" Order="3">
+        LicenseAccepted = "1"
+      </Publish>
+      <Publish Dialog="SetupTypeDlg" Control="Back"
+          Event="NewDialog" Value="UserRegistrationDlg">
+        1
+      </Publish>
+    </UI>
+{% endhighlight %}
 
 メインのソース・ファイルは、私たちが参照したプロパティを定義しなければなりません。
 マスク・エディット・コントロールは、[いろんな文字](https://msdn.microsoft.com/en-us/library/aa369797.aspx)
 を使って、どんな内容がどのようにコントロールに表示されるか、どんな種類の入力をコントロールが受け入れるか、そして、
 データを受け取るプロパティに割り当てられる最終的なデータがどのような書式で整形されるか、という事を決定します。
 
-        <Property Id="PIDTemplate"><![CDATA[12345<### ###>@@@@@]]></Property>
+{% highlight xml %}
+    <Property Id="PIDTemplate"><![CDATA[12345<### ###>@@@@@]]></Property>
+{% endhighlight %}
 
 これで全てです。これで、修正されたインストーラを下記のコマンドによってビルドすることが出来ます。
 
-    candle.exe SampleWixUIAddDlg.wxs UserRegistrationDlg.wxs
-    light.exe -ext WixUIExtension -out SampleWixUIAddDlg.msi
-          SampleWixUIAddDlg.wixobj UserRegistrationDlg.wixobj
+{% highlight batch %}
+candle.exe SampleWixUIAddDlg.wxs UserRegistrationDlg.wxs
+light.exe -ext WixUIExtension -out SampleWixUIAddDlg.msi
+      SampleWixUIAddDlg.wixobj UserRegistrationDlg.wixobj
+{% endhighlight %}

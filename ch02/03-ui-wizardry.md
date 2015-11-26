@@ -35,8 +35,10 @@ WixUI は、どの程度まで高機能なユーザー・インタフェイス�
 フル・セットのユーザー・インタフェイスを使用するために必要な事は、ソースに二行を追加して、
 WixUI インタフェイス・ライブラリをプロジェクトに含めることだけです。
 
-        <UIRef Id="WixUI_Mondo" />
-        <UIRef Id="WixUI_ErrorProgressText" />
+{% highlight xml %}
+    <UIRef Id="WixUI_Mondo" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+{% endhighlight %}
 
 最初の参照によって適切なユーザー・インタフェイス・ライブラリが読み込まれます。
 しかし、このライブラリは、言語ファイルにあるローカライズされたエラーとアクションのテキスト(英語の場合は、修正されたテキスト)
@@ -46,33 +48,41 @@ Windows Installer の内部にある組み込みのメッセージを使うよ�
 
 (\*) WixUI_InstallDir のダイアログ・セットを使う場合は、ソースのどこかで、下記のように、追加のプロパティを提供しなければなりません。
 
-    <Property Id="WIXUI_INSTALLDIR" Value="TOP_LEVEL_DIR" />
+{% highlight xml %}
+<Property Id="WIXUI_INSTALLDIR" Value="TOP_LEVEL_DIR" />
+{% endhighlight %}
 
 そして、最後に、これまでのサンプルと全く同じように、ソースの記述を終了します。
 
-        <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
-      </Product>
-    </Wix>
+{% highlight xml %}
+    <Icon Id="Hoge10.exe" SourceFile="HogeAppl10.exe" />
+  </Product>
+</Wix>
+{% endhighlight %}
 
 ユーザー・インタフェイスの変種のすべては、共通のコンパイル済みライブラリに入っています。
 私たちは、既に述べたようにコマンド・ライン・スイッチを使って、この拡張ライブラリに対してリンクするだけで良いのです。
 統合開発環境の中で作業をしている場合は、同じ効果を得るために、このライブラリに対する参照を追加する必要があります。
 
-    candle.exe SampleWixUI.wxs
-    light.exe -ext WixUIExtension SampleWixUI.wixobj
+{% highlight batch %}
+candle.exe SampleWixUI.wxs
+light.exe -ext WixUIExtension SampleWixUI.wixobj
+{% endhighlight %}
 
 ユーザー・インタフェイスの外観のいくつかは、代替のファイルを指定するだけでカスタマイズすることが出来ます。
 既定のファイルはツールセットの中にありますが、代替のビットマップ、アイコン、ライセンス文書を自分で作ることが可能です。
 全部でなく、特定のファイルだけを置き換えることも出来ます。
 ファイルのパスは変数に保持されていますので、コマンド・ラインで指定することも、直接ソースに書くことも出来ます。
 
-      <WixVariable Id="WixUILicenseRtf" Value="path\License.rtf" />
-      <WixVariable Id="WixUIBannerBmp" Value="path\banner.bmp" />
-      <WixVariable Id="WixUIDialogBmp" Value="path\dialog.bmp" />
-      <WixVariable Id="WixUIExclamationIco" Value="path\exclamation.ico" />
-      <WixVariable Id="WixUIInfoIco" Value="path\information.ico" />
-      <WixVariable Id="WixUINewIco" Value="path\new.ico" />
-      <WixVariable Id="WixUIUpIco" Value="path\up.ico" />
+{% highlight xml %}
+  <WixVariable Id="WixUILicenseRtf" Value="path\License.rtf" />
+  <WixVariable Id="WixUIBannerBmp" Value="path\banner.bmp" />
+  <WixVariable Id="WixUIDialogBmp" Value="path\dialog.bmp" />
+  <WixVariable Id="WixUIExclamationIco" Value="path\exclamation.ico" />
+  <WixVariable Id="WixUIInfoIco" Value="path\information.ico" />
+  <WixVariable Id="WixUINewIco" Value="path\new.ico" />
+  <WixVariable Id="WixUIUpIco" Value="path\up.ico" />
+{% endhighlight %}
 
 これらの意味と詳細は以下の通りです。
 

@@ -69,7 +69,7 @@ GUID は、生成されたままで使用される場合にだけ、一意性が
         Comments='Foobar is a registered trademark of Acme Ltd.'
         Manufacturer='Acme Ltd.' InstallerVersion='100'
         Languages='1033' Compressed='yes' SummaryCodepage='1252' />
-{% endhighlight %} 
+{% endhighlight %}
 
 製品の名前と説明は、当然、あなたの意向によって決ります。
 *Version* 属性は、標準的な **major.minor.build** 形式に従って下さい。

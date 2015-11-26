@@ -26,10 +26,12 @@ origin: /getting-started/where-to-install/
 (ここで使う *Id* が、最初のサンプルでインストール先のフォルダを意味するものとして使った名前と同じものであることに注意して下さい)。
 *Property* タグの中で、レジストリ・サーチを実行します。それぞれの属性の意味は自ずから明らかでしょう。
 
-    <Property Id="INSTALLDIR">
-      <RegistrySearch Id='PiyoHogeRegistry' Type='raw'
-          Root='HKLM' Key='Software\Piyo\Hoge 1.0' Name='InstallDir' />
-    </Property>
+{% highlight xml %}
+<Property Id="INSTALLDIR">
+  <RegistrySearch Id='PiyoHogeRegistry' Type='raw'
+      Root='HKLM' Key='Software\Piyo\Hoge 1.0' Name='InstallDir' />
+</Property>
+{% endhighlight %}
 
 レジストリ・サーチが成功した場合(すなわち、指定されたレジストリ・エントリが実際に存在している場合)は、
 その値が **INSTALLDIR** プロパティに割り当てられ、私たちの目的に使用することが出来るようになります。
@@ -48,15 +50,19 @@ origin: /getting-started/where-to-install/
 `\Windows\SampleRegistry.ini` が以下のようになっていると仮定しましょう
 (システム・フォルダにあるこのようなファイルは、読み出すことしか出来ません)。
 
-    [Sample]
-    InstallDir=C:\InstallHere
+{% highlight ini %}
+[Sample]
+InstallDir=C:\InstallHere
+{% endhighlight %}
 
 前のセクションを以下の新しいものに置き換えます。
 
-    <Property Id="INSTALLDIR">
-      <IniFileSearch Id='PiyoHogeIniFile' Type='directory'
-           Name='SampleRegistry.ini' Section='Sample' Key='InstallDir' />
-    </Property>
+{% highlight xml %}
+<Property Id="INSTALLDIR">
+  <IniFileSearch Id='PiyoHogeIniFile' Type='directory'
+       Name='SampleRegistry.ini' Section='Sample' Key='InstallDir' />
+</Property>
+{% endhighlight %}
 
 場合によっては、単にフォルダ名を知るだけでは十分でなく、フォルダの中を見て、
 指定されたファイルがそこに存在することを確認しなければならないこともあります。
@@ -66,11 +72,13 @@ origin: /getting-started/where-to-install/
 角括弧で囲まれた名前は検索されて、見つかれば、実際の値で置き換えられます。
 見つからなかった場合は、文字列はそのまま変更されません。
 
-    <Property Id="FILEEXISTS">
-      <DirectorySearch Id="CheckFileDir" Path="[INSTALLDIR]" Depth="0">
-        <FileSearch Id="CheckFile" Name="Lookfor.txt" />
-      </DirectorySearch>
-    </Property>
+{% highlight xml %}
+<Property Id="FILEEXISTS">
+  <DirectorySearch Id="CheckFileDir" Path="[INSTALLDIR]" Depth="0">
+    <FileSearch Id="CheckFile" Name="Lookfor.txt" />
+  </DirectorySearch>
+</Property>
+{% endhighlight %}
 
 もしファイルが見つかれば、そのフル・パスが **FILEEXISTS** プロパティに割り当てられます。
 そうでなければ、FILEEXISTS プロパティは、割り当てられないままになります。

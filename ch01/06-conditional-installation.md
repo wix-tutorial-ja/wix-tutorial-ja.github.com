@@ -19,6 +19,7 @@ origin: /getting-started/conditional-installation/
 条件付きインストールを使うために、以前の単一の機能を二つに分割します — 
 そうすれば、どちらをインストールするべきかを条件によって決定することが出来ます。
 
+{% highlight xml %}
     <Feature Id='Complete' Level='1'>
       <Feature Id='MainProgram' Level='1'>
         <ComponentRef Id='MainExecutable' />
@@ -28,6 +29,7 @@ origin: /getting-started/conditional-installation/
         <ComponentRef Id='Manual' />
       </Feature>
     </Feature>
+{% endhighlight %}
 
 今このサンプルをそのままビルドしても、何も面白い事は起きません。
 MainProgram 機能が EXE と DLL および関連するショートカットをインストールし、
@@ -38,10 +40,12 @@ Documentation 機能が残りの PDF と関連するショートカットをイ�
 そして、既に取り上げた Condition を使用して、親の機能(条件を直接包含している **Feature** タグ)のレベルをその場で変更することが出来ます。
 以下の例では、条件が真と評価される場合に、Level が 1 になって、インストールが実行されます。
 
+{% highlight xml %}
     <Feature Id='Documentation' Level='0'>
       <ComponentRef Id='Manual' />
       <Condition Level="1">FILEEXISTS</Condition>
     </Feature>
+{% endhighlight %}
 
 すなわち、PDF とそのショートカットは、レジストリ・エントリが示しているフォルダに `Lookfor.txt`
 というファイルが見つかった場合ににみ、インストールが実行されます。
@@ -63,7 +67,9 @@ Documentation 機能が残りの PDF と関連するショートカットをイ�
 既に見た全ての条件も同じように使うことが出来ます。
 例えば、管理者でないユーザーに対して機能を無効化するためには、次のようにします。
 
+{% highlight xml %}
     <Feature Id='Documentation' Level='0'>
       <ComponentRef Id='Manual' />
       <Condition Level="1">Privileged</Condition>
     </Feature>
+{% endhighlight %}

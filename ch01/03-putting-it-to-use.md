@@ -18,8 +18,10 @@ origin: /getting-started/putting-it-to-use/
 
 > 訳註：[SampleFirst の日本語版(Sample-1-3-First.zip)](/samples/Sample-1-3-First.zip)を用意しましたので、ご利用下さい。
 
-    candle.exe SampleFirst.wxs
-    light.exe SampleFirst.wixobj
+{% highlight batch %}
+candle.exe SampleFirst.wxs
+light.exe SampleFirst.wixobj
+{% endhighlight %} 
 
 どちらのツールからもエラー・メッセージは出ない筈で、完了後には `SampleFirst.msi` というファイルがフォルダの中に出来ている筈です。
 そうでない場合は、タイプ・ミスがどこかに無いか、チェックして下さい。
@@ -43,15 +45,21 @@ origin: /getting-started/putting-it-to-use/
 
 何か問題があった場合は — 単に面白半分でも構いませんが — ロギングのスイッチを ON にしてインストーラを起動して見て下さい。
 
-    msiexec /i SampleFirst.msi /l* SampleFirst.log
+{% highlight batch %}
+msiexec /i SampleFirst.msi /l* SampleFirst.log
+{% endhighlight %} 
 
 あるいは、さらに、
 
-    msiexec /i SampleFirst.msi /l*v SampleFirst.log
+{% highlight batch %}
+msiexec /i SampleFirst.msi /l*v SampleFirst.log
+{% endhighlight %} 
 
 でも構いません。出力されるログは(特に第二の場合は)冗長すぎる嫌いがありますが、インストールが失敗する原因となりうるエラーを正確に指摘します。
 
 テスト中は、マウスを使って**「プログラムの追加と削除」**まで行くことなく、パッケージを削除できる方が便利でしょう。
 代りに、以下のコマンドを入力してください。
 
-    msiexec /x SampleFirst.msi
+{% highlight batch %}
+msiexec /x SampleFirst.msi
+{% endhighlight %} 

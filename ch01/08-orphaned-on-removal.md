@@ -17,10 +17,12 @@ origin: /getting-started/orphaned-on-removal/
 製品をアンインストールするときに、それらのファイルを削除する必要がある場合もあります。
 個々のファイルを削除するためには、**RemoveFile** を使用します。
 
-    <Component>
-      ...
-      <RemoveFile Id='LogFile' On='uninstall' Name='Hoge10User.log' />
-    </Component>
+{% highlight xml %}
+<Component>
+  ...
+  <RemoveFile Id='LogFile' On='uninstall' Name='Hoge10User.log' />
+</Component>
+{% endhighlight %}
 
 **On** 属性によって、ファイルをいつ削除するかを決定します(指定できる値は、*install*, *uninstall* そして *both* です)。
 **Name** には、ワイルドカード文字を含ませることが出来ます。
@@ -31,9 +33,11 @@ origin: /getting-started/orphaned-on-removal/
 アンインストール時にフォルダを削除するように指示する方法については、すでに調べました。
 しかし、インストーラでなくアプリケーションによって作成されるフォルダに関しては、それらを個別に指定する必要があります。
 
-    <Component>
-      ...
-      <RemoveFolder Id='LogFolder' On='uninstall' />
-    </Component>
+{% highlight xml %}
+<Component>
+  ...
+  <RemoveFolder Id='LogFolder' On='uninstall' />
+</Component>
+{% endhighlight %}
 
 ここでも、フォルダがコンポーネント自体のフォルダではない場合には、**Directory** または **Property** を使うことが出来ます。

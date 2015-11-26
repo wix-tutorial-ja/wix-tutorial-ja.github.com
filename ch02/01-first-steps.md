@@ -19,8 +19,10 @@ origin: /user-interface/first-steps/
 
 > 訳註：SampleWixUI の日本語版は [Sample-2-1-WixUI.zip](/samples/Sample-2-1-WixUI.zip) です。
 
-    candle.exe SampleWixUI.wxs
-    light.exe -ext WixUIExtension SampleWixUI.wixobj
+{% highlight batch %}
+candle.exe SampleWixUI.wxs
+light.exe -ext WixUIExtension SampleWixUI.wixobj
+{% endhighlight %}
 
 カスタム・インストールを選んで、インストール先のフォルダを変更してみて下さい。
 インストールが完了したら、インストーラ・パッケージをもう一度実行してみて下さい。
@@ -29,43 +31,47 @@ origin: /user-interface/first-steps/
 どうやってこれだけの機能を獲得できたのかを見ていきましょう。
 最初の部分は前と同じです — 結局のところ、インストールしようとしているのは同じ製品、同じファイル、同じコンポーネント、同じ機能です。
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-    
-      <Product Name='ほげ 1.0'
-           Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
-           UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
-           Language='1041' Codepage='932'
-           Version='1.0.0' Manufacturer='ぴよソフト'>
-    
-        <Package Id='*' Keywords='インストーラ'
-             Description="ぴよソフト's ほげ 1.0 インストーラ"
-             Comments='ほげはぴよソフトの登録商標です。'
-             Manufacturer='ぴよソフト' InstallerVersion='100'
-             Languages='1041' Compressed='yes' SummaryCodepage='932' />
-    
-          ...
-    
-          <Directory Id="DesktopFolder" Name="Desktop" />
-        </Directory>
+{% highlight xml %}
+<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Product Name='ほげ 1.0'
+       Id='YOURGUID-86C7-4D14-AEC0-86416A69ABDE'
+       UpgradeCode='YOURGUID-7349-453F-94F6-BCB5110BA4FD'
+       Language='1041' Codepage='932'
+       Version='1.0.0' Manufacturer='ぴよソフト'>
+
+    <Package Id='*' Keywords='インストーラ'
+         Description="ぴよソフト's ほげ 1.0 インストーラ"
+         Comments='ほげはぴよソフトの登録商標です。'
+         Manufacturer='ぴよソフト' InstallerVersion='100'
+         Languages='1041' Compressed='yes' SummaryCodepage='932' />
+
+      ...
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+{% endhighlight %}
 
 ここまでは、目新しいものは何もありません。次に来るセグメントの構造も見慣れたものですが、二～三、新しい属性が追加されています。
 
-        <Feature Id='Complete' Title='ほげ 1.0'
-            Description='完全パッケージ。' Display='expand'
-            Level='1' ConfigurableDirectory='INSTALLDIR'>
-          <Feature Id='MainProgram' Title='プログラム'
-              Description='メインの実行ファイル。' Level='1'>
-            <ComponentRef Id='MainExecutable' />
-            <ComponentRef Id='HelperLibrary' />
-            <ComponentRef Id='ProgramMenuDir' />
-          </Feature>
-    
-          <Feature Id='Documentation' Title='説明書'
-              Description='取扱説明書。' Level='1000'>
-            <ComponentRef Id='Manual' />
-          </Feature>
-        </Feature>
+{% highlight xml %}
+    <Feature Id='Complete' Title='ほげ 1.0'
+        Description='完全パッケージ。' Display='expand'
+        Level='1' ConfigurableDirectory='INSTALLDIR'>
+      <Feature Id='MainProgram' Title='プログラム'
+          Description='メインの実行ファイル。' Level='1'>
+        <ComponentRef Id='MainExecutable' />
+        <ComponentRef Id='HelperLibrary' />
+        <ComponentRef Id='ProgramMenuDir' />
+      </Feature>
+
+      <Feature Id='Documentation' Title='説明書'
+          Description='取扱説明書。' Level='1000'>
+        <ComponentRef Id='Manual' />
+      </Feature>
+    </Feature>
+{% endhighlight %}
 
 今回はユーザー・インタフェイスを持っている訳ですから、ユーザーに対して、どういう機能の選択肢があるかを知らせるために、
 何かを表示しなくてはなりません。そのために、人間が読むことが出来る何らかの記述が必要になります。
