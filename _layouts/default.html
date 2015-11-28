@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>{{ page.title }}</title>
-    <link rel="Shortcut Icon" type="img/x-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" type="img/x-icon" href="/favicon.ico">
     <meta name="google-site-verification" content="zc4RM2uBi1JAZ_NuSjrdLAjfPtFBeZBIuhNbczdDugw" /></head>
 <body>
 
@@ -322,31 +322,31 @@
 </footer>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
-    /*<![CDATA[*/
-    jQuery(function ($) {
-        // 外部リンクを新しいウィンドウで開く
-        $('body').on('click', 'a[href^=\"http://\"],a[href^=\"https://\"]', function (event) {
-            if (!this.href.match('http://wix-tutorial-ja.github.io/')) {
-                window.open(this.href, '_blank');
-                event.preventDefault();
-            }
-        });
-        // サイド・ナビ・ブロックの開閉 - 初期状態
-        if ('{{ page.current }}'.substr(0, 2) == 'ch') {
-            var block = '{{ page.current }}'.substr(0, 4);
-            $('#sn-btn-' + block).addClass('open');
-            $('#sn-block-' + block).addClass('open');
-        }
-        // サイド・ナビ・ブロックの開閉
-        $('a.snb').on('click', function(event) {
-            $('#sn-block-' + this.id.substr(7,4)).toggleClass('open');
-            $(this).toggleClass('open');
+/*<![CDATA[*/
+jQuery(function ($) {
+    // 外部リンクを新しいウィンドウで開く
+    $('body').on('click', 'a[href^=\"http://\"],a[href^=\"https://\"]', function (event) {
+        if (!this.href.match('http://wix-tutorial-ja.github.io/')) {
+            window.open(this.href, '_blank');
             event.preventDefault();
-        });
-        // サイド・ナビのカレント・アイテム
-        $('#sn-{{ page.current }}').addClass('current');
+        }
     });
-    /*]]>*/
+    // サイド・ナビ・ブロックの開閉 - 初期状態
+    if ('{{ page.current }}'.substr(0, 2) == 'ch') {
+        var block = '{{ page.current }}'.substr(0, 4);
+        $('#sn-btn-' + block).addClass('open');
+        $('#sn-block-' + block).addClass('open');
+    }
+    // サイド・ナビ・ブロックの開閉
+    $('a.snb').on('click', function(event) {
+        $('#sn-block-' + this.id.substr(7,4)).toggleClass('open');
+        $(this).toggleClass('open');
+        event.preventDefault();
+    });
+    // サイド・ナビのカレント・アイテム
+    $('#sn-{{ page.current }}').addClass('current');
+});
+/*]]>*/
 </script>
 </body>
 </html>
