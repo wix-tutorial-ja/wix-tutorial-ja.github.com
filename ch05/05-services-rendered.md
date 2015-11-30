@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET / 5. サービスの提供
+chapter: ch05
 current: ch05-05
 prev: 04-web-directory
 prev-title: 4. ウェブ・ディレクトリ

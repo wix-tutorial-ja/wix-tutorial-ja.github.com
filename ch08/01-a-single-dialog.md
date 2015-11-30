@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 1. 一つだけのダイアログ
+chapter: ch08
 current: ch08-01
 prev: index
 prev-title: Lesson 8 ユーザー・インタフェイス再び

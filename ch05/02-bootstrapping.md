@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET / 2. ブートストラップ
+chapter: ch05
 current: ch05-02
 prev: 01-framed-by-net
 prev-title: 1. .NET の枠組み

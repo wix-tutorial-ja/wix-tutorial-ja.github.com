@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 4. コントロールをコントロールせよ
+chapter: ch03
 current: ch03-04
 prev: 03-whats-not-in-the-book
 prev-title: 3. 本に書かれていないこと

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 10. XML
+chapter: ch06
 current: ch06-10
 prev: 09-environmentally-friendly
 prev-title: 9. 環境に優しく

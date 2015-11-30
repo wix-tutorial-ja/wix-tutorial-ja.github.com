@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 9. 環境に優しく
+chapter: ch06
 current: ch06-09
 prev: 08-new-user-on-the-block
 prev-title: 8. 新顔のユーザー

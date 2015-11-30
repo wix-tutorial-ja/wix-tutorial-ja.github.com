@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション
+chapter: ch03
 current: ch03
 prev: /ch02/06-think-localized
 prev-title: 6. 地域化を考える

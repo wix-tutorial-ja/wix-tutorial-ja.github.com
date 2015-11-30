@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 7 SQL / 1. データベースを作成する
+chapter: ch07
 current: ch07-01
 prev: /ch06/12-version-by-version
 prev-title: 12. バージョンごとに

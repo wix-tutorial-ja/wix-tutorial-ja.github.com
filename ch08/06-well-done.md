@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 6. よく出来ました
+chapter: ch08
 current: ch08-06
 prev: 05-is-this-progress
 prev-title: 5. これが進捗ですか

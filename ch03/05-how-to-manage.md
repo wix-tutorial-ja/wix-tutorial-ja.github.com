@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 5. マネージする方法
+chapter: ch03
 current: ch03-05
 prev: 04-control-your-controls
 prev-title: 4. コントロールをコントロールせよ

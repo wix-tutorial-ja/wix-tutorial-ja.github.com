@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 10 標準ライブラリ / 1. カスタム・アクションとユーザー・インタフェイス
+chapter: ch10
 current: ch10-01
 prev: index
 prev-title: Lesson 10 標準ライブラリ

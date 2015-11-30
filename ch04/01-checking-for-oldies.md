@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化 / 1. 古いのを探す
+chapter: ch04
 current: ch04-01
 prev: index
 prev-title: Lesson 4 アップグレードとモジュラー化

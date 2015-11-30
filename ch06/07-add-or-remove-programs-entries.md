@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 7. プログラムの追加と削除の項目
+chapter: ch06
 current: ch06-07
 prev: 06-multi-media-installations
 prev-title: 6. 複数メディアのインストーラ

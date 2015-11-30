@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 10 標準ライブラリ / 2. お静かに願います
+chapter: ch10
 current: ch10-02
 prev: 01-custom-actions-and-user-interface
 prev-title: 1. カスタム・アクションとユーザー・インタフェイス

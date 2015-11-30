@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化 / 3. パッチワーク
+chapter: ch04
 current: ch04-03
 prev: 02-replacing-ourselves
 prev-title: 2. 自分自身を置き換える

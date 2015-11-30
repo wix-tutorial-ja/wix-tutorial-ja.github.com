@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 3. 使用に供する
+chapter: ch01
 current: ch01-03
 prev: 02-the-files-inside
 prev-title: 2. 中に入るファイル

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 5. ディレクトリの作成
+chapter: ch06
 current: ch06-05
 prev: 04-dde-connections
 prev-title: 4. DDE 接続

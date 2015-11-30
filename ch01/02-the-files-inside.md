@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 2. 中に入るファイル
+chapter: ch01
 current: ch01-02
 prev: 01-the-software-package
 prev-title: 1. ソフトウェア・パッケージ

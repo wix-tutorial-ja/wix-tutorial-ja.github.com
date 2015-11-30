@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 1 始めよう / 5. どこにインストールするか
+chapter: ch01
 current: ch01-05
 prev: 04-useful-extras
 prev-title: 4. 便利な追加機能

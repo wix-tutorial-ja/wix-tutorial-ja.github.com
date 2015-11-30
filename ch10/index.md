@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 10 標準ライブラリ
+chapter: ch10
 current: ch10
 prev: /ch09/01-morphing-installers
 prev-title: 1. インストーラを変形する

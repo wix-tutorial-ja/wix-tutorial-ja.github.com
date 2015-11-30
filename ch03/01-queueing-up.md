@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 1. 列に並んで
+chapter: ch03
 current: ch03-01
 prev: index
 prev-title: Lesson 3 イベントとアクション

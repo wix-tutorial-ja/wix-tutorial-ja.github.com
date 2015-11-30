@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 3. 相互作用
+chapter: ch08
 current: ch08-03
 prev: 02-tuning-up
 prev-title: 2. チューニング・アップ

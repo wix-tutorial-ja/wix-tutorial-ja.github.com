@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化 / 2. 自分自身を置き換える
+chapter: ch04
 current: ch04-02
 prev: 01-checking-for-oldies
 prev-title: 1. 古いのを探す

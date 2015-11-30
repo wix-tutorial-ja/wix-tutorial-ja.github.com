@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET / 1. .NET の枠組み
+chapter: ch05
 current: ch05-01
 prev: index
 prev-title: Lesson 5 Net と .NET

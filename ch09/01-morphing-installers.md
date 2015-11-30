@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 9 トランスフォーム / 1. インストーラを変形する
+chapter: ch09
 current: ch09-01
 prev: index
 prev-title: Lesson 9 トランスフォーム

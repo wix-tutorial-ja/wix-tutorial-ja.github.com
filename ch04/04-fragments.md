@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化 / 4. 断片
+chapter: ch04
 current: ch04-04
 prev: 03-patchwork
 prev-title: 3. パッチワーク

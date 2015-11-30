@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化 / 5. 融合するもの
+chapter: ch04
 current: ch04-05
 prev: 04-fragments
 prev-title: 4. 断片

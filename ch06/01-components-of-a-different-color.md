@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 1. 違う色のコンポーネント
+chapter: ch06
 current: ch06-01
 prev: /ch05/05-services-rendered
 prev-title: 5. サービスの提供

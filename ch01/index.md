@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 1 始めよう
+chapter: ch01
 current: ch01
 prev: /toc
 prev-title: 目次

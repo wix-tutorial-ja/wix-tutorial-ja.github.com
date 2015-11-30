@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 8. 順番外
+chapter: ch08
 current: ch08-08
 prev: 07-legalese
 prev-title: 7. 法律用語

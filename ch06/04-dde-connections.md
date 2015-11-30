@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 4. DDE 接続
+chapter: ch06
 current: ch06-04
 prev: 03-formatted-strings
 prev-title: 3. 書式指定文字列

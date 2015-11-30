@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 7. 法律用語
+chapter: ch08
 current: ch08-07
 prev: 06-well-done
 prev-title: 6. よく出来ました

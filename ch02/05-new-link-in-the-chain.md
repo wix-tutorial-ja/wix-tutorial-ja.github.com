@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 5. チェーンの新しい環
+chapter: ch02
 current: ch02-05
 prev: 04-do-you-speak-english
 prev-title: 4. 英語はわかりますか

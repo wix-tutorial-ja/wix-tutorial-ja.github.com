@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 5. これが進捗ですか
+chapter: ch08
 current: ch08-05
 prev: 04-customizations-galore
 prev-title: 4. 相互作用

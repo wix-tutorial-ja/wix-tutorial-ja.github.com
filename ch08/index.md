@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び
+chapter: ch08
 current: ch08
 prev: /ch07/01-creating-a-database
 prev-title: 1. データベースを作成する

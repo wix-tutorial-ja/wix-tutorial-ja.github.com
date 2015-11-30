@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 2. 追加のアクション
+chapter: ch03
 current: ch03-02
 prev: 01-queueing-up
 prev-title: 1. 列に並んで

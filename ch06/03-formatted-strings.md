@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 3. 書式指定文字列
+chapter: ch06
 current: ch06-03
 prev: 02-expression-syntax
 prev-title: 2. 式の構文

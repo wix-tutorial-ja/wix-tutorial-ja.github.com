@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 9 トランスフォーム
+chapter: ch09
 current: ch09
 prev: /ch08/09-dontcha-speak-english
 prev-title: 9. 英語はわかりませんか

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET / 4. ウェブ・ディレクトリ
+chapter: ch05
 current: ch05-04
 prev: 03-launch-the-internet
 prev-title: 3. インターネットを起動する

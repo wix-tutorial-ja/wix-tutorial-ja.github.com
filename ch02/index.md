@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス
+chapter: ch02
 current: ch02
 prev: /ch01/08-orphaned-on-removal
 prev-title: 8. 削除時の孤児化

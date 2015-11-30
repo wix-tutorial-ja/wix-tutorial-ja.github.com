@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 2. チューニング・アップ
+chapter: ch08
 current: ch08-02
 prev: 01-a-single-dialog
 prev-title: 1. 一つだけのダイアログ

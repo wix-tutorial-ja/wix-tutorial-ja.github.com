@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 2 ユーザー・インタフェイス / 2. カスタム設定
+chapter: ch02
 current: ch02-02
 prev: 01-first-steps
 prev-title: 1. 最初のステップ

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 8. 新顔のユーザー
+chapter: ch06
 current: ch06-08
 prev: 07-add-or-remove-programs-entries
 prev-title: 7. プログラムの追加と削除の項目

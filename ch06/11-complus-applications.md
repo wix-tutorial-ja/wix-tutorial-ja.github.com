@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 6 COM、式の構文、その他 / 11. COM+ アプリケーション
+chapter: ch06
 current: ch06-11
 prev: 10-xml
 prev-title: 10. XML

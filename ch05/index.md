@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET
+chapter: ch05
 current: ch05
 prev: /ch04/05-mergers
 prev-title: 5. 融合するもの

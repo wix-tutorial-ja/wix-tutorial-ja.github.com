@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 4 アップグレードとモジュラー化
+chapter: ch04
 current: ch04
 prev: /ch03/06-at-a-later-stage
 prev-title: 6. 後の段階で

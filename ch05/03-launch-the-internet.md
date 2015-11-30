@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 5 Net と .NET / 3. インターネットを起動する
+chapter: ch05
 current: ch05-03
 prev: 02-bootstrapping
 prev-title: 2. ブートストラップ

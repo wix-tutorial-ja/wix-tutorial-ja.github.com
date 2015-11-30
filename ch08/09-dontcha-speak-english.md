@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 8 ユーザー・インタフェイス再び / 9. 英語はわかりませんか
+chapter: ch08
 current: ch08-09
 prev: 08-out-of-order
 prev-title: 8. 順番外

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WiX チュートリアル 日本語訳 Lesson 3 イベントとアクション / 3. 本に書かれていないこと
+chapter: ch03
 current: ch03-03
 prev: 02-extra-actions
 prev-title: 2. 追加のアクション
