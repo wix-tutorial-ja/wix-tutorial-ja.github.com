@@ -241,11 +241,11 @@ a:hover img.icon.small {
     a.snb.open:before {
         content: '－';
     }
-    li.current a{
-        color: black;
+    .current a, a.current{
+        color: #c00;
         font-weight: bold;
     }
-    li.current a:hover{
+    .current a:hover, a.current:hover{
         color: white;
     }
     h1 {font-size: 2.2em;}
