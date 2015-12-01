@@ -164,15 +164,15 @@
                             </li>
                             <li id="sn-ch02-04">
                                 <a href="/ch02/04-do-you-speak-english.html" title="英語はわかりますか"
-                                   {% if page.current == 'ch02-03' %} class="current"{% endif %}>英語はわかりますか</a>
+                                   {% if page.current == 'ch02-04' %} class="current"{% endif %}>英語はわかりますか</a>
                             </li>
                             <li id="sn-ch02-05">
                                 <a href="/ch02/05-new-link-in-the-chain.html" title="チェーンの新しい環"
-                                   {% if page.current == 'ch02-04' %} class="current"{% endif %}>チェーンの新しい環</a>
+                                   {% if page.current == 'ch02-05' %} class="current"{% endif %}>チェーンの新しい環</a>
                             </li>
                             <li id="sn-ch02-06">
                                 <a href="/ch02/06-think-localized.html" title="地域化を考える"
-                                   {% if page.current == 'ch02-05' %} class="current"{% endif %}>地域化を考える</a>
+                                   {% if page.current == 'ch02-06' %} class="current"{% endif %}>地域化を考える</a>
                             </li>
                         </ol>
                         <h4><a class="snb{% if page.chapter == 'ch03' %} open{% endif %}" id="sn-btn-ch03"  href="#"></a> 3
@@ -422,23 +422,31 @@
     else window.addEventListener('load', cb);
     */
 </script>
-<script type="text/javascript" src="/js/chibi-min.js"></script>
 <script type="text/javascript">
-$().ready(function () {
+window.onload = function() {
     // 外部リンクを新しいウィンドウで開く
-    $('a[href^=\"http://\"],a[href^=\"https://\"]').on('click', function (event) {
-        if (!this.href.match('http://wix-tutorial-ja.github.io/')) {
-            window.open(this.href, '_blank');
-            event.preventDefault();
+    var links = document.querySelectorAll('a[href^=\"http://\"],a[href^=\"https://\"]');
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        if (!link.href.match('http://wix-tutorial-ja.github.io/')) {
+            link.onclick = function(event) {
+                window.open(this.href, '_blank');
+                event.preventDefault();
+            }
         }
-    });
+    }
     // サイド・ナビ・ブロックの開閉
-    $('a.snb').on('click', function(event) {
-        $('#sn-block-' + this.id.substr(7,4)).cls('open', 'toggle');
-        $(this).cls('open', 'toggle');
-        event.preventDefault();
-    });
-});
+    var menuBtns = document.querySelectorAll('a.snb');
+    for (i = 0; i < menuBtns.length; i++) {
+        var btn = menuBtns[i];
+        btn.onclick = function() {
+            this.classList.toggle('open');
+            var menuId = 'sn-block-' + this.id.substr(7,4);
+            var menu = document.getElementById(menuId);
+            menu.classList.toggle('open');
+        };
+    }
+}
 </script>
 </body>
 </html>
