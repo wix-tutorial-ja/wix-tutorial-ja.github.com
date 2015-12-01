@@ -1,0 +1,78 @@
+@media only screen and (min-width: 34em) {
+    nav, p, ul, ol, dl, code {
+        font-size: 1em;
+    }
+    h1 {font-size: 2.0em;}
+    h2 {font-size: 1.4em;}
+    .header-left {
+        display: block;
+        width: 35%;
+    }
+    .header-right {
+        width: 65%;
+        text-align: right;
+    }
+    .small {display: none}
+    .medium {display: inline}
+}
+@media only screen and (min-width: 54em) {
+    #main {
+        float: right;
+        width: 75%;
+    }
+    #sub {
+        display: block;
+        width: 22%;
+        font-size: 85%;
+    }
+    #side-navi {
+        margin: 2em 0;
+        padding: 0.75em;
+        border: 1px solid #969896;
+        border-radius: 10px;
+    }
+    #side-navi ol {
+        display: none;
+    }
+    #side-navi ol.open {
+        display: inline-block;
+        list-style-position: outside;
+        margin-left: 3.0em;
+        margin-bottom: 0;
+    }
+    #side-navi ul {
+        display: inline-block;
+        list-style-position: outside;
+        margin-left: 1.7em;
+        margin-bottom: 0;
+    }
+    #side-navi h3, #side-navi h4 {
+        margin: 0.3em 0 0 2em;
+        text-indent: -2em;
+    }
+    a.snb:before {
+        content: '＋';
+    }
+    a.snb.open:before {
+        content: '－';
+    }
+    a.current{
+        color: #c00;
+        font-weight: bold;
+    }
+    a.current:hover{
+        color: white;
+    }
+    h1 {font-size: 2.2em;}
+    h2 {font-size: 1.5em;}
+    h3, h4 {font-size: 1.1em;}
+
+    .large {display: inline}
+    .medium {display: none}
+}
+
+@media only screen and (min-width: 76em) {
+    h1 {font-size: 2.4em;}
+    h2 {font-size: 1.7em;}
+    h3, h4 {font-size: 1.2em;}
+}

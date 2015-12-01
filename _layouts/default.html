@@ -9,8 +9,8 @@
     <meta name="Description" content="The Japanese translation of the tutorial on the WiX toolset.">
     <meta name="Description" lang="ja" content="WiX ツールセットのチュートリアル 日本語訳">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/grid.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/small.css">
+    <link rel="stylesheet" type="text/css" media="(min-width: 34em)" href="/css/large.css">
     <title>{{ page.title }}</title>
     <link rel="Shortcut Icon" type="img/x-icon" href="/favicon.ico">
     <meta name="google-site-verification" content="zc4RM2uBi1JAZ_NuSjrdLAjfPtFBeZBIuhNbczdDugw" /></head>
@@ -407,46 +407,6 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript">
-    /*
-    var cb = function() {
-        var l = document.createElement('link');
-        l.rel = 'stylesheet';
-        l.href = 'yourCSSfile.css';
-        var h = document.getElementsByTagName('head')[0];
-        h.parentNode.insertBefore(l, h);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-            webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(cb);
-    else window.addEventListener('load', cb);
-    */
-</script>
-<script type="text/javascript">
-window.onload = function() {
-    // 外部リンクを新しいウィンドウで開く
-    var links = document.querySelectorAll('a[href^=\"http://\"],a[href^=\"https://\"]');
-    for (var i = 0; i < links.length; i++) {
-        var link = links[i];
-        if (!link.href.match('http://wix-tutorial-ja.github.io/')) {
-            link.onclick = function(event) {
-                window.open(this.href, '_blank');
-                event.preventDefault();
-            }
-        }
-    }
-    // サイド・ナビ・ブロックの開閉
-    var menuBtns = document.querySelectorAll('a.snb');
-    for (i = 0; i < menuBtns.length; i++) {
-        var btn = menuBtns[i];
-        btn.onclick = function() {
-            this.classList.toggle('open');
-            var menuId = 'sn-block-' + this.id.substr(7,4);
-            var menu = document.getElementById(menuId);
-            menu.classList.toggle('open');
-        };
-    }
-}
-</script>
+<script type="text/javascript" src="/js/main.js" async></script>
 </body>
 </html>
