@@ -1,411 +1,426 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="Keywords" content="WiX, Windows Installer XML, MSI, Tutorial, Japanese Translation">
-    <meta name="Keywords" lang="ja" content="WiX, Windows Installer XML, MSI, チュートリアル, 日本語訳">
-    <meta name="Description" content="The Japanese translation of the tutorial on the WiX toolset.">
-    <meta name="Description" lang="ja" content="WiX ツールセットのチュートリアル 日本語訳">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/small.css">
-    <link rel="stylesheet" type="text/css" media="(min-width: 34em)" href="/css/large.css">
-    <title>{{ page.title }}</title>
-    <link rel="Shortcut Icon" type="img/x-icon" href="/favicon.ico">
-    <meta name="google-site-verification" content="zc4RM2uBi1JAZ_NuSjrdLAjfPtFBeZBIuhNbczdDugw" /></head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="Keywords" content="WiX, Windows Installer XML, MSI, Tutorial, Japanese Translation">
+	<meta name="Keywords" lang="ja" content="WiX, Windows Installer XML, MSI, チュートリアル, 日本語訳">
+	<meta name="Description" content="The Japanese translation of the tutorial on the WiX toolset.">
+	<meta name="Description" lang="ja" content="WiX ツールセットのチュートリアル 日本語訳">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/css/small.css">
+	<link rel="stylesheet" type="text/css" media="(min-width: 34em)" href="/css/large.css">
+	<title>{{ page.title }}</title>
+	<link rel="Shortcut Icon" type="img/x-icon" href="/favicon.ico">
+	<meta name="google-site-verification" content="zc4RM2uBi1JAZ_NuSjrdLAjfPtFBeZBIuhNbczdDugw"/>
+</head>
+
 <body>
 
 <!-- HEADER -->
 <header>
-    <div class="container">
-        <nav class="row">
-            <div class="col header-left">
-                <a href="/index.html" title="HOME">
-                    <img class="icon" src="/images/candle-24.png" />&nbsp;
-                    <span class="medium">WiX Tu Ja</span>
-                    <span class="large">WiX Tutorial Ja</span>
-                </a>
-            </div>
-            <div class="col header-right">
-                <a class="small" href="/index.html" title="HOME">
-                    <img class="icon small" src="/images/candle-18.png" />
-                </a>
-                &nbsp;&nbsp;&nbsp;
-                <a href="/toc.html" title="目次">&bull; 目次</a>
-                &nbsp;|&nbsp;
-                {% if page.prev != "none" %}
-                <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-                {% else %}
-                &laquo; 前へ
-                {% endif %}
-                &nbsp;|&nbsp;
-                {% if page.next != "none" %}
-                <a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
-                {% else %}
-                次へ &raquo;
-                {% endif %}
-                &nbsp;|&nbsp;
-                {% if page.origin != "none" %}
-                <a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
-                {% else %}
-                &lowast; 原文
-                {% endif %}
-            </div>
-        </nav>
-    </div>
+	<div class="container">
+		<nav class="row">
+			<div class="col header-left">
+				<a href="/index.html" title="HOME">
+					<img class="icon" src="/images/candle-24.png"/>&nbsp;
+					<span class="medium">WiX Tu Ja</span>
+					<span class="large">WiX Tutorial Ja</span>
+				</a>
+			</div>
+			<div class="col header-right">
+				<a class="small" href="/index.html" title="HOME">
+					<img class="icon small" src="/images/candle-18.png"/>
+				</a>
+				&nbsp;&nbsp;&nbsp;
+				<a href="/toc.html" title="目次">&bull; 目次</a>
+				&nbsp;|&nbsp;
+				{% if page.prev != "none" %}
+				<a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+				{% else %}
+				&laquo; 前へ
+				{% endif %}
+				&nbsp;|&nbsp;
+				{% if page.next != "none" %}
+				<a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
+				{% else %}
+				次へ &raquo;
+				{% endif %}
+				&nbsp;|&nbsp;
+				{% if page.origin != "none" %}
+				<a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
+				{% else %}
+				&lowast; 原文
+				{% endif %}
+			</div>
+		</nav>
+	</div>
 </header>
 
 <!-- ARTICLE -->
 <article>
-    <div class="container">
-        <!-- MAIN CONTENT -->
-        <div class="row">
-            <div class="col" id="main">
-                <div class="row">
-                    <div class="col">
-                        {{ content }}
-                        <p id="bottom-nav">
-                            <a href="#main" title="ページの先頭へ">&uarr; 先頭</a>
-                            &nbsp;|&nbsp;
-                            <a href="/toc.html" title="目次">&bull; 目次</a>
-                            &nbsp;|&nbsp;
-                            {% if page.prev != "none" %}
-                            <a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
-                            {% else %}
-                            &laquo; 前へ
-                            {% endif %}
-                            &nbsp;|&nbsp;
-                            {% if page.next != "none" %}
-                            <a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
-                            {% else %}
-                            次へ &raquo;
-                            {% endif %}
-                            &nbsp;|&nbsp;
-                            {% if page.origin != "none" %}
-                            <a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
-                            {% else %}
-                            &lowast; 原文
-                            {% endif %}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" id="sub">
-                <div class="row">
-                    <div class="col" id="side-navi">
-                        <h3>Table of Contents</h3>
-                        <ul>
-                            <li id="sn-home">
-                                <a href="/index.html" title="HOME"
-                                   {% if page.current == 'home' %} class="current"{% endif %}>HOME</a>
-                            </li>
-                            <li id="sn-preface">
-                                <a href="/preface.html" title="前書き"
-                                   {% if page.current == 'preface' %} class="current"{% endif %}>前書き</a>
-                            </li>
-                            <li id="sn-toc">
-                                <a href="/toc.html" title="目次"
-                                   {% if page.current == 'toc' %} class="current"{% endif %}>目次</a>
-                            </li>
-                        </ul>
-                        <h4><a class="snb{% if page.chapter == 'ch01' %} open{% endif %}" id="sn-btn-ch01"  href="#"> </a> 1
-                            <a id="sn-ch01" href="/ch01/index.html" title="Lesson 1"
-                               {% if page.current == 'ch01' %} class="current"{% endif %}>始めよう</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch01' %} open{% endif %}" id="sn-block-ch01">
-                            <li id="sn-ch01-01">
-                                <a href="/ch01/01-the-software-package.html" title="ソフトウェア・パッケージ"
-                                   {% if page.current == 'ch01-01' %} class="current"{% endif %}>ソフトウェア・パッケージ</a>
-                            </li>
-                            <li id="sn-ch01-02">
-                                <a href="/ch01/02-the-files-inside.html" title="中に入るファイル"
-                                   {% if page.current == 'ch01-02' %} class="current"{% endif %}>中に入るファイル</a>
-                            </li>
-                            <li id="sn-ch01-03">
-                                <a href="/ch01/03-putting-it-to-use.html" title="使用に供する"
-                                   {% if page.current == 'ch01-03' %} class="current"{% endif %}>使用に供する</a>
-                            </li>
-                            <li id="sn-ch01-04">
-                                <a href="/ch01/04-useful-extras.html" title="便利な追加機能"
-                                   {% if page.current == 'ch01-04' %} class="current"{% endif %}>便利な追加機能</a>
-                            </li>
-                            <li id="sn-ch01-05">
-                                <a href="/ch01/05-where-to-install.html" title="どこにインストールするか"
-                                   {% if page.current == 'ch01-05' %} class="current"{% endif %}>どこにインストールするか</a>
-                            </li>
-                            <li id="sn-ch01-06">
-                                <a href="/ch01/06-conditional-installation.html" title="条件付きインストール"
-                                   {% if page.current == 'ch01-06' %} class="current"{% endif %}>条件付きインストール</a>
-                            </li>
-                            <li id="sn-ch01-07">
-                                <a href="/ch01/07-beyond-files.html" title="ファイルだけでなく"
-                                   {% if page.current == 'ch01-07' %} class="current"{% endif %}>ファイルだけでなく</a>
-                            </li>
-                            <li id="sn-ch01-08">
-                                <a href="/ch01/08-orphaned-on-removal.html" title="削除時の孤児化"
-                                   {% if page.current == 'ch01-08' %} class="current"{% endif %}>削除時の孤児化</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch02' %} open{% endif %}" id="sn-btn-ch02"  href="#"></a> 2
-                            <a id="sn-ch02" href="/ch02/index.html" title="Lesson 2"
-                               {% if page.current == 'ch02' %} class="current"{% endif %}>ユーザー・インタフェイス</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch02' %} open{% endif %}" id="sn-block-ch02">
-                            <li id="sn-ch02-01">
-                                <a href="/ch02/01-first-steps.html" title="最初のステップ"
-                                   {% if page.current == 'ch02-01' %} class="current"{% endif %}>最初のステップ</a>
-                            </li>
-                            <li id="sn-ch02-02">
-                                <a href="/ch02/02-custom-settings.html" title="カスタムの設定"
-                                   {% if page.current == 'ch02-02' %} class="current"{% endif %}>カスタムの設定</a>
-                            </li>
-                            <li id="sn-ch02-03">
-                                <a href="/ch02/03-ui-wizardry.html" title="UI の魔法"
-                                   {% if page.current == 'ch02-03' %} class="current"{% endif %}>UI の魔法</a>
-                            </li>
-                            <li id="sn-ch02-04">
-                                <a href="/ch02/04-do-you-speak-english.html" title="英語はわかりますか"
-                                   {% if page.current == 'ch02-04' %} class="current"{% endif %}>英語はわかりますか</a>
-                            </li>
-                            <li id="sn-ch02-05">
-                                <a href="/ch02/05-new-link-in-the-chain.html" title="チェーンの新しい環"
-                                   {% if page.current == 'ch02-05' %} class="current"{% endif %}>チェーンの新しい環</a>
-                            </li>
-                            <li id="sn-ch02-06">
-                                <a href="/ch02/06-think-localized.html" title="地域化を考える"
-                                   {% if page.current == 'ch02-06' %} class="current"{% endif %}>地域化を考える</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch03' %} open{% endif %}" id="sn-btn-ch03"  href="#"></a> 3
-                            <a id="sn-ch03" href="/ch03/index.html" title="Lesson 3"
-                               {% if page.current == 'ch03' %} class="current"{% endif %}>イベントとアクション</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch03' %} open{% endif %}" id="sn-block-ch03">
-                            <li id="sn-ch03-01">
-                                <a href="/ch03/01-queueing-up.html" title="列に並んで"
-                                   {% if page.current == 'ch03-01' %} class="current"{% endif %}>列に並んで</a>
-                            </li>
-                            <li id="sn-ch03-02">
-                                <a href="/ch03/02-extra-actions.html" title="追加のアクション"
-                                   {% if page.current == 'ch03-02' %} class="current"{% endif %}>追加のアクション</a>
-                            </li>
-                            <li id="sn-ch03-03">
-                                <a href="/ch03/03-whats-not-in-the-book.html" title="本に書かれていないこと"
-                                   {% if page.current == 'ch03-03' %} class="current"{% endif %}>本に書かれていないこと</a>
-                            </li>
-                            <li id="sn-ch03-04">
-                                <a href="/ch03/04-control-your-controls.html" title="コントロールをコントロールせよ"
-                                   {% if page.current == 'ch03-04' %} class="current"{% endif %}>コントロールをコントロールせよ</a>
-                            </li>
-                            <li id="sn-ch03-05">
-                                <a href="/ch03/05-how-to-manage.html" title="マネージする方法"
-                                   {% if page.current == 'ch03-05' %} class="current"{% endif %}>マネージする方法</a>
-                            </li>
-                            <li id="sn-ch03-06">
-                                <a href="/ch03/06-at-a-later-stage.html" title="後の段階で"
-                                   {% if page.current == 'ch03-06' %} class="current"{% endif %}>後の段階で</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch04' %} open{% endif %}" id="sn-btn-ch04"  href="#"></a> 4
-                            <a id="sn-ch04" href="/ch04/index.html" title="Lesson 4"
-                               {% if page.current == 'ch04' %} class="current"{% endif %}>アップグレードとモジュラー化</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch04' %} open{% endif %}" id="sn-block-ch04">
-                            <li id="sn-ch04-01">
-                                <a href="/ch04/01-checking-for-oldies.html" title="古いのを探す"
-                                   {% if page.current == 'ch04-01' %} class="current"{% endif %}>古いのを探す</a>
-                            </li>
-                            <li id="sn-ch04-02">
-                                <a href="/ch04/02-replacing-ourselves.html" title="自分自身を置き換える"
-                                   {% if page.current == 'ch04-02' %} class="current"{% endif %}>自分自身を置き換える</a>
-                            </li>
-                            <li id="sn-ch04-03">
-                                <a href="/ch04/03-patchwork.html" title="パッチワーク"
-                                   {% if page.current == 'ch04-03' %} class="current"{% endif %}>パッチワーク</a>
-                            </li>
-                            <li id="sn-ch04-04">
-                                <a href="/ch04/04-fragments.html" title="断片"
-                                   {% if page.current == 'ch04-04' %} class="current"{% endif %}>断片</a>
-                            </li>
-                            <li id="sn-ch04-05">
-                                <a href="/ch04/05-mergers.html" title="融合するもの"
-                                   {% if page.current == 'ch04-05' %} class="current"{% endif %}>融合するもの</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch05' %} open{% endif %}" id="sn-btn-ch05"  href="#"></a> 5
-                            <a id="sn-ch05" href="/ch05/index.html" title="Lesson 5"
-                               {% if page.current == 'ch05' %} class="current"{% endif %}>Net と .NET</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch05' %} open{% endif %}" id="sn-block-ch05">
-                            <li id="sn-ch05-01">
-                                <a href="/ch05/01-framed-by-net.html" title=".NET の枠組み"
-                                   {% if page.current == 'ch05-01' %} class="current"{% endif %}>.NET の枠組み</a>
-                            </li>
-                            <li id="sn-ch05-02">
-                                <a href="/ch05/02-bootstrapping.html" title="ブートストラップ"
-                                   {% if page.current == 'ch05-02' %} class="current"{% endif %}>ブートストラップ</a>
-                            </li>
-                            <li id="sn-ch05-03">
-                                <a href="/ch05/03-launch-the-internet.html" title="インターネットを起動する"
-                                   {% if page.current == 'ch05-03' %} class="current"{% endif %}>インターネットを起動する</a>
-                            </li>
-                            <li id="sn-ch05-04">
-                                <a href="/ch05/04-web-directory.html" title="ウェブ・ディレクトリ"
-                                   {% if page.current == 'ch05-04' %} class="current"{% endif %}>ウェブ・ディレクトリ</a>
-                            </li>
-                            <li id="sn-ch05-05">
-                                <a href="/ch05/05-services-rendered.html" title="サービスの提供"
-                                   {% if page.current == 'ch05-05' %} class="current"{% endif %}>サービスの提供</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch06' %} open{% endif %}" id="sn-btn-ch06"  href="#"></a> 6
-                            COM、式の構文、その他</h4>
-                        <ol class="side-navi{% if page.chapter == 'ch06' %} open{% endif %}" id="sn-block-ch06">
-                            <li id="sn-ch06-01">
-                                <a href="/ch06/01-components-of-a-different-color.html" title="違う色のコンポーネント"
-                                   {% if page.current == 'ch06-01' %} class="current"{% endif %}>違う色のコンポーネント</a>
-                            </li>
-                            <li id="sn-ch06-02">
-                                <a href="/ch06/02-expression-syntax.html" title="式の構文"
-                                   {% if page.current == 'ch06-02' %} class="current"{% endif %}>式の構文</a>
-                            </li>
-                            <li id="sn-ch06-03">
-                                <a href="/ch06/03-formatted-strings.html" title="書式指定文字列"
-                                   {% if page.current == 'ch06-03' %} class="current"{% endif %}>書式指定文字列</a>
-                            </li>
-                            <li id="sn-ch06-04">
-                                <a href="/ch06/04-dde-connections.html" title="DDE 接続"
-                                   {% if page.current == 'ch06-04' %} class="current"{% endif %}>DDE 接続</a>
-                            </li>
-                            <li id="sn-ch06-05">
-                                <a href="/ch06/05-creating-directories.html" title="ディレクトリの作成"
-                                   {% if page.current == 'ch06-05' %} class="current"{% endif %}>ディレクトリの作成</a>
-                            </li>
-                            <li id="sn-ch06-06">
-                                <a href="/ch06/06-multi-media-installations.html" title="複数メディアのインストーラ"
-                                   {% if page.current == 'ch06-06' %} class="current"{% endif %}>複数メディアのインストーラ</a>
-                            </li>
-                            <li id="sn-ch06-07">
-                                <a href="/ch06/07-add-or-remove-programs-entries.html" title="プログラムの追加と削除の項目"
-                                   {% if page.current == 'ch06-07' %} class="current"{% endif %}>プログラムの追加と削除の項目</a>
-                            </li>
-                            <li id="sn-ch06-08">
-                                <a href="/ch06/08-new-user-on-the-block.html" title="新顔のユーザー"
-                                   {% if page.current == 'ch06-08' %} class="current"{% endif %}>新顔のユーザー</a>
-                            </li>
-                            <li id="sn-ch06-09">
-                                <a href="/ch06/09-environmentally-friendly.html" title="環境に優しく"
-                                   {% if page.current == 'ch06-09' %} class="current"{% endif %}>環境に優しく</a>
-                            </li>
-                            <li id="sn-ch06-10">
-                                <a href="/ch06/10-xml.html" title="XML"
-                                   {% if page.current == 'ch06-10' %} class="current"{% endif %}>XML</a>
-                            </li>
-                            <li id="sn-ch06-11">
-                                <a href="/ch06/11-complus-applications.html" title="COM+ アプリケーション"
-                                   {% if page.current == 'ch06-11' %} class="current"{% endif %}>COM+ アプリケーション</a>
-                            </li>
-                            <li id="sn-ch06-12">
-                                <a href="/ch06/12-version-by-version.html" title="バージョンごとに"
-                                   {% if page.current == 'ch06-12' %} class="current"{% endif %}>バージョンごとに</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch07' %} open{% endif %}" id="sn-btn-ch07"  href="#"></a> 7 SQL</h4>
-                        <ol class="side-navi{% if page.chapter == 'ch07' %} open{% endif %}" id="sn-block-ch07">
-                            <li id="sn-ch07-01">
-                                <a href="/ch07/01-creating-a-database.html" title="データベースを作成する"
-                                   {% if page.current == 'ch07-01' %} class="current"{% endif %}>データベースを作成する</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch08' %} open{% endif %}" id="sn-btn-ch08"  href="#"></a> 8
-                            <a id="sn-ch08" href="/ch08/index.html" title="Lesson 8"
-                               {% if page.current == 'ch08' %} class="current"{% endif %}>ユーザー・インタフェイス再び</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch08' %} open{% endif %}" id="sn-block-ch08">
-                            <li id="sn-ch08-01">
-                                <a href="/ch08/01-a-single-dialog.html" title="一つだけのダイアログ"
-                                   {% if page.current == 'ch08-01' %} class="current"{% endif %}>一つだけのダイアログ</a>
-                            </li>
-                            <li id="sn-ch08-02">
-                                <a href="/ch08/02-tuning-up.html" title="チューニング・アップ"
-                                   {% if page.current == 'ch08-02' %} class="current"{% endif %}>チューニング・アップ</a>
-                            </li>
-                            <li id="sn-ch08-03">
-                                <a href="/ch08/03-interactions.html" title="相互作用"
-                                   {% if page.current == 'ch08-03' %} class="current"{% endif %}>相互作用</a>
-                            </li>
-                            <li id="sn-ch08-04">
-                                <a href="/ch08/04-customizations-galore.html" title="カスタマイズがいっぱい"
-                                   {% if page.current == 'ch08-04' %} class="current"{% endif %}>カスタマイズがいっぱい</a>
-                            </li>
-                            <li id="sn-ch08-05">
-                                <a href="/ch08/05-is-this-progress.html" title="これが進捗ですか"
-                                   {% if page.current == 'ch08-05' %} class="current"{% endif %}>これが進捗ですか</a>
-                            </li>
-                            <li id="sn-ch08-06">
-                                <a href="/ch08/06-well-done.html" title="よく出来ました"
-                                   {% if page.current == 'ch08-06' %} class="current"{% endif %}>よく出来ました</a>
-                            </li>
-                            <li id="sn-ch08-07">
-                                <a href="/ch08/07-legalese.html" title="法律用語"
-                                   {% if page.current == 'ch08-07' %} class="current"{% endif %}>法律用語</a>
-                            </li>
-                            <li id="sn-ch08-08">
-                                <a href="/ch08/08-out-of-order.html" title="順番外"
-                                   {% if page.current == 'ch08-08' %} class="current"{% endif %}>順番外</a>
-                            </li>
-                            <li id="sn-ch08-09">
-                                <a href="/ch08/09-dontcha-speak-english.html" title="英語はわかりませんか"
-                                   {% if page.current == 'ch08-09' %} class="current"{% endif %}>英語はわかりませんか</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch09' %} open{% endif %}" id="sn-btn-ch09"  href="#"></a> 9
-                            <a id="sn-ch09" href="/ch09/index.html" title="Lesson 9"
-                               {% if page.current == 'ch09' %} class="current"{% endif %}>トランスフォーム</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch09' %} open{% endif %}" id="sn-block-ch09">
-                            <li id="sn-ch09-01">
-                                <a href="/ch09/01-morphing-installers.html" title="インストーラを変形する"
-                                   {% if page.current == 'ch09-01' %} class="current"{% endif %}>インストーラを変形する</a>
-                            </li>
-                        </ol>
-                        <h4><a class="snb{% if page.chapter == 'ch10' %} open{% endif %}" id="sn-btn-ch10"  href="#"></a> 10
-                            <a id="sn-ch10" href="/ch10/index.html" title="Lesson 10"
-                               {% if page.current == 'ch10' %} class="current"{% endif %}>標準ライブラリ</a></h4>
-                        <ol class="side-navi{% if page.chapter == 'ch10' %} open{% endif %}" id="sn-block-ch10">
-                            <li id="sn-ch10-01">
-                                <a href="/ch10/01-custom-actions-and-user-interface.html" title="カスタム・アクションとユーザー・インタフェイス"
-                                   {% if page.current == 'ch10-01' %} class="current"{% endif %}>カスタム・アクションとユーザー・インタフェイス</a>
-                            </li>
-                            <li id="sn-ch10-02">
-                                <a href="/ch10/02-silence-please.html" title="お静かに願います"
-                                   {% if page.current == 'ch10-02' %} class="current"{% endif %}>お静かに願います</a>
-                            </li>
-                        </ol>
-                        <ul>
-                            <li id="sn-download">
-                                <a href="/download.html" title="ダウンロード"
-                                   {% if page.current == 'download' %} class="current"{% endif %}>ダウンロード</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<!-- MAIN CONTENT -->
+		<div class="row">
+			<div class="col" id="main">
+				<div class="row">
+					<div class="col">
+						{{ content }}
+						<p id="bottom-nav">
+							<a href="#main" title="ページの先頭へ">&uarr; 先頭</a>
+							&nbsp;|&nbsp;
+							<a href="/toc.html" title="目次">&bull; 目次</a>
+							&nbsp;|&nbsp;
+							{% if page.prev != "none" %}
+							<a href="{{ page.prev }}.html" title="{{ page.prev-title }}">&laquo; 前へ</a>
+							{% else %}
+							&laquo; 前へ
+							{% endif %}
+							&nbsp;|&nbsp;
+							{% if page.next != "none" %}
+							<a href="{{ page.next }}.html" title="{{ page.next-title }}">次へ &raquo;</a>
+							{% else %}
+							次へ &raquo;
+							{% endif %}
+							&nbsp;|&nbsp;
+							{% if page.origin != "none" %}
+							<a href="https://www.firegiant.com/wix/tutorial{{ page.origin }}">&lowast; 原文</a>
+							{% else %}
+							&lowast; 原文
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col" id="sub">
+				<div class="row">
+					<div class="col" id="side-navi">
+						<h3>Table of Contents</h3>
+						<ul>
+							<li id="sn-home">
+								<a href="/index.html" title="HOME"
+								   {% if page.current== 'home' %} class="current"{% endif %}>HOME</a>
+							</li>
+							<li id="sn-preface">
+								<a href="/preface.html" title="前書き"
+								   {% if page.current== 'preface' %} class="current"{% endif %}>前書き</a>
+							</li>
+							<li id="sn-toc">
+								<a href="/toc.html" title="目次"
+								   {% if page.current== 'toc' %} class="current"{% endif %}>目次</a>
+							</li>
+						</ul>
+						<h4><a class="snb{% if page.chapter == 'ch01' %} open{% endif %}" id="sn-btn-ch01"
+							   href="#"> </a> 1
+							<a id="sn-ch01" href="/ch01/index.html" title="Lesson 1"
+							   {% if page.current== 'ch01' %} class="current"{% endif %}>始めよう</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch01' %} open{% endif %}" id="sn-block-ch01">
+							<li id="sn-ch01-01">
+								<a href="/ch01/01-the-software-package.html" title="ソフトウェア・パッケージ"
+								   {% if page.current== 'ch01-01' %} class="current"{% endif %}>ソフトウェア・パッケージ</a>
+							</li>
+							<li id="sn-ch01-02">
+								<a href="/ch01/02-the-files-inside.html" title="中に入るファイル"
+								   {% if page.current== 'ch01-02' %} class="current"{% endif %}>中に入るファイル</a>
+							</li>
+							<li id="sn-ch01-03">
+								<a href="/ch01/03-putting-it-to-use.html" title="使用に供する"
+								   {% if page.current== 'ch01-03' %} class="current"{% endif %}>使用に供する</a>
+							</li>
+							<li id="sn-ch01-04">
+								<a href="/ch01/04-useful-extras.html" title="便利な追加機能"
+								   {% if page.current== 'ch01-04' %} class="current"{% endif %}>便利な追加機能</a>
+							</li>
+							<li id="sn-ch01-05">
+								<a href="/ch01/05-where-to-install.html" title="どこにインストールするか"
+								   {% if page.current== 'ch01-05' %} class="current"{% endif %}>どこにインストールするか</a>
+							</li>
+							<li id="sn-ch01-06">
+								<a href="/ch01/06-conditional-installation.html" title="条件付きインストール"
+								   {% if page.current== 'ch01-06' %} class="current"{% endif %}>条件付きインストール</a>
+							</li>
+							<li id="sn-ch01-07">
+								<a href="/ch01/07-beyond-files.html" title="ファイルだけでなく"
+								   {% if page.current== 'ch01-07' %} class="current"{% endif %}>ファイルだけでなく</a>
+							</li>
+							<li id="sn-ch01-08">
+								<a href="/ch01/08-orphaned-on-removal.html" title="削除時の孤児化"
+								   {% if page.current== 'ch01-08' %} class="current"{% endif %}>削除時の孤児化</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch02' %} open{% endif %}" id="sn-btn-ch02" href="#"></a>
+							2
+							<a id="sn-ch02" href="/ch02/index.html" title="Lesson 2"
+							   {% if page.current== 'ch02' %} class="current"{% endif %}>ユーザー・インタフェイス</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch02' %} open{% endif %}" id="sn-block-ch02">
+							<li id="sn-ch02-01">
+								<a href="/ch02/01-first-steps.html" title="最初のステップ"
+								   {% if page.current== 'ch02-01' %} class="current"{% endif %}>最初のステップ</a>
+							</li>
+							<li id="sn-ch02-02">
+								<a href="/ch02/02-custom-settings.html" title="カスタムの設定"
+								   {% if page.current== 'ch02-02' %} class="current"{% endif %}>カスタムの設定</a>
+							</li>
+							<li id="sn-ch02-03">
+								<a href="/ch02/03-ui-wizardry.html" title="UI の魔法"
+								   {% if page.current== 'ch02-03' %} class="current"{% endif %}>UI の魔法</a>
+							</li>
+							<li id="sn-ch02-04">
+								<a href="/ch02/04-do-you-speak-english.html" title="英語はわかりますか"
+								   {% if page.current== 'ch02-04' %} class="current"{% endif %}>英語はわかりますか</a>
+							</li>
+							<li id="sn-ch02-05">
+								<a href="/ch02/05-new-link-in-the-chain.html" title="チェーンの新しい環"
+								   {% if page.current== 'ch02-05' %} class="current"{% endif %}>チェーンの新しい環</a>
+							</li>
+							<li id="sn-ch02-06">
+								<a href="/ch02/06-think-localized.html" title="地域化を考える"
+								   {% if page.current== 'ch02-06' %} class="current"{% endif %}>地域化を考える</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch03' %} open{% endif %}" id="sn-btn-ch03" href="#"></a>
+							3
+							<a id="sn-ch03" href="/ch03/index.html" title="Lesson 3"
+							   {% if page.current== 'ch03' %} class="current"{% endif %}>イベントとアクション</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch03' %} open{% endif %}" id="sn-block-ch03">
+							<li id="sn-ch03-01">
+								<a href="/ch03/01-queueing-up.html" title="列に並んで"
+								   {% if page.current== 'ch03-01' %} class="current"{% endif %}>列に並んで</a>
+							</li>
+							<li id="sn-ch03-02">
+								<a href="/ch03/02-extra-actions.html" title="追加のアクション"
+								   {% if page.current== 'ch03-02' %} class="current"{% endif %}>追加のアクション</a>
+							</li>
+							<li id="sn-ch03-03">
+								<a href="/ch03/03-whats-not-in-the-book.html" title="本に書かれていないこと"
+								   {% if page.current== 'ch03-03' %} class="current"{% endif %}>本に書かれていないこと</a>
+							</li>
+							<li id="sn-ch03-04">
+								<a href="/ch03/04-control-your-controls.html" title="コントロールをコントロールせよ"
+								   {% if page.current== 'ch03-04' %} class="current"{% endif %}>コントロールをコントロールせよ</a>
+							</li>
+							<li id="sn-ch03-05">
+								<a href="/ch03/05-how-to-manage.html" title="マネージする方法"
+								   {% if page.current== 'ch03-05' %} class="current"{% endif %}>マネージする方法</a>
+							</li>
+							<li id="sn-ch03-06">
+								<a href="/ch03/06-at-a-later-stage.html" title="後の段階で"
+								   {% if page.current== 'ch03-06' %} class="current"{% endif %}>後の段階で</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch04' %} open{% endif %}" id="sn-btn-ch04" href="#"></a>
+							4
+							<a id="sn-ch04" href="/ch04/index.html" title="Lesson 4"
+							   {% if page.current== 'ch04' %} class="current"{% endif %}>アップグレードとモジュラー化</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch04' %} open{% endif %}" id="sn-block-ch04">
+							<li id="sn-ch04-01">
+								<a href="/ch04/01-checking-for-oldies.html" title="古いのを探す"
+								   {% if page.current== 'ch04-01' %} class="current"{% endif %}>古いのを探す</a>
+							</li>
+							<li id="sn-ch04-02">
+								<a href="/ch04/02-replacing-ourselves.html" title="自分自身を置き換える"
+								   {% if page.current== 'ch04-02' %} class="current"{% endif %}>自分自身を置き換える</a>
+							</li>
+							<li id="sn-ch04-03">
+								<a href="/ch04/03-patchwork.html" title="パッチワーク"
+								   {% if page.current== 'ch04-03' %} class="current"{% endif %}>パッチワーク</a>
+							</li>
+							<li id="sn-ch04-04">
+								<a href="/ch04/04-fragments.html" title="断片"
+								   {% if page.current== 'ch04-04' %} class="current"{% endif %}>断片</a>
+							</li>
+							<li id="sn-ch04-05">
+								<a href="/ch04/05-mergers.html" title="融合するもの"
+								   {% if page.current== 'ch04-05' %} class="current"{% endif %}>融合するもの</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch05' %} open{% endif %}" id="sn-btn-ch05" href="#"></a>
+							5
+							<a id="sn-ch05" href="/ch05/index.html" title="Lesson 5"
+							   {% if page.current== 'ch05' %} class="current"{% endif %}>Net と .NET</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch05' %} open{% endif %}" id="sn-block-ch05">
+							<li id="sn-ch05-01">
+								<a href="/ch05/01-framed-by-net.html" title=".NET の枠組み"
+								   {% if page.current== 'ch05-01' %} class="current"{% endif %}>.NET の枠組み</a>
+							</li>
+							<li id="sn-ch05-02">
+								<a href="/ch05/02-bootstrapping.html" title="ブートストラップ"
+								   {% if page.current== 'ch05-02' %} class="current"{% endif %}>ブートストラップ</a>
+							</li>
+							<li id="sn-ch05-03">
+								<a href="/ch05/03-launch-the-internet.html" title="インターネットを起動する"
+								   {% if page.current== 'ch05-03' %} class="current"{% endif %}>インターネットを起動する</a>
+							</li>
+							<li id="sn-ch05-04">
+								<a href="/ch05/04-web-directory.html" title="ウェブ・ディレクトリ"
+								   {% if page.current== 'ch05-04' %} class="current"{% endif %}>ウェブ・ディレクトリ</a>
+							</li>
+							<li id="sn-ch05-05">
+								<a href="/ch05/05-services-rendered.html" title="サービスの提供"
+								   {% if page.current== 'ch05-05' %} class="current"{% endif %}>サービスの提供</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch06' %} open{% endif %}" id="sn-btn-ch06" href="#"></a>
+							6
+							COM、式の構文、その他</h4>
+						<ol class="side-navi{% if page.chapter == 'ch06' %} open{% endif %}" id="sn-block-ch06">
+							<li id="sn-ch06-01">
+								<a href="/ch06/01-components-of-a-different-color.html" title="違う色のコンポーネント"
+								   {% if page.current== 'ch06-01' %} class="current"{% endif %}>違う色のコンポーネント</a>
+							</li>
+							<li id="sn-ch06-02">
+								<a href="/ch06/02-expression-syntax.html" title="式の構文"
+								   {% if page.current== 'ch06-02' %} class="current"{% endif %}>式の構文</a>
+							</li>
+							<li id="sn-ch06-03">
+								<a href="/ch06/03-formatted-strings.html" title="書式指定文字列"
+								   {% if page.current== 'ch06-03' %} class="current"{% endif %}>書式指定文字列</a>
+							</li>
+							<li id="sn-ch06-04">
+								<a href="/ch06/04-dde-connections.html" title="DDE 接続"
+								   {% if page.current== 'ch06-04' %} class="current"{% endif %}>DDE 接続</a>
+							</li>
+							<li id="sn-ch06-05">
+								<a href="/ch06/05-creating-directories.html" title="ディレクトリの作成"
+								   {% if page.current== 'ch06-05' %} class="current"{% endif %}>ディレクトリの作成</a>
+							</li>
+							<li id="sn-ch06-06">
+								<a href="/ch06/06-multi-media-installations.html" title="複数メディアのインストーラ"
+								   {% if page.current== 'ch06-06' %} class="current"{% endif %}>複数メディアのインストーラ</a>
+							</li>
+							<li id="sn-ch06-07">
+								<a href="/ch06/07-add-or-remove-programs-entries.html" title="プログラムの追加と削除の項目"
+								   {% if page.current== 'ch06-07' %} class="current"{% endif %}>プログラムの追加と削除の項目</a>
+							</li>
+							<li id="sn-ch06-08">
+								<a href="/ch06/08-new-user-on-the-block.html" title="新顔のユーザー"
+								   {% if page.current== 'ch06-08' %} class="current"{% endif %}>新顔のユーザー</a>
+							</li>
+							<li id="sn-ch06-09">
+								<a href="/ch06/09-environmentally-friendly.html" title="環境に優しく"
+								   {% if page.current== 'ch06-09' %} class="current"{% endif %}>環境に優しく</a>
+							</li>
+							<li id="sn-ch06-10">
+								<a href="/ch06/10-xml.html" title="XML"
+								   {% if page.current== 'ch06-10' %} class="current"{% endif %}>XML</a>
+							</li>
+							<li id="sn-ch06-11">
+								<a href="/ch06/11-complus-applications.html" title="COM+ アプリケーション"
+								   {% if page.current== 'ch06-11' %} class="current"{% endif %}>COM+ アプリケーション</a>
+							</li>
+							<li id="sn-ch06-12">
+								<a href="/ch06/12-version-by-version.html" title="バージョンごとに"
+								   {% if page.current== 'ch06-12' %} class="current"{% endif %}>バージョンごとに</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch07' %} open{% endif %}" id="sn-btn-ch07" href="#"></a>
+							7 SQL</h4>
+						<ol class="side-navi{% if page.chapter == 'ch07' %} open{% endif %}" id="sn-block-ch07">
+							<li id="sn-ch07-01">
+								<a href="/ch07/01-creating-a-database.html" title="データベースを作成する"
+								   {% if page.current== 'ch07-01' %} class="current"{% endif %}>データベースを作成する</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch08' %} open{% endif %}" id="sn-btn-ch08" href="#"></a>
+							8
+							<a id="sn-ch08" href="/ch08/index.html" title="Lesson 8"
+							   {% if page.current== 'ch08' %} class="current"{% endif %}>ユーザー・インタフェイス再び</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch08' %} open{% endif %}" id="sn-block-ch08">
+							<li id="sn-ch08-01">
+								<a href="/ch08/01-a-single-dialog.html" title="一つだけのダイアログ"
+								   {% if page.current== 'ch08-01' %} class="current"{% endif %}>一つだけのダイアログ</a>
+							</li>
+							<li id="sn-ch08-02">
+								<a href="/ch08/02-tuning-up.html" title="チューニング・アップ"
+								   {% if page.current== 'ch08-02' %} class="current"{% endif %}>チューニング・アップ</a>
+							</li>
+							<li id="sn-ch08-03">
+								<a href="/ch08/03-interactions.html" title="相互作用"
+								   {% if page.current== 'ch08-03' %} class="current"{% endif %}>相互作用</a>
+							</li>
+							<li id="sn-ch08-04">
+								<a href="/ch08/04-customizations-galore.html" title="カスタマイズがいっぱい"
+								   {% if page.current== 'ch08-04' %} class="current"{% endif %}>カスタマイズがいっぱい</a>
+							</li>
+							<li id="sn-ch08-05">
+								<a href="/ch08/05-is-this-progress.html" title="これが進捗ですか"
+								   {% if page.current== 'ch08-05' %} class="current"{% endif %}>これが進捗ですか</a>
+							</li>
+							<li id="sn-ch08-06">
+								<a href="/ch08/06-well-done.html" title="よく出来ました"
+								   {% if page.current== 'ch08-06' %} class="current"{% endif %}>よく出来ました</a>
+							</li>
+							<li id="sn-ch08-07">
+								<a href="/ch08/07-legalese.html" title="法律用語"
+								   {% if page.current== 'ch08-07' %} class="current"{% endif %}>法律用語</a>
+							</li>
+							<li id="sn-ch08-08">
+								<a href="/ch08/08-out-of-order.html" title="順番外"
+								   {% if page.current== 'ch08-08' %} class="current"{% endif %}>順番外</a>
+							</li>
+							<li id="sn-ch08-09">
+								<a href="/ch08/09-dontcha-speak-english.html" title="英語はわかりませんか"
+								   {% if page.current== 'ch08-09' %} class="current"{% endif %}>英語はわかりませんか</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch09' %} open{% endif %}" id="sn-btn-ch09" href="#"></a>
+							9
+							<a id="sn-ch09" href="/ch09/index.html" title="Lesson 9"
+							   {% if page.current== 'ch09' %} class="current"{% endif %}>トランスフォーム</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch09' %} open{% endif %}" id="sn-block-ch09">
+							<li id="sn-ch09-01">
+								<a href="/ch09/01-morphing-installers.html" title="インストーラを変形する"
+								   {% if page.current== 'ch09-01' %} class="current"{% endif %}>インストーラを変形する</a>
+							</li>
+						</ol>
+						<h4><a class="snb{% if page.chapter == 'ch10' %} open{% endif %}" id="sn-btn-ch10" href="#"></a>
+							10
+							<a id="sn-ch10" href="/ch10/index.html" title="Lesson 10"
+							   {% if page.current== 'ch10' %} class="current"{% endif %}>標準ライブラリ</a></h4>
+						<ol class="side-navi{% if page.chapter == 'ch10' %} open{% endif %}" id="sn-block-ch10">
+							<li id="sn-ch10-01">
+								<a href="/ch10/01-custom-actions-and-user-interface.html"
+								   title="カスタム・アクションとユーザー・インタフェイス"
+								   {% if page.current== 'ch10-01' %} class="current"{% endif
+								%}>カスタム・アクションとユーザー・インタフェイス</a>
+							</li>
+							<li id="sn-ch10-02">
+								<a href="/ch10/02-silence-please.html" title="お静かに願います"
+								   {% if page.current== 'ch10-02' %} class="current"{% endif %}>お静かに願います</a>
+							</li>
+						</ol>
+						<ul>
+							<li id="sn-download">
+								<a href="/download.html" title="ダウンロード"
+								   {% if page.current== 'download' %} class="current"{% endif %}>ダウンロード</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </article>
 
 <!-- FOOTER  -->
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>Copyright &copy; 2010-2015, <a href="https://github.com/wix-tutorial-ja/">
-                    WiX Tutorial Ja</a></p>
-                <p>本文書は、Gábor DEÁK JAHN による <a href="https://www.firegiant.com/wix/tutorial/">WiX tutorial</a>
-                    を日本語に翻訳したものです。
-                    読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。</p>
-                <p class="no-print">
-                    間違いの指摘や修正案の提示を歓迎します。
-                    <a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">翻訳プロジェクトのレポジトリ</a>
-                    をご利用ください。</p>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<p>Copyright &copy; 2010-2015, <a href="https://github.com/wix-tutorial-ja/">
+					WiX Tutorial Ja</a></p>
+
+				<p>本文書は、Gábor DEÁK JAHN による <a href="https://www.firegiant.com/wix/tutorial/">WiX tutorial</a>
+					を日本語に翻訳したものです。
+					読みやすくて正確な翻訳を目指しましたが、解釈の誤りと技術的な間違いが含まれていないという保証は出来ません。</p>
+
+				<p class="no-print">
+					間違いの指摘や修正案の提示を歓迎します。
+					<a href="https://github.com/wix-tutorial-ja/wix-tutorial-ja.github.com">翻訳プロジェクトのレポジトリ</a>
+					をご利用ください。</p>
+			</div>
+		</div>
+	</div>
 </footer>
 <script type="text/javascript" src="/js/main.js" async></script>
 </body>
