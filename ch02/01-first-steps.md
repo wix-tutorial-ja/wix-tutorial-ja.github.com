@@ -18,12 +18,14 @@ origin: /user-interface/first-steps/
 コンパイルして走らせて、どんなことが出来るか、だいたいの感じをつかんで下さい。
 次のコマンドでビルドして下さい(リンカのコマンドの新しい引数については、後で説明します)。
 
-> 訳註：SampleWixUI の日本語版は [Sample-2-1-WixUI.zip](/samples/Sample-2-1-WixUI.zip) です。
-
 {% highlight bat %}
 candle.exe SampleWixUI.wxs
 light.exe -ext WixUIExtension SampleWixUI.wixobj
 {% endhighlight %}
+
+> 訳註：SampleWixUI の日本語版は [Sample-2-1-WixUI.zip](/samples/Sample-2-1-WixUI.zip) です。
+> この日本語版サンプルを使う場合は、2番目のコマンドを `light.exe -ext WixUIExtension -cultures:ja-JP SampleWixUI.wixobj` に変更して下さい。
+> **`-cultures:ja-JP`** のオプションを指定しないと、WixUIExtension の言語が英語(`en-US`)であると見なされ、ソース・ファイルに使われている「ほげ」「ぴよ」などの日本語文字列が表示不可能であるとしてビルド・エラーの原因になります。
 
 カスタム・インストールを選んで、インストール先のフォルダを変更してみて下さい。
 インストールが完了したら、インストーラ・パッケージをもう一度実行してみて下さい。
